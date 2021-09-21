@@ -2,10 +2,10 @@ import React, { useState, Fragment } from "react";
 import { Link, useHistory } from 'react-router-dom';
 
 import { registerUser } from "../../utils/auth";
-import { validate } from '../../pages/login/form-validate'
+import { validate } from '../../pages/Login/form-validate'
 import { Footer } from '../../components/footer/footer'
 
-import '../login/login.css';
+import '../Login/login.css';
 
 import fundo from '../../img/fundo.png'
 import fundoDesk from '../../img/fundo-desk.png'

@@ -2,7 +2,7 @@ import React, { useState, Fragment } from "react";
 import { Link, useHistory } from 'react-router-dom';
 
 import { login } from "../../utils/auth";
-import { validate } from './form-validate';
+import { validate } from '../Login/form-validate';
 import { Footer } from '../../components/footer/footer'
 
 import './login.css';
@@ -36,10 +36,10 @@ const Login = () => {
   let history = useHistory()
   const handleLogin = (e) => {   
     e.preventDefault();
-      console.log('foi')
-    validateValues(infoUser)         
-    // login('1234')  
-    // history.push('/home')
+    /*  console.log('foi')
+    validateValues(infoUser) */      
+    login('1234')  
+    history.push('/home')
   }
 
   return (
