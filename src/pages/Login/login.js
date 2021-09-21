@@ -1,9 +1,10 @@
 import React, { useState, Fragment } from "react";
 import { Link, useHistory } from 'react-router-dom';
 
-import { login } from "../../utils/auth";
-import { validate } from '../Login/form-validate';
-import { Footer } from '../../components/footer/footer'
+import { validate } from '../login/form-validate';
+import { Footer } from '../../components/footer/footer';
+import { isUserActive, registerUser } from '../../utils/auth';
+
 
 import './login.css';
 
@@ -33,14 +34,18 @@ const Login = () => {
     // }
   }
   
-  let history = useHistory()
+ // let history = useHistory()
   const handleLogin = (e) => {   
     e.preventDefault();
     /*  console.log('foi')
     validateValues(infoUser) */      
-    login('1234')  
-    history.push('/home')
-  }
+    // login('1234')  
+    // history.push('/home')
+    //console.log(isUserActive)   
+    
+
+
+  };
 
   return (
     <Fragment>
