@@ -76,25 +76,8 @@
     color: #fc0808;
 }
 
-.btn-login, .btn-register{
-    width: 40%;
-    height: 50px;
-    justify-content: center;
-    display: block;
-    color: #fff;
-    background: #884f1adb;
-    font-size: 25px;
-    margin: 8% 30%;
-    border-radius: 10px;
-    cursor: pointer;
-}
 
-.btn-login:hover{
-    background: #91541c;
-}
-.btn-register:hover{
-    background: #91541c;
-}
+
 
 .link-register{
     width: 40%;
@@ -162,12 +145,7 @@
         font-size: 15px;
     }
 
-    .btn-login, .btn-register{
-        width: 25%;
-        height: 30px;
-        font-size: 17px;
-        margin-left: 38%;
-    }
+    
 
     .fa-envelope{
         margin-top: -12px;
@@ -215,15 +193,7 @@
 
     .icons-input{
         margin-left: 67%;
-    }
-
-    .btn-register, .btn-login{
-        width: 25%;
-        height: 40px;
-        margin-left: 38%;
-        margin-top: 3%;
-        font-size: 20px;
-    }
+    }  
 
     .link-register{    
         margin-left: 39%;
@@ -285,13 +255,6 @@
         font-size: 160%;
         margin-left: 65%;
         margin-top: -8%;
-    }
-
-    .btn-login, .btn-register{
-        width: 36%;
-        height: 50px;
-        margin-left: 28%;
-        font-size: 28px;
     }
 
     .link-register{
