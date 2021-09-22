@@ -1,9 +1,9 @@
 import React, { useState, Fragment } from "react";
 import { Link, useHistory } from 'react-router-dom';
 
-import { login } from "../../utils/auth";
-import { validate } from '../Login/form-validate';
-import { Footer } from '../../components/footer/footer'
+import { validate } from './form-validate';
+import { Footer } from '../../components/footer/footer';
+import { isUserActive, loginUser, loginConfirmed } from '../../utils/auth';
 
 import './login.css';
 
@@ -13,15 +13,14 @@ import hamburguer from '../../img/hamburguer-login.png'
 import jesus from '../../img/jesus.gif'
 import jesusDesk from '../../img/jesus-desk.gif'
 
-
-
-
-
 const Login = () => {
 
   const [errors, setErrors] = useState({})
   function validateValues(values) {
-    setErrors(validate(values))
+    const errorsResult = validate(values)
+    setErrors(errorsResult)
+
+    return errorsResult;
   }
 
   const [infoUser, setInfoUser] = useState({ email: '', password: '' });
@@ -36,11 +35,28 @@ const Login = () => {
   let history = useHistory()
   const handleLogin = (e) => {   
     e.preventDefault();
-    /*  console.log('foi')
-    validateValues(infoUser) */      
-    login('1234')  
-    history.push('/home')
-  }
+
+    const resultErrorsLogin = validateValues(infoUser);
+
+    if (!resultErrorsLogin.email && !resultErrorsLogin.password) {
+
+      loginUser(infoUser.email, infoUser.password)
+      .then((responseLogin) => {
+        responseLogin.json().then((user) => {
+          if (user) {
+            loginConfirmed(user.token)
+            console.log(user, user.token)
+            history.push('/home')
+          }
+        })
+      })
+      /*.catch((error) => {
+        console.log(error.message)
+      })*/
+    } else {
+      console.log(resultErrorsLogin, resultErrorsLogin.email, 'usuário não conectado')
+    }
+  };
 
   return (
     <Fragment>
