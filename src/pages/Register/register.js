@@ -3,7 +3,6 @@ import { Link, useHistory } from 'react-router-dom';
 
 import { registerUser } from "../../utils/auth";
 import { validate } from '../../pages/login/form-validate'
-import { login } from "../../utils/auth";
 import { Footer } from '../../components/footer/footer'
 
 import '../login/login.css';
@@ -39,17 +38,14 @@ const Register = () => {
 
     const resultErrors = validateValues(infoUser);
 
-    if (!resultErrors.email || !resultErrors.password) {
+    if (!resultErrors.email && !resultErrors.password) {
       console.log(resultErrors.email, 'não tem erros')
 
       registerUser(infoUser.email, infoUser.password)
-        .then((response) => {
-          response.json().then((user) => {
-            console.log('usuário foi criado', user.token);
-            login(user.token);
+        .then(() => {
+            console.log('usuário foi criado');
             history.push('/') //trocar pelo modal de aviso de cadastro com sucesso 
           })
-        })
     } else {
       console.log(resultErrors, resultErrors.email, 'cadastro não concluído ')
       //se quisermos colocar um modal avisando que nao foi concluído
