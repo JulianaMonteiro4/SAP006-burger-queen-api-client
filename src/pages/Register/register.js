@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { registerUser } from "../../utils/auth";
 import { validate } from '../../pages/login/form-validate'
 import { Footer } from '../../components/footer/footer'
+import { Button } from '../../components/button/button'
 
 import '../login/login.css';
 
@@ -97,10 +98,7 @@ const Register = () => {
             {errors.password && <span className='form-error'>{errors.password}</span>}
           </fieldset>
 
-          <input className='btn-register'
-            type='submit' value='Register'
-            onClick={handleRegister}
-          />
+          <Button type='submit' onClick={handleRegister}>Cadaste-se</Button>
           <p className='link-register'>Clique <Link to='/'>aqui </Link>para logar-se.</p>
         </form>
         <Footer />
