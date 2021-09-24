@@ -22,6 +22,7 @@ const Cardapio = () => {
         // .then((listresponse) => {
         //     listresponse.json().then((list) => console.log(list))
         // })
+        //
     }
 
     function handleLunch() {
