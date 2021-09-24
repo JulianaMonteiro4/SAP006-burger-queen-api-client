@@ -4,6 +4,8 @@ import { Link, useHistory } from 'react-router-dom';
 import { validate } from './form-validate';
 import { Footer } from '../../components/footer/footer';
 import { Button } from '../../components/button/button'
+import { InputText } from '../../components/input/input'
+
 import { loginUser, loginConfirmed } from '../../utils/auth';
 
 import './login.css';
@@ -28,6 +30,7 @@ const Login = () => {
   const handleChange = (e) => {
     const informationUser = e.target.id;
     setInfoUser({ ...infoUser, [informationUser]: e.target.value })
+    console.log(e.target.value, infoUser)
     // if (informationUser === 'password') {      
     // }
   }
@@ -78,8 +81,7 @@ const Login = () => {
         <form className='form-login' >
           <fieldset className='form-inner'>
             <div>
-              <input className='input-login'
-                type='email' id='email' placeholder='Email' required=''
+              <InputText className="input" type='email' id='email' placeholder='Email' 
                 value={infoUser.email}
                 onChange={handleChange} />
               <section className='icons-input'>
@@ -91,8 +93,8 @@ const Login = () => {
 
           <fieldset className="form-inner">
             <div>
-              <input className="input-password"
-                type="password" id="password" placeholder="Password" required=""
+              <InputText className="input-password"
+                type="password" id="password" placeholder="Password" 
                 value={infoUser.password}
                 onChange={handleChange} />
               <section className="icons-input">
