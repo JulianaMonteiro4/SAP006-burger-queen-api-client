@@ -1,0 +1,7 @@
+.section{
+    display: flex;
+    width: 80%;
+    margin: 5% 7%;
+    padding: 2%;
+    background-color: #fff;
+}
