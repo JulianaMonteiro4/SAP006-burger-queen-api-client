@@ -17,9 +17,9 @@ const Home = () => {
   //eslint-disable-next-line
 
   let history = useHistory()
-  const handleLogout = () => {
-    logout()
-    history.push('/')
+  
+  const handleCardapio = () => {
+    history.push('/cardapio')
   }
 
   const handleAtend = () => {
@@ -30,13 +30,19 @@ const Home = () => {
     history.push('/pedidos')
   }
 
+  const handleLogout = () => {
+    logout()
+    history.push('/')
+  }
+
   return (
     <div className='menu-div'>
       <figure className='menu'>
         <img className='menu1 fatia'
           src={menu1} alt='menu1' />
         <img className='menu2 fatia'
-          src={menu2} alt='menu2' />
+          src={menu2} alt='menu2' 
+          onClick={handleCardapio} />
         <img className='menu3 fatia'
           src={menu3} alt='menu3'
           onClick={handleAtend} />
