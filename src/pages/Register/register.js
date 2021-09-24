@@ -5,6 +5,7 @@ import { registerUser } from "../../utils/auth";
 import { validate } from '../../pages/login/form-validate'
 import { Footer } from '../../components/footer/footer'
 import { Button } from '../../components/button/button'
+import { InputText } from '../../components/input/input'
 
 import '../login/login.css';
 
@@ -29,6 +30,7 @@ const Register = () => {
   const handleChange = (e) => {
     const informationUser = e.target.id;
     setInfoUser({ ...infoUser, [informationUser]: e.target.value })
+    console.log(e.target.value, infoUser)
     // if (informationUser === 'password') {      
     // }
   }
@@ -73,8 +75,7 @@ const Register = () => {
         <form className='form-login' >
           <fieldset className='form-inner'>
             <div>
-              <input className='input-login'
-                type='email' id='email' placeholder='Email' required=''
+              <InputText className="input" type='email' id='email' placeholder='Email' 
                 value={infoUser.email}
                 onChange={handleChange} />
               <section className='icons-input'>
@@ -86,8 +87,8 @@ const Register = () => {
 
           <fieldset className="form-inner">
             <div>
-              <input className="input-password"
-                type="password" id="password" placeholder="Password" required=""
+              <InputText className="input-password"
+                type="password" id="password" placeholder="Password" 
                 value={infoUser.password}
                 onChange={handleChange} />
               <section className="icons-input">
