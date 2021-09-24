@@ -5,20 +5,13 @@ import './atendi.css'
 
 import { Button } from '../../components/button/button'
 
-import Section from "../../components/section/section";
-import SectionPedidos from "../../components/section/sectionPedi";
-
 const Atendimento = () => {
 
-  const [select, setSelect] = useState({Section})
+  //const [select, setSelect] = useState({})
 
   let history = useHistory()
-  // const handleMesas = () => {
-  // }
   
-  const handlePedidos = (e) => {
-    e.preventDefaul()
-    setSelect({SectionPedidos})
+  const handlePedidos = () => {
   }
 
   const handleResumo = () => {
@@ -31,7 +24,6 @@ const Atendimento = () => {
         <Button className="btn-pedi" type="submit" onClick={handlePedidos}>Anotar Pedidos</Button>
         <Button className="btn-resumo" onClick={handleResumo}>Resumo</Button>
       </div>
-      <Section />
     </div>
   )
 }
