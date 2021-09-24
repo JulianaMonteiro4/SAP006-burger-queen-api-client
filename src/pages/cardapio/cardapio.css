@@ -1,0 +1,15 @@
+* {
+    background-color: #e4b97a;;
+}
+
+.page {
+    display: flex;
+    flex-direction: column
+}
+
+.menu-produtos {
+    margin: 50px;
+    background-color: white;
+    width: 80%;
+    height: 600px;
+}

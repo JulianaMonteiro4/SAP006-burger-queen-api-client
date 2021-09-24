@@ -3,9 +3,8 @@ import { useHistory } from 'react-router-dom';
 
 import './atendi.css'
 
-import ButtonMesas from '../../components/button/buttonMesas'
-import ButtonPedi from '../../components/button/buttonPedi'
-import ButtonResumo from '../../components/button/buttonResumo'
+import { Button } from '../../components/button/button'
+
 import Section from "../../components/section/section";
 import SectionPedidos from "../../components/section/sectionPedi";
 
@@ -28,10 +27,9 @@ const Atendimento = () => {
 
   return (
     <div>
-      <div className="buttons">
-        <ButtonMesas type="submit" onClick={Section}>Status Mesas</ButtonMesas>
-        <ButtonPedi type="submit" onClick={handlePedidos}>Anotar Pedidos</ButtonPedi>
-        <ButtonResumo type="submit" onClick={handleResumo}>Resumo</ButtonResumo>
+      <div className="buttons">        
+        <Button className="btn-pedi" type="submit" onClick={handlePedidos}>Anotar Pedidos</Button>
+        <Button className="btn-resumo" onClick={handleResumo}>Resumo</Button>
       </div>
       <Section />
     </div>

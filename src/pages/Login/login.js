@@ -105,7 +105,7 @@ const Login = () => {
             {errors.password && <span className='form-error'>{errors.password}</span>}
           </fieldset>
 
-          <Button type='submit' onClick={handleLogin}>Logue-se</Button>
+          <Button className='btn' type='submit' onClick={handleLogin}>Logue-se</Button>
           <p className='link-register'>Clique <Link to='/register'>aqui </Link>para se cadastrar.</p>
         </form>
         <Footer />
