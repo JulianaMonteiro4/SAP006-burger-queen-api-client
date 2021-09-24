@@ -2,16 +2,19 @@ import React from "react";
 
 import './section.css'
 import DropDown from "../dropdown/dropdown";
-import ButtonSelect from "../button/buttonSelect";
-import Input from "../inputs/inputs";
+import {Button} from "../button/button";
+import {InputText} from "../input/input";
 
 const SectionPedidos = () => {
     return (
-        <section className="section">
+        <section className="section-pedi">
             <DropDown></DropDown>
-            <Input>Nome</Input>
-            <ButtonSelect type='submit' >Café da Manhã</ButtonSelect>
-            <ButtonSelect type='submit' >Almoço</ButtonSelect>
+            <InputText type="text" 
+            className="input-pedi" 
+            id="input-pedi" value={null} 
+            onChange={null} placeholder="Nome" />
+            <Button className="btn-select" type="submit" onClick={null}>Café da Manhã</Button>
+            <Button className="btn-select" type="submit" onClick={null}>Almoço</Button>
         </section>
     )
 }

@@ -1,19 +1,15 @@
 import React from 'react';
 
-import ButtonMesas from '../../components/button/buttonMesas'
-import ButtonPedi from '../../components/button/buttonPedi'
-import ButtonResumo from '../../components/button/buttonResumo'
-import Section from '../../components/section/section';
+// import {Button} from '../../components/button/button'
 
 const Mesa = () => {
   return (
     <div>
       <div className="buttons">
-        <ButtonMesas />
+        {/* <ButtonMesas />
         <ButtonPedi />
-        <ButtonResumo />
+        <ButtonResumo /> */}
       </div>
-      <Section />
     </div>
   )
 }
