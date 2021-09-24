@@ -1,0 +1,24 @@
+.opcoes1{
+    background: #F6F8A0;
+    color: #784516;
+    font-size: 18px;
+}
+
+.opcoes{
+    background: #F6F8A0;
+    color: #784516;
+    font-size: 10px;
+}
+
+.dropMesa{
+    display: flex;
+    width: 18%;
+    height: 30px;
+    margin-left: 8%;
+    justify-content: center;
+    color: #784516;
+    background: #F6F8A0;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
