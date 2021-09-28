@@ -18,6 +18,10 @@ const Home = () => {
   //eslint-disable-next-line
 
   let history = useHistory()
+
+  // const handlePage = (path) => {
+  //   history.push(path)
+  // }
   
   const handlePage = (path) => {
     history.push(path)

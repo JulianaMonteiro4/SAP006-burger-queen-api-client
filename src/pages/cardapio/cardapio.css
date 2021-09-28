@@ -1,6 +1,7 @@
 .page {
     display: flex;
-    flex-direction: column
+    flex-direction: column;  
+    padding-left: 10%;  
 }
 
 .menu-produtos {
@@ -8,4 +9,8 @@
     background-color: white;
     width: 80%;
     height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: auto;
 }
