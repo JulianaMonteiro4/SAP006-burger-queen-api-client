@@ -19,7 +19,7 @@ export const Routes = () => {
       <PrivateRoute exact path='/home' component={Home} />
       <PrivateRoute exact path='/cardapio' component={Cardapio} />
       <PrivateRoute exact path='/atendimento' component={Atendimento} />
-      <Route exact path='/mesas' component={Mesa} />
+      <Route exact path='/pedidos' component={Mesa} />
       <Route component={() => <div>Page 404</div>} />
     </Switch>
   )
