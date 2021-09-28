@@ -19,7 +19,7 @@ const Atendimento = () => {
   }
 
   return (
-    <div>
+    <div className='pagina-atendimento'>
       <div className="buttons">        
         <Button className="btn-pedi" type="submit" onClick={handlePedidos}>Anotar Pedidos</Button>
         <Button className="btn-resumo" onClick={handleResumo}>Resumo</Button>

@@ -13,3 +13,4 @@ export const getProducts = () => {
     })
     return response
 }
+
