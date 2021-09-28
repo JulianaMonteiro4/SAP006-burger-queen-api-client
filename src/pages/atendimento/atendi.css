@@ -1,5 +1,7 @@
-* {
-    background-color: #e4b97a;;
+.pagina-atendimento {
+    height: 100vh;
+    justify-content: center;
+    background: #e4b97a;
 }
 
 .buttons{

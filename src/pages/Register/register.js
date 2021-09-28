@@ -99,7 +99,7 @@ const Register = () => {
             {errors.password && <span className='form-error'>{errors.password}</span>}
           </fieldset>
 
-          <Button type='submit' onClick={handleRegister}>Cadaste-se</Button>
+          <Button className="btn" type='submit' onClick={handleRegister}>Cadaste-se</Button>
           <p className='link-register'>Clique <Link to='/'>aqui </Link>para logar-se.</p>
         </form>
         <Footer />

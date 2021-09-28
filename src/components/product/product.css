@@ -1,0 +1,53 @@
+.item-products {
+    width: 100px;
+    height: 150px;
+    margin: 2%;
+    background-color: #F6F8A0;
+    border-radius: 10px;
+    text-align: center;
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;    
+}
+
+.img-products {
+  width: 100%;
+  border-radius: 10px;
+  margin: 2%;
+}
+
+.info-products {
+    display: flex;
+    flex-direction: column;
+    border-top: black;
+    text-align: center;
+}
+
+.name-products, .flavor-products, .complement-products {
+  color:black;  
+}
+
+.complement-products {
+ 
+}
+
+.info-price-products {
+  display: flex;
+  background-color: #38B6FF;  
+  justify-content: space-between;
+  padding: 7% 10%;
+  border-radius: 0 0 10px 10px;  
+}
+
+.price-products {
+  
+  
+  color: black;
+  padding-right: 1%;
+
+}
+
+.fa-plus-square {
+  
+}
