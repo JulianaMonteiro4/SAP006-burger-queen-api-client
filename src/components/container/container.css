@@ -1,0 +1,19 @@
+.container{
+    width: 84%;
+    margin: 5% 7%;
+    padding: 3% 0%;
+    background-color: #fff;
+}
+
+.container-pedi{
+    width: 30%;
+    margin-left: 67%;
+    background-color: #F6F8A0;
+}
+
+.total{
+    height: 7%;
+    margin-top: 110%;
+    background-color: #38B6FF;
+    font-size: 12px;
+}

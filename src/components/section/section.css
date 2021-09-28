@@ -1,7 +1,11 @@
-.section-mesa, .section-pedi{
+.section-mesa, .section-pedi, .section-resumo{
     display: flex;
     width: 80%;
     margin: 5% 7%;
     padding: 2%;
     background-color: #fff;
+}
+
+.containerCardápio {
+    margin-top: 5%;
 }

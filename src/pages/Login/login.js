@@ -108,7 +108,7 @@ const Login = () => {
           <Button className='btn' type='submit' onClick={handleLogin}>Logue-se</Button>
           <p className='link-register'>Clique <Link to='/register'>aqui </Link>para se cadastrar.</p>
         </form>
-        <Footer />
+        <Footer className="footer"/>
       </div>
     </Fragment>
   )

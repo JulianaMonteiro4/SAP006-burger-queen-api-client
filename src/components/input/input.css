@@ -1,4 +1,3 @@
-
 .input{
     margin-top: 25%;
     margin-bottom: 5%;
@@ -14,6 +13,20 @@
     background: #e0dede;
     border: none;
     outline: none;
+}
+
+.input-pedi, .input-resumo{
+    display: flex;
+    width: 18%;
+    height: 35px;
+    margin-left: 3%;
+    text-align: center;
+    color: #784516;
+    background: #F6F8A0;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 @media screen and (min-width: 425px) and (max-width: 767px){

@@ -3,6 +3,7 @@ import React from 'react';
 import { useHistory } from "react-router-dom"
 
 import { logout } from '../../utils/auth';
+import { Footer } from '../../components/footer/footer';
 
 import './home.css';
 
@@ -53,6 +54,7 @@ const Home = () => {
           src={menu5} alt='menu5'
           onClick={handleLogout} />
       </figure>
+      <Footer className="footer-home"/>
     </div>
   )
 }
