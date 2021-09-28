@@ -19,16 +19,8 @@ const Home = () => {
 
   let history = useHistory()
   
-  const handleCardapio = () => {
-    history.push('/cardapio')
-  }
-
-  const handleAtend = () => {
-    history.push('/atendimento')
-  }
-
-  const handlePedidos = () => {
-    history.push('/pedidos')
+  const handlePage = (path) => {
+    history.push(path)
   }
 
   const handleLogout = () => {
@@ -43,13 +35,13 @@ const Home = () => {
           src={menu1} alt='menu1' />
         <img className='menu2 fatia'
           src={menu2} alt='menu2' 
-          onClick={handleCardapio} />
+          onClick={() => {handlePage('/cardapio')}} />
         <img className='menu3 fatia'
           src={menu3} alt='menu3'
-          onClick={handleAtend} />
+          onClick={() => {handlePage('/atendimento')}} />
         <img className='menu4 fatia'
           src={menu4} alt='menu4'
-          onClick={handlePedidos} />
+          onClick={() => {handlePage('/cardapio')}} />
         <img className='menu5 fatia'
           src={menu5} alt='menu5'
           onClick={handleLogout} />

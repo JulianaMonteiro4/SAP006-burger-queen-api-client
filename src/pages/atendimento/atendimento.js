@@ -11,31 +11,25 @@ import ContainerResumo from '../../components/container/containerResumo';
 const Atendimento = () => {
 
   const [select, setSelect] = useState('')
-  const [container, setContainer] = useState('')
   
-  function handlePedidos() {
-    setSelect('pedidos')
-    setContainer('breakfast')
+  function handlePedidos(selectInfoOrder) {
+    setSelect(selectInfoOrder)
   }
 
-  function handleResumo() {
-    setSelect('resumo')
-    setContainer('lunch')
-  }
 
   return (
     <div>
       <div className="buttons">
-        <Button className="btn-pedi" type="submit" onClick={handlePedidos}>Anotar Pedidos</Button>
-        <Button className="btn-resumo" onClick={handleResumo}>Resumo</Button>
+        <Button className="btn-pedi" type="submit" onClick={() => {handlePedidos("pedidos")} }>Anotar Pedidos</Button>
+        <Button className="btn-resumo" onClick={() => {handlePedidos("resumo")} }>Resumo</Button>
       </div>
       <div className="selection">
         {select === 'pedidos' && <SectionPedidos />}
         {select === 'resumo' && <SectionResumo />}
       </div>
       <div className="containerCardápio">
-        {container === 'breakfast' && <ContainerPedidos />}
-        {container === 'lunch' && <ContainerResumo />}
+        {select === 'pedidos' &&  <ContainerPedidos />}
+        {select === 'resumo' && <ContainerResumo />}
       </div>
     </div>
   )
