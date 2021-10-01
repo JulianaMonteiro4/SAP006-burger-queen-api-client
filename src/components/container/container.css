@@ -1,7 +1,10 @@
 .container{
+    display: flex;
     width: 84%;
+    height: 450px;
     margin: 5% 7%;
     padding: 3% 0%;
+    justify-content: space-between;
     background-color: #fff;
     display: flex;
     overflow: auto;
@@ -13,15 +16,24 @@
     
 }
 
+.container-menu-pedidos{
+    display: flex;
+    margin-left: 3%;
+    overflow: auto;
+    width: 70%;
+    flex-wrap: wrap;
+}
+
+
 .container-pedi{
-    width: 30%;
-    /*margin-left: 67%;*/
+    width: 40%;
+    margin-right: 3%;
     background-color: #F6F8A0;
+    text-align: center;
 }
 
 .total{
     height: 7%;
-    margin-top: 110%;
     background-color: #38B6FF;
     font-size: 12px;
 }

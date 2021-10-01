@@ -3,7 +3,7 @@ import React from "react";
 import './container.css';
 import {Button} from "../button/button";
 
-const ContainerPedidos = ({children, array}) => {
+const ContainerPedidos = ({children, children2}) => {
 
   // const [enviar, setEnviar] = useState('enviar')
 
@@ -18,14 +18,12 @@ const ContainerPedidos = ({children, array}) => {
       </div>
       <div className="container-pedi">
         <p>Status do Pedido</p>
-        <ul>
-          {array !== [] && array.map((item) => <li>oi</li>)}
-        </ul>
+        {children2}
         <div className="total">
           <p>Quantidodade dos pedidos</p>
           <p>Total</p>
         </div>
-        <Button className="btn-enviarStatus" type="submit" onClick={null}>Enviar</Button>
+        <Button className="btn-enviarStatus" id="enviarStatus" type="submit" onClick={null}>Enviar</Button>
       </div>
     </section>
   )

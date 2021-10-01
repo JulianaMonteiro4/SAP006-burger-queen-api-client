@@ -2,10 +2,10 @@ import React, { useState } from "react";
 
 import './product.css'
 
-const Product = ({ id, image, name, flavor, complement, price, onClick }) => {
+const Product = ({ key, image, name, flavor, complement, price, onClick }) => {
 
     return (
-        <article className='item-products' id={id}>
+        <article className='item-products' key={key}>
             <p className='name-products'>{name}</p>
             <img src={image} className='img-products' alt=""></img>
             <div className='info-products'>
