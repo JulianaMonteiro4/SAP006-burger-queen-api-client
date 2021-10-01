@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { getProducts } from '../../utils/services'
 
+import Header from '../../components/header/header';
 import Product from "../../components/product/product";
 import { Button } from '../../components/button/button'
 
@@ -32,6 +33,7 @@ const Cardapio = () => {
 
     return (
         <div className="page pagina-atendimento">
+            <Header></Header>
             <section className="buttons">
                 <Button className="btn-pedi" type="submit" onClick={() => { handleMenu("breakfast") }}>Café da Manhã</Button>
                 <Button className="btn-resumo" onClick={() => { handleMenu("all-day") }}>Almoço</Button>
@@ -39,7 +41,7 @@ const Cardapio = () => {
             <section className="menu-produtos">
                 {menu && menu.map(item => {
                     return (
-                        <Product id={item.id}
+                        <Product key={item.id}
                             image={item.image}
                             name={item.name}
                             flavor={item.flavor}

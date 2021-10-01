@@ -3,7 +3,7 @@ import React from "react";
 import './container.css';
 import {Button} from "../button/button";
 
-const ContainerPedidos = () => {
+const ContainerPedidos = ({children, array}) => {
 
   // const [enviar, setEnviar] = useState('enviar')
 
@@ -13,8 +13,14 @@ const ContainerPedidos = () => {
 
   return (
     <section className="container">
+      <div className="container-menu-pedidos">
+        {children}
+      </div>
       <div className="container-pedi">
         <p>Status do Pedido</p>
+        <ul>
+          {array !== [] && array.map((item) => <li>oi</li>)}
+        </ul>
         <div className="total">
           <p>Quantidodade dos pedidos</p>
           <p>Total</p>

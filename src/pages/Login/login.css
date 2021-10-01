@@ -53,10 +53,12 @@
 .form-inner{
     border: none;
     display:inherit;
+    margin: 0;
+
 }
 
 .form-error {
-    margin-left: 30%;
+    margin-left: 25%;
     color: #fc0808;
 }
 
@@ -83,6 +85,17 @@
 
 #hide, #hide-again, #hide-login{
     display: none;
+}
+
+.role-name {
+    margin: 5% 0 0 22%;
+    color: #884f1adb;
+    font-size: 18px;
+}
+
+.role-option {
+    margin-left: 2%;
+
 }
 
 /* .footer{
@@ -124,6 +137,16 @@
         margin-left: 65%;
         margin-top: -7%;
     }
+
+    .role-name {
+        margin: 2% 0 0 25%;        
+        font-size: 12px;
+    }
+    
+    .role-option {
+        margin-left: 2%;
+    
+    }
 }
 
 @media screen and (min-width: 700px) and (max-width: 1023px) {
@@ -150,6 +173,16 @@
     .link-register{    
         margin-left: 39%;
         margin-top: -5%;
+    }
+
+    .role-name {
+        margin: 2% 0 0 30%;
+        font-size: 15px;
+    }
+    
+    .role-option {
+        margin-left: 2%;
+    
     }
 
 }
@@ -200,6 +233,16 @@
 
     .link-register{
         margin-top: -3%;
+    }
+
+    .role-name {
+        margin: 5% 0 0 20%;
+        font-size: 15px;
+    }
+    
+    .role-option {
+        margin-left: 2%;
+    
     }
 
 }

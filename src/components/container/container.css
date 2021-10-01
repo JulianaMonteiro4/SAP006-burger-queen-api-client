@@ -3,11 +3,19 @@
     margin: 5% 7%;
     padding: 3% 0%;
     background-color: #fff;
+    display: flex;
+    overflow: auto;
+}
+
+.container-menu-pedidos {
+    display: flex;
+    flex-wrap: wrap;
+    
 }
 
 .container-pedi{
     width: 30%;
-    margin-left: 67%;
+    /*margin-left: 67%;*/
     background-color: #F6F8A0;
 }
 
