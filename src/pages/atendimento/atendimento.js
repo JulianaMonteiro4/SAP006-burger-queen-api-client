@@ -4,6 +4,8 @@ import './atendi.css'
 
 import { getProducts } from "../../utils/services";
 
+import Header from '../../components/header/header'
+
 import { Button } from '../../components/button/button'
 import Product from "../../components/product/product";
 import ItemOrder from "../../components/product/itemOrder";
@@ -71,11 +73,12 @@ const Atendimento = () => {
     console.log(itensOrder)
   }, [itensOrder])
 
+
   function removeItem(item) {
     const findItem = itensOrder.find(element => element.id === item.id);
     const indexOfProduct = itensOrder.indexOf(findItem)
 
-    if (itensOrder[indexOfProduct].quantity === 0) {
+    if (itensOrder[indexOfProduct].quantity === 1) {
       itensOrder.splice(indexOfProduct, 1)
 
       // setItensOrder([...itensOrder])        
@@ -88,7 +91,11 @@ const Atendimento = () => {
   }
 
   function addValue() {
-    const bill = itensOrder.reduce((accum, item) => accum + item.price, 0)
+    return itensOrder.reduce((accum, item) => accum + (item.price*item.quantity), 0)
+  }
+
+  function addTotalQuantity() {
+    return itensOrder.reduce((accum, item) => accum + item.quantity, 0)
   }
 
 
@@ -107,6 +114,9 @@ const Atendimento = () => {
 
       <div className="containerCardápio">
         {select === "pedidos" && <ContainerPedidos
+          listOfProducts={itensOrder}
+          value={addValue()}
+          totalQuantity={addTotalQuantity()}
           children={
             menu && menu.map(item => {
               return (
@@ -126,7 +136,7 @@ const Atendimento = () => {
                 <ItemOrder name={item.name}
                   price={item.price}
                   quantity={item.quantity}
-                  onClick={null} />
+                  onClick={() => removeItem(item)} />
               )
             })}
         />}
