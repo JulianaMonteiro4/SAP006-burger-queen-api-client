@@ -33,13 +33,13 @@ const Cardapio = () => {
     return (
         <div className="page pagina-atendimento">
             <section className="buttons">
-                <Button className="btn-pedi" type="submit" onClick={() => { handleMenu("breakfast") }}>Café da Manhã</Button>
-                <Button className="btn-resumo" onClick={() => { handleMenu("all-day") }}>Almoço</Button>
+                <Button className="btn-pedi" id="" type="submit" onClick={() => { handleMenu("breakfast") }}>Café da Manhã</Button>
+                <Button className="btn-resumo" id="" onClick={() => { handleMenu("all-day") }}>Almoço</Button>
             </section>
             <section className="menu-produtos">
                 {menu && menu.map(item => {
                     return (
-                        <Product id={item.id}
+                        <Product key={item.id}
                             image={item.image}
                             name={item.name}
                             flavor={item.flavor}

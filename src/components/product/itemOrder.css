@@ -1,0 +1,11 @@
+.item-order{
+    display: flex;
+    width: 100%;
+    padding: 1%;
+    font-size: 18px;
+    color: #000;
+}
+
+.info-item-order{
+    padding-left: 4%;
+}
