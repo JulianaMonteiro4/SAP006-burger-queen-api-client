@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 
 import './atendi.css'
 
-import { getProducts } from "../../utils/services";
+import { getProducts, registerOrder } from "../../utils/services";
 
 import Header from '../../components/header/header'
-
 import { Button } from '../../components/button/button'
 import Product from "../../components/product/product";
 import ItemOrder from "../../components/product/itemOrder";
@@ -13,6 +12,14 @@ import SectionPedidos from '../../components/section/sectionPedi';
 import SectionResumo from '../../components/section/sectionResumo';
 import ContainerPedidos from '../../components/container/containerPedi';
 import ContainerResumo from '../../components/container/containerResumo';
+
+function addValue(array) {
+  return array.reduce((accum, item) => accum + (item.price*item.qtd), 0)
+}
+
+function addTotalQuantity(array) {
+  return array.reduce((accum, item) => accum + item.qtd, 0)
+}
 
 const Atendimento = () => {
 
@@ -60,11 +67,11 @@ const Atendimento = () => {
 
     if (findItem) {
       const indexOfProduct = itensOrder.indexOf(findItem)
-      itensOrder[indexOfProduct].quantity++
+      itensOrder[indexOfProduct].qtd++
       setItensOrder([...itensOrder])
 
     } else {
-      item.quantity = 1
+      item.qtd = 1
       setItensOrder([...itensOrder, item])
     }
   }
@@ -78,25 +85,21 @@ const Atendimento = () => {
     const findItem = itensOrder.find(element => element.id === item.id);
     const indexOfProduct = itensOrder.indexOf(findItem)
 
-    if (itensOrder[indexOfProduct].quantity === 1) {
-      itensOrder.splice(indexOfProduct, 1)
+    if (itensOrder[indexOfProduct].qtd === 1) {
+      itensOrder.splice(indexOfProduct, 1) 
 
-      // setItensOrder([...itensOrder])        
     } else {
-      itensOrder[indexOfProduct].quantity--
-
-      //setItensOrder([...itensOrder])
+      itensOrder[indexOfProduct].qtd--      
     }
     setItensOrder([...itensOrder])
   }
 
-  function addValue() {
-    return itensOrder.reduce((accum, item) => accum + (item.price*item.quantity), 0)
-  }
-
-  function addTotalQuantity() {
-    return itensOrder.reduce((accum, item) => accum + item.quantity, 0)
-  }
+  function sendOrder() {
+    registerOrder(infoOrder.name, infoOrder.table, itensOrder)
+    .then((responseOrder) => {
+      responseOrder.json().then((order) => console.log(order))
+    })
+  } 
 
 
   return (
@@ -115,8 +118,8 @@ const Atendimento = () => {
       <div className="containerCardápio">
         {select === "pedidos" && <ContainerPedidos
           listOfProducts={itensOrder}
-          value={addValue()}
-          totalQuantity={addTotalQuantity()}
+          value={addValue(itensOrder)}
+          totalQuantity={addTotalQuantity(itensOrder)}
           children={
             menu && menu.map(item => {
               return (
@@ -135,7 +138,7 @@ const Atendimento = () => {
               return (
                 <ItemOrder name={item.name}
                   price={item.price}
-                  quantity={item.quantity}
+                  quantity={item.qtd}
                   onClick={() => removeItem(item)} />
               )
             })}

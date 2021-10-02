@@ -10,11 +10,10 @@ export const isUserActive = localStorage[STORAGE_KEY]; // localStorage.Hamburgue
 export const loginConfirmed = (token) => { //Aqui terei de chamar a função com os parametros infoUser
     
     if(localStorage[STORAGE_KEY] === 'undefined'){
-        localStorage.clear()
-        localStorage.setItem(STORAGE_KEY, token)
-    } else {
+        localStorage.clear()        
+    } 
     localStorage.setItem(STORAGE_KEY, token)
-    }
+    
 };
 
 export const logout = () => {
