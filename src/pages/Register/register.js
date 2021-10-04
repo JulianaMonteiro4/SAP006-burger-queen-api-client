@@ -2,7 +2,7 @@ import React, { useState, Fragment } from "react";
 import { Link, useHistory } from 'react-router-dom';
 
 import { registerUser } from "../../utils/auth";
-import { validate } from '../../pages/login/form-validate'
+import { validate } from './form-validate'
 import { Footer } from '../../components/footer/footer'
 import { Button } from '../../components/button/button'
 import { InputText } from '../../components/input/input'
@@ -25,7 +25,7 @@ const Register = () => {
     return errorsResult
   }
 
-  const [infoUser, setInfoUser] = useState({ email: '', password: '' });
+  const [infoUser, setInfoUser] = useState({ name: '', email: '', password: '', role: '' });
 
   const handleChange = (e) => {
     const informationUser = e.target.id;
@@ -41,10 +41,10 @@ const Register = () => {
 
     const resultErrors = validateValues(infoUser);
 
-    if (!resultErrors.email && !resultErrors.password) {
+    if (!resultErrors.email && !resultErrors.password && !resultErrors.name) {
       console.log(resultErrors.email, 'não tem erros')
 
-      registerUser(infoUser.email, infoUser.password)
+      registerUser(infoUser.name, infoUser.email, infoUser.password, infoUser.role)
         .then(() => {
             console.log('usuário foi criado');
             history.push('/') //trocar pelo modal de aviso de cadastro com sucesso 
@@ -73,9 +73,11 @@ const Register = () => {
             src={jesusDesk} alt='jesus' />
         </figure>
         <form className='form-login' >
+                  
           <fieldset className='form-inner'>
             <div>
               <InputText className="input" type='email' id='email' placeholder='Email' 
+                name='email'
                 value={infoUser.email}
                 onChange={handleChange} />
               <section className='icons-input'>
@@ -89,6 +91,7 @@ const Register = () => {
             <div>
               <InputText className="input-password"
                 type="password" id="password" placeholder="Password" 
+                name='password'
                 value={infoUser.password}
                 onChange={handleChange} />
               <section className="icons-input">
@@ -97,6 +100,40 @@ const Register = () => {
               </section>
             </div>
             {errors.password && <span className='form-error'>{errors.password}</span>}
+          </fieldset>
+
+          <fieldset className='form-inner'>
+            <div>
+              <InputText className="input-name" type='name' id='name' placeholder='name' 
+                name='name'
+                value={infoUser.name}
+                onChange={handleChange} />              
+            </div>
+            {errors.name && <span className='form-error email'>{errors.name}</span>}
+          </fieldset>
+
+          <fieldset className='form-inner'>
+            <div className="role-name">
+              <label>
+                <input className="role-option" type="radio" name="name-role" id='role' 
+                value="atendente"
+                onChange={handleChange}/>  
+                atendente
+              </label>  
+              <label className="role-option">
+                <input className="role-option" type="radio" name="name-role" id='role' 
+                value="cozinheira"
+                onChange={handleChange}/>  
+                cozinheira
+              </label> 
+              <label className="role-option">
+                <input className="role-option" type="radio" name="name-role" id='role' 
+                value="gerente"
+                onChange={handleChange}/>  
+                gerente
+              </label>                 
+            </div>
+            {errors.role && <span className='form-error email'>{errors.role}</span>}
           </fieldset>
 
           <Button className="btn" type='submit' onClick={handleRegister}>Cadaste-se</Button>

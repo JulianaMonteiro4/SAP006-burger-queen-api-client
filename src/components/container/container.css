@@ -6,6 +6,8 @@
     padding: 3% 0%;
     justify-content: space-between;
     background-color: #fff;
+    display: flex;
+    overflow: auto;
 }
 
 .container-mesas{
@@ -19,6 +21,7 @@
     font-size: 12px;
 } */
 
+
 .container-menu-pedidos{
     display: flex;
     margin-left: 3%;
@@ -30,9 +33,19 @@
 
 .container-pedi{
     width: 40%;
+    max-height: 450px;
     margin-right: 3%;
+    margin-bottom: 3%;
     background-color: #F6F8A0;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: space-between;    
+}
+
+.container-itens-pedido {
+    /*overflow: auto;*/
 }
 
 .total{
