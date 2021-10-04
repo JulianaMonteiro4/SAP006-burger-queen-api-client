@@ -5,9 +5,9 @@ import './container.css';
 const ContainerResumo = () => {
   return (
     <section className="container">
-    <div className="container-pedi">
-      <p>Status do Pedido</p>
-    </div>
+      <div className="container-pedi">
+        <p>Status do Pedido</p>
+      </div>  
   </section>
   )
 }

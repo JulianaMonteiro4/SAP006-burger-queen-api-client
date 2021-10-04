@@ -7,8 +7,10 @@ import { getProducts } from "../../utils/services";
 import { Button } from '../../components/button/button'
 import Product from "../../components/product/product";
 import ItemOrder from "../../components/product/itemOrder";
+import SectionMesa from "../../components/section/sectionMesa";
 import SectionPedidos from '../../components/section/sectionPedi';
 import SectionResumo from '../../components/section/sectionResumo';
+import ContainerMesas from "../../components/container/containerMesas";
 import ContainerPedidos from '../../components/container/containerPedi';
 import ContainerResumo from '../../components/container/containerResumo';
 
@@ -75,16 +77,19 @@ const Atendimento = () => {
   return (
     <div>
       <div className="buttons">
+        <Button className="btn-mesas" id="btn-mesas" type="submit" onClick={() => { handlePedidos("mesas") }}>Status Mesas</Button>
         <Button className="btn-pedi" id="btn-pedi" type="submit" onClick={() => { handlePedidos("pedidos") }}>Anotar Pedidos</Button>
         <Button className="btn-resumo" id="btn-resumo" type="submit" onClick={() => { handlePedidos("resumo") }}>Resumo</Button>
       </div>
       <div className="selection">
+        {select === "mesas" && <SectionMesa onChange={null} infoOrder={infoOrder}/>}
         {select === "pedidos" && <SectionPedidos onChange={addInfoOrder} handleMenu={handleMenu} infoOrder={infoOrder}>
         </SectionPedidos>}
         {select === "resumo" && <SectionResumo />}
       </div>
 
       <div className="containerCardápio">
+        {select === "mesas" && <ContainerMesas />}
         {select === "pedidos" && <ContainerPedidos
           children={
             menu && menu.map(item => {
