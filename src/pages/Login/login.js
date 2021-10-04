@@ -45,17 +45,22 @@ const Login = () => {
 
       loginUser(infoUser.email, infoUser.password)
         .then((responseLogin) => {
-          responseLogin.json().then((user) => {
-            if (user) {
-              loginConfirmed(user.token)
+          responseLogin.json()
+            .then((user) => {
               console.log(user, user.token)
-              history.push('/home')
-            }
-          })
+              if (user.message !== 'email/senha inválido') {
+                loginConfirmed(user.token)
+                //console.log(user, user.token)
+                history.push('/home')
+              }
+            })
+            // .catch((error) => {
+            //   console.log(error)
+            // })
         })
-      /*.catch((error) => {
-        console.log(error.message)
-      })*/
+        // .catch((error) => {
+        //   console.log(error.message)
+        // })
     } else {
       console.log(resultErrorsLogin, resultErrorsLogin.email, 'usuário não conectado')
     }
@@ -81,7 +86,7 @@ const Login = () => {
         <form className='form-login' >
           <fieldset className='form-inner'>
             <div>
-              <InputText className="input" type='email' id='email' placeholder='Email' 
+              <InputText className="input" type='email' id='email' placeholder='Email'
                 name='email'
                 value={infoUser.email}
                 onChange={handleChange} />
@@ -95,7 +100,7 @@ const Login = () => {
           <fieldset className="form-inner">
             <div>
               <InputText className="input-password"
-                type="password" id="password" placeholder="Password" 
+                type="password" id="password" placeholder="Password"
                 name='password'
                 value={infoUser.password}
                 onChange={handleChange} />
@@ -110,7 +115,7 @@ const Login = () => {
           <Button className='btn' type='submit' onClick={handleLogin}>Logue-se</Button>
           <p className='link-register'>Clique <Link to='/register'>aqui </Link>para se cadastrar.</p>
         </form>
-        <Footer className="footer"/>
+        <Footer className="footer" />
       </div>
     </Fragment>
   )

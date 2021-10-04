@@ -6,6 +6,7 @@ import { validate } from './form-validate'
 import { Footer } from '../../components/footer/footer'
 import { Button } from '../../components/button/button'
 import { InputText } from '../../components/input/input'
+import Modal from '../../components/modal/modal'
 
 import '../login/login.css';
 
@@ -24,6 +25,7 @@ const Register = () => {
     setErrors(errorsResult)
     return errorsResult
   }
+  const [isModalVisible, setModalVisible] = useState(false)
 
   const [infoUser, setInfoUser] = useState({ name: '', email: '', password: '', role: '' });
 
@@ -45,10 +47,14 @@ const Register = () => {
       console.log(resultErrors.email, 'não tem erros')
 
       registerUser(infoUser.name, infoUser.email, infoUser.password, infoUser.role)
-        .then(() => {
-            console.log('usuário foi criado');
-            history.push('/') //trocar pelo modal de aviso de cadastro com sucesso 
-          })
+        .then((response) => {
+          console.log('usuário foi criado', response);
+          setModalVisible(true)
+         // history.push('/') //trocar pelo modal de aviso de cadastro com sucesso 
+        })
+        // .catch((error) => {
+        //   console.log(error)
+        // })
     } else {
       console.log(resultErrors, resultErrors.email, 'cadastro não concluído ')
       //se quisermos colocar um modal avisando que nao foi concluído
@@ -72,11 +78,12 @@ const Register = () => {
           <img className='jesus-desk'
             src={jesusDesk} alt='jesus' />
         </figure>
+       
         <form className='form-login' >
-                  
+
           <fieldset className='form-inner'>
             <div>
-              <InputText className="input" type='email' id='email' placeholder='Email' 
+              <InputText className="input" type='email' id='email' placeholder='Email'
                 name='email'
                 value={infoUser.email}
                 onChange={handleChange} />
@@ -90,7 +97,7 @@ const Register = () => {
           <fieldset className="form-inner">
             <div>
               <InputText className="input-password"
-                type="password" id="password" placeholder="Password" 
+                type="password" id="password" placeholder="Password"
                 name='password'
                 value={infoUser.password}
                 onChange={handleChange} />
@@ -104,10 +111,10 @@ const Register = () => {
 
           <fieldset className='form-inner'>
             <div>
-              <InputText className="input-name" type='name' id='name' placeholder='name' 
+              <InputText className="input-name" type='name' id='name' placeholder='name'
                 name='name'
                 value={infoUser.name}
-                onChange={handleChange} />              
+                onChange={handleChange} />
             </div>
             {errors.name && <span className='form-error email'>{errors.name}</span>}
           </fieldset>
@@ -115,23 +122,23 @@ const Register = () => {
           <fieldset className='form-inner'>
             <div className="role-name">
               <label>
-                <input className="role-option" type="radio" name="name-role" id='role' 
-                value="atendente"
-                onChange={handleChange}/>  
+                <input className="role-option" type="radio" name="name-role" id='role'
+                  value="atendente"
+                  onChange={handleChange} />
                 atendente
-              </label>  
+              </label>
               <label className="role-option">
-                <input className="role-option" type="radio" name="name-role" id='role' 
-                value="cozinheira"
-                onChange={handleChange}/>  
+                <input className="role-option" type="radio" name="name-role" id='role'
+                  value="cozinheira"
+                  onChange={handleChange} />
                 cozinheira
-              </label> 
+              </label>
               <label className="role-option">
-                <input className="role-option" type="radio" name="name-role" id='role' 
-                value="gerente"
-                onChange={handleChange}/>  
+                <input className="role-option" type="radio" name="name-role" id='role'
+                  value="gerente"
+                  onChange={handleChange} />
                 gerente
-              </label>                 
+              </label>
             </div>
             {errors.role && <span className='form-error email'>{errors.role}</span>}
           </fieldset>
@@ -139,8 +146,9 @@ const Register = () => {
           <Button className="btn" type='submit' onClick={handleRegister}>Cadaste-se</Button>
           <p className='link-register'>Clique <Link to='/'>aqui </Link>para logar-se.</p>
         </form>
-        <Footer className="footer"/>
+        <Footer className="footer" />
       </div>
+      {isModalVisible && <Modal onClose={()=> setModalVisible(false)}>Seu cadastro foi realizado!</Modal>}
     </Fragment>
   )
 };

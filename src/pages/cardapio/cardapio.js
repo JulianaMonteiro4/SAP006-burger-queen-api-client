@@ -11,49 +11,49 @@ import './cardapio.css'
 
 const Cardapio = () => {
 
-    const [allProducts, setAllProducts] = useState([]);
-    const [menu, setMenu] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
+  const [menu, setMenu] = useState([]);
 
-    function handleMenu(menuSelected) {
-        setMenu(allProducts.filter((item) => item.type === menuSelected));
-    }
+  function handleMenu(menuSelected) {
+    setMenu(allProducts.filter((item) => item.type === menuSelected));
+  }
 
-    useEffect(() => {
-        getProducts()
-            .then((listresponse) => {
-                listresponse.json().then((list) => {
+  useEffect(() => {
+    getProducts()
+      .then((listresponse) => {
+        listresponse.json().then((list) => {
 
-                    setAllProducts(list)
-                })
-            })
-    }, [])
+          setAllProducts(list)
+        })
+      })
+  }, [])
 
-    //useEffect(() => { console.log(menu) }, [menu])
+  //useEffect(() => { console.log(menu) }, [menu])
 
 
-    return (
-        <div className="page pagina-atendimento">
-            <Header></Header>
-            <section className="buttons">
-                <Button className="btn-pedi" id="" type="submit" onClick={() => { handleMenu("breakfast") }}>Café da Manhã</Button>
-                <Button className="btn-resumo" id="" onClick={() => { handleMenu("all-day") }}>Almoço</Button>
-            </section>
-            <section className="menu-produtos">
-                {menu && menu.map(item => {
-                    return (
-                        <Product key={item.id}
-                            image={item.image}
-                            name={item.name}
-                            flavor={item.flavor}
-                            complement={item.complement}
-                            price={item.price}
-                        />
-                    )
-                })}
+  return (
+    <div className="page pagina-atendimento">
+      <Header></Header>
+      <section className="buttons">
+        <Button className="btn-pedi" id="" type="submit" onClick={() => { handleMenu("breakfast") }}>Café da Manhã</Button>
+        <Button className="btn-resumo" id="" onClick={() => { handleMenu("all-day") }}>Almoço</Button>
+      </section>
+      <section className="menu-produtos">
+        {menu && menu.map(item => {
+          return (
+            <Product key={item.id}
+              image={item.image}
+              name={item.name}
+              flavor={item.flavor}
+              complement={item.complement}
+              price={item.price}
+            />
+          )
+        })}
 
-            </section>
-        </div>
-    )
+      </section>
+    </div>
+  )
 }
 
 export default Cardapio;
