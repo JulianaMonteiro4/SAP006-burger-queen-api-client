@@ -1,4 +1,4 @@
-.container{
+.container, .container-mesas{
     display: flex;
     width: 84%;
     height: 450px;
@@ -9,6 +9,17 @@
     display: flex;
     overflow: auto;
 }
+
+.container-mesas{
+    flex-wrap: wrap;
+    font-size: 12px;
+}
+
+/* .mesas{
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 12px;
+} */
 
 
 .container-menu-pedidos{
@@ -41,4 +52,23 @@
     height: 7%;
     background-color: #38B6FF;
     font-size: 12px;
+}
+
+.mesa1{
+    width: 21%;
+    margin: 0% 6% 3% 6%;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1800px) {
+
+    .container-mesas{
+        flex-wrap: wrap;
+        font-size: 12px;
+        height: 680px;
+    }
+
+    .mesa1{
+        width: 15%;
+        margin: 0% 4% 3% 4%;
+    }
 }

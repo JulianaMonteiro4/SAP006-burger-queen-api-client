@@ -33,7 +33,7 @@
     background: #38B6FF;
 }
 
-.btn-select, .btn-enviar, .btn-enviarStatus{
+.btn-select, .btn-enviar, .btn-enviarStatus, .btn-atualizar{
     width: 25%;
     height: 32px;
     margin-left: 3%;
@@ -45,7 +45,7 @@
     cursor: pointer;
 }
 
-.btn-enviar{
+.btn-enviar, .btn-atualizar{
     background: #60E26D;
     margin-left: 32%;
 }
