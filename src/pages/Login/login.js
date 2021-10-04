@@ -82,6 +82,7 @@ const Login = () => {
           <fieldset className='form-inner'>
             <div>
               <InputText className="input" type='email' id='email' placeholder='Email' 
+                name='email'
                 value={infoUser.email}
                 onChange={handleChange} />
               <section className='icons-input'>
@@ -95,6 +96,7 @@ const Login = () => {
             <div>
               <InputText className="input-password"
                 type="password" id="password" placeholder="Password" 
+                name='password'
                 value={infoUser.password}
                 onChange={handleChange} />
               <section className="icons-input">
