@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 
 import './atendi.css'
 
-import { getProducts, registerOrder } from "../../utils/services";
+import { getProducts, registerOrder, getAllOrders } from "../../utils/services";
 import { validate } from './form-validate';
 
-import Header from '../../components/header/header'
-import { Button } from '../../components/button/button'
+import Header from '../../components/header/header';
+import { Button } from '../../components/button/button';
 import Product from "../../components/product/product";
 import ItemOrder from "../../components/product/itemOrder";
 import SectionMesa from "../../components/section/sectionMesa";
@@ -131,6 +131,16 @@ const Atendimento = () => {
     console.log(itensOrder)
   }, [itensOrder])
 
+ // const [mesas, setMesas] = useState([])
+
+  // useEffect(() => {
+  //   getAllOrders()
+  //   .then((responseOrders) => {
+  //     responseOrders.json().then((listOrders) => {
+  //      console.log(listOrders)
+  //     })
+  // }, [])
+
 
   return (
     <div>
@@ -141,7 +151,7 @@ const Atendimento = () => {
         <Button className="btn-resumo" id="btn-resumo" type="submit" onClick={() => { handlePedidos("resumo") }}>Resumo</Button>
       </div>
       <div className="selection">
-        {select === "mesas" && <SectionMesa onChange={null} infoOrder={infoOrder}/>}
+        {/*select === "mesas" && <SectionMesa onChange={null} infoOrder={infoOrder}/>*/}
         {select === "pedidos" && <SectionPedidos onChange={addInfoOrder} handleMenu={handleMenu} infoOrder={infoOrder}>
         </SectionPedidos>}
         {select === "resumo" && <SectionResumo />}
