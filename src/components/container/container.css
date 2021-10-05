@@ -54,9 +54,20 @@
     font-size: 12px;
 }
 
-.mesa1{
+.table-order {
+    width: 21%;
+    box-sizing: border-box;
+    margin: 0% 6% 3% 6%;
+}
+
+/* .mesa1{
     width: 21%;
     margin: 0% 6% 3% 6%;
+} */
+
+.mesa1{
+    width: 90%;
+    
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1800px) {

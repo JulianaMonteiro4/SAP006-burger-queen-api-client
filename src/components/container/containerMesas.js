@@ -101,10 +101,10 @@ const ContainerMesas = () => {
 
   const Mesa = ({ cores }) => {
     return (
-      <div style={{ backgroundColor: cores }}>
+      <div style={{ backgroundColor: cores }} className="table-order">
         <h1 >MESA</h1>
-        {/*<img className="mesa1" style={{ color: cores }}
-          src={mesa} onClick={null} alt="mesa" />*/}
+        {<img className="mesa1" style={{ color: cores }}
+          src={mesa} onClick={null} alt="mesa" />}
       </div>
     )
   }
@@ -115,8 +115,7 @@ const ContainerMesas = () => {
     <div>
       <SectionMesa onClick={null} />
 
-      <section className="container-mesas">
-        <div className="mesas" id="mesas">
+      <section className="container-mesas">        
         {statusMesa && tables.map((table) => {                          
             const firstOrder = table.orders?.[0]
             const statusOrder = firstOrder?.status
@@ -144,7 +143,7 @@ const ContainerMesas = () => {
           src={mesa} onClick={null} alt="mesa" />
         <img className="mesa1"
           src={mesa} onClick={null} alt="mesa" /> */}
-        </div>
+        
       </section>
     </div>
   )
