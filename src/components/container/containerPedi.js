@@ -3,7 +3,7 @@ import React from "react";
 import './container.css';
 import {Button} from "../button/button";
 
-const ContainerPedidos = ({children, children2, listOfProducts, value, totalQuantity}) => {
+const ContainerPedidos = ({children, children2, value, totalQuantity, handleValueOrder}) => {
 
   // const [enviar, setEnviar] = useState('enviar')
 
@@ -22,9 +22,9 @@ const ContainerPedidos = ({children, children2, listOfProducts, value, totalQuan
         {children2}
         </div>
         <div className="total">
-          <p>Quantidade de itens: {totalQuantity === '' ? '' : totalQuantity}</p>
-          <p>Total:{value === '' ? '' : value}</p>
-          <Button className="btn-enviarStatus" id="enviarStatus" type="submit" onClick={null}>Enviar</Button>
+          <p>Quantidade de itens: {totalQuantity === '' ? '0' : totalQuantity}</p>
+          <p>Total:{value === '' ? '0' : value}</p>
+          <Button className="btn-enviarStatus" id="enviarStatus" type="submit" onClick={handleValueOrder}>Enviar</Button>
         </div>        
       </div>
     </section>

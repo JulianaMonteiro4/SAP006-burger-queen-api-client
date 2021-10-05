@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 
 import './atendi.css'
 
-import { getProducts, registerOrder } from "../../utils/services";
+import { getProducts, registerOrder, getAllOrders } from "../../utils/services";
+import { validate } from './form-validate';
 
-import Header from '../../components/header/header'
-import { Button } from '../../components/button/button'
+import Header from '../../components/header/header';
+import { Button } from '../../components/button/button';
 import Product from "../../components/product/product";
 import ItemOrder from "../../components/product/itemOrder";
 import SectionMesa from "../../components/section/sectionMesa";
@@ -14,9 +15,10 @@ import SectionResumo from '../../components/section/sectionResumo';
 import ContainerMesas from "../../components/container/containerMesas";
 import ContainerPedidos from '../../components/container/containerPedi';
 import ContainerResumo from '../../components/container/containerResumo';
+import Modal from '../../components/modal/modal'
 
 function addValue(array) {
-  return array.reduce((accum, item) => accum + (item.price*item.qtd), 0)
+  return array.reduce((accum, item) => accum + (item.price * item.qtd), 0)
 }
 
 function addTotalQuantity(array) {
@@ -25,12 +27,24 @@ function addTotalQuantity(array) {
 
 const Atendimento = () => {
 
-  //mudar a guia de anotar pedido ou resumo
+  //validação dos inputs 
+  const [errors, setErrors] = useState({})
+  function validateValues(values) {
+    const errorsResult = validate(values)
+    setErrors(errorsResult)
+    return errorsResult;
+  }
+
+  //mudar a guia de anotar pedido ou ver o status das mesas 
   const [select, setSelect] = useState('')
 
   function handlePedidos(selectInfoOrder) {
     setSelect(selectInfoOrder)
   }
+
+  //para usar o modal
+  const [isModalVisible, setModalVisible] = useState(false)
+
 
   //inserir as informações do pedido, mesa e nome do cliente
   const [infoOrder, setInfoOrder] = useState({ table: '', name: '' })
@@ -38,31 +52,32 @@ const Atendimento = () => {
   function addInfoOrder(e) {
     const { name, value } = e.target;
     setInfoOrder({ ...infoOrder, [name]: value })
-    console.log(infoOrder)
+
+    console.log(infoOrder, errors)
   }
 
   //pega alista de produtos
   const [allProducts, setAllProducts] = useState([])
   const [menu, setMenu] = useState([])
-  // const [menuSelected, setMenuSelected] = useState('')
-
 
   useEffect(() => {
     getProducts().then((listresponse) => {
       listresponse.json().then((list) => {
         setAllProducts(list)
       })
+    }).catch((error) => {
+      console.log(error)
     })
   }, [])
 
   //o usuario escolhe o menu pedido pelo cliente
   function handleMenu(menuOption) {
-    // setMenuSelected(menuOption)
     setMenu(allProducts.filter((item) => item.type === menuOption))
   }
 
   //inserir o produto no pedido
   const [itensOrder, setItensOrder] = useState([])
+  const [orderRequest, setOrderRequest] = useState([])
 
   function addItem(item) {
     const findItem = itensOrder.find(element => element.id === item.id)
@@ -78,30 +93,53 @@ const Atendimento = () => {
     }
   }
 
-  useEffect(() => {
-    console.log(itensOrder)
-  }, [itensOrder])
-
-
   function removeItem(item) {
     const findItem = itensOrder.find(element => element.id === item.id);
     const indexOfProduct = itensOrder.indexOf(findItem)
 
     if (itensOrder[indexOfProduct].qtd === 1) {
-      itensOrder.splice(indexOfProduct, 1) 
+      itensOrder.splice(indexOfProduct, 1)
 
     } else {
-      itensOrder[indexOfProduct].qtd--      
+      itensOrder[indexOfProduct].qtd--
     }
     setItensOrder([...itensOrder])
   }
 
+  //enviar o pedido para a cozinha
   function sendOrder() {
-    registerOrder(infoOrder.name, infoOrder.table, itensOrder)
-    .then((responseOrder) => {
-      responseOrder.json().then((order) => console.log(order))
-    })
-  } 
+    const resultErrorsLogin = validateValues(infoOrder);
+
+    if (!resultErrorsLogin.table && !resultErrorsLogin.name) {
+      registerOrder(infoOrder.name, infoOrder.table, itensOrder)
+        .then((responseOrder) => {
+          responseOrder.json().then((order) => {
+            console.log(order)
+            setOrderRequest(order)
+            setModalVisible('pedido realizado')
+            setInfoOrder({ table: '', name: '' })
+            setItensOrder([])
+          })
+        })
+    } else {
+      setModalVisible('error')
+    }
+  }
+
+
+  useEffect(() => {
+    console.log(itensOrder)
+  }, [itensOrder])
+
+ // const [mesas, setMesas] = useState([])
+
+  // useEffect(() => {
+  //   getAllOrders()
+  //   .then((responseOrders) => {
+  //     responseOrders.json().then((listOrders) => {
+  //      console.log(listOrders)
+  //     })
+  // }, [])
 
 
   return (
@@ -113,7 +151,7 @@ const Atendimento = () => {
         <Button className="btn-resumo" id="btn-resumo" type="submit" onClick={() => { handlePedidos("resumo") }}>Resumo</Button>
       </div>
       <div className="selection">
-        {select === "mesas" && <SectionMesa onChange={null} infoOrder={infoOrder}/>}
+        {/*select === "mesas" && <SectionMesa onChange={null} infoOrder={infoOrder}/>*/}
         {select === "pedidos" && <SectionPedidos onChange={addInfoOrder} handleMenu={handleMenu} infoOrder={infoOrder}>
         </SectionPedidos>}
         {select === "resumo" && <SectionResumo />}
@@ -125,6 +163,7 @@ const Atendimento = () => {
           listOfProducts={itensOrder}
           value={addValue(itensOrder)}
           totalQuantity={addTotalQuantity(itensOrder)}
+          handleValueOrder={sendOrder}
           children={
             menu && menu.map(item => {
               return (
@@ -141,7 +180,8 @@ const Atendimento = () => {
           children2={
             itensOrder && itensOrder.map(item => {
               return (
-                <ItemOrder name={item.name}
+                <ItemOrder item={item}
+                  name={item.name}
                   price={item.price}
                   quantity={item.qtd}
                   onClick={() => removeItem(item)} />
@@ -150,6 +190,8 @@ const Atendimento = () => {
         />}
         {select === "resumo" && <ContainerResumo />}
       </div>
+      {isModalVisible === 'error' && <Modal onClose={() => setModalVisible(false)}>{errors.table || errors.name}</Modal>}
+      {isModalVisible === 'pedido realizado' && <Modal onClose={() => setModalVisible(false)}>Redido Realizado:{orderRequest.id}</Modal>}
     </div>
   )
 }

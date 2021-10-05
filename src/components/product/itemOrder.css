@@ -1,11 +1,31 @@
 .item-order{
     display: flex;
+    flex-direction: column;
     width: 100%;
     padding: 1%;
-    font-size: 18px;
-    color: #000;
+    font-size: 14px;
+    color: rgb(78, 71, 71);
+}
+.item-infos {
+    display: flex;
+    justify-content: space-between;  
+}
+
+.item-infos-flavor {
+    display: flex;      
 }
 
 .info-item-order{
-    padding-left: 4%;
+    padding-left: 4%;  
+    
+}
+
+.info-item-order-flavor{
+    font-size: 12px;
+    margin-left: 4%;
+}
+
+.fa-minus-square {
+    padding-right: 5px;
+    font-size: 18px;
 }
