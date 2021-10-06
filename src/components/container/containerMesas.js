@@ -7,10 +7,6 @@ import { getAllOrders } from "../../utils/services";
 import SectionMesa from '../section/sectionMesa'
 
 import mesa from '../../img/table.png'
-// import mesaRed from '../../img/table-red.png'
-// import mesaYellow from '../../img/table-yellow.png'
-// import mesaGreen from '../../img/table-green.png'
-
 
 
 const ContainerMesas = () => {
@@ -62,12 +58,12 @@ const ContainerMesas = () => {
     getAllOrders()
       .then((responseOrders) => {
         responseOrders.json().then((listOrders) => {
-          console.log(listOrders)
-          setAllOrders(listOrders)
-          console.log(listOrders[0].status)
+          //console.log(listOrders)
+          //setAllOrders(listOrders)
+          //console.log(listOrders[0].status)
           //encontrar(listOrders)
          tables.map((table) => setTables([...tables, table.orders = listOrders.filter(orders => orders.table === table.table)]))
-         setStatusMesa(true)
+         //setStatusMesa(true)
        
         })
       })
@@ -82,27 +78,27 @@ const ContainerMesas = () => {
   }
 
   function statusColors(statusOrder) {    
-    let cor = 'red'
+    let cor = ''
     
     switch (statusOrder) {
-      case "pending":
-        cor = 'blue'
+      case 'pending':
+        cor = '#FAF970'
         break
       case 'preparo':
-        cor = 'green'
+        cor = '#8CFA70'
         break
       default:
-        cor = 'red'
+        cor = '#EB4A2D'
     }
     return cor
   }
 
 
 
-  const Mesa = ({ cores }) => {
+  const Mesa = ({ cores, children }) => {
     return (
       <div style={{ backgroundColor: cores }} className="table-order">
-        <h1 >MESA</h1>
+        <h1>MESA {children}</h1>
         {<img className="mesa1" style={{ color: cores }}
           src={mesa} onClick={null} alt="mesa" />}
       </div>
@@ -113,37 +109,20 @@ const ContainerMesas = () => {
 
   return (
     <div>
-      <SectionMesa onClick={null} />
+      <SectionMesa onClick={handleTable} />
 
       <section className="container-mesas">        
-        {statusMesa && tables.map((table) => {                          
+        {/*statusMesa && */ tables.map((table) => {
+            const numberTable = table.table                       
             const firstOrder = table.orders?.[0]
             const statusOrder = firstOrder?.status
 
             console.log(statusOrder)
             return (
-            <Mesa cores={statusColors(statusOrder)} />
+            <Mesa cores={statusColors(statusOrder)} children={numberTable}/>
             )                  
           })           
-          } 
-
-          {/* <img className="mesa1"
-          src={mesa} onClick={null} alt="mesa" />
-        <img className="mesa1"
-          src={mesa} onClick={null} alt="mesa" />
-        <img className="mesa1"
-          src={mesa} onClick={null} alt="mesa" />
-        <img className="mesa1"
-          src={mesa} onClick={null} alt="mesa" />
-        <img className="mesa1"
-          src={mesa} onClick={null} alt="mesa" />
-        <img className="mesa1"
-          src={mesa} onClick={null} alt="mesa" />
-        <img className="mesa1"
-          src={mesa} onClick={null} alt="mesa" />
-        <img className="mesa1"
-          src={mesa} onClick={null} alt="mesa" /> */}
-        
+          }        
       </section>
     </div>
   )
