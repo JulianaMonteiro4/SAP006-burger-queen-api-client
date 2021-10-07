@@ -49,9 +49,9 @@
 }
 
 .total{
-    height: 7%;
+    height: 8%;
     background-color: #38B6FF;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .table-order {
@@ -66,8 +66,8 @@
 } */
 
 .mesa1{
-    width: 90%;
-    
+    width: 100%;
+    margin: 0% 0% -3% 0%;
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1800px) {
@@ -78,8 +78,8 @@
         height: 680px;
     }
 
-    .mesa1{
-        width: 15%;
-        margin: 0% 4% 3% 4%;
-    }
+    /* .mesa1{
+        width: 100%;
+        margin: 0% 0% -3% 0%;
+    } */
 }
