@@ -58,15 +58,14 @@ const ContainerMesas = () => {
     getAllOrders()
       .then((responseOrders) => {
         responseOrders.json().then((listOrders) => {
-          //console.log(listOrders)
-          //setAllOrders(listOrders)
-          //console.log(listOrders[0].status)
+          console.log(listOrders)
+          setAllOrders(listOrders)
           //encontrar(listOrders)
          tables.map((table) => setTables([...tables, table.orders = listOrders.filter(orders => orders.table === table.table)]))
-         //setStatusMesa(true)
        
         })
       })
+      setStatusMesa(true)
   }, [])
 
   useEffect(() => {   
@@ -82,22 +81,25 @@ const ContainerMesas = () => {
     
     switch (statusOrder) {
       case 'pending':
-        cor = '#FAF970'
+        cor = '#EB4A2D'
         break
-      case 'preparo':
+      case 'ready':
         cor = '#8CFA70'
         break
+      case 'inprogress':
+        cor = '#F3E139'
+        break
       default:
-        cor = '#EB4A2D'
+        cor = '#38B6FF'
     }
     return cor
   }
 
 
 
-  const Mesa = ({ cores, children }) => {
+  const Mesa = ({ key, cores, children }) => {
     return (
-      <div style={{ backgroundColor: cores }} className="table-order">
+      <div key={key} style={{ backgroundColor: cores }} className="table-order">
         <h1>MESA {children}</h1>
         {<img className="mesa1" style={{ color: cores }}
           src={mesa} onClick={null} alt="mesa" />}
@@ -112,14 +114,21 @@ const ContainerMesas = () => {
       <SectionMesa onClick={handleTable} />
 
       <section className="container-mesas">        
-        {/*statusMesa && */ tables.map((table) => {
-            const numberTable = table.table                       
-            const firstOrder = table.orders?.[0]
-            const statusOrder = firstOrder?.status
+        {statusMesa && tables.map((table) => {
+            const numberTable = table.table
+            const orderTableStatus = table.orders                   
+            // const firstOrder = table.orders?.[0]
+            // const statusOrder = firstOrder?.status
 
-            console.log(statusOrder)
+            const orderStatus = orderTableStatus?.find((element) => 
+              element.status === 'ready' ||
+              element.status === 'inprogress' ||
+              element.status === 'pending'
+            )
+
+            console.log(orderStatus)
             return (
-            <Mesa cores={statusColors(statusOrder)} children={numberTable}/>
+            <Mesa cores={statusColors(orderStatus?.status)} children={numberTable} key={orderStatus?.id}/>
             )                  
           })           
           }        
