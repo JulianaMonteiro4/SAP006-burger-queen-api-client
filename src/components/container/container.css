@@ -1,4 +1,4 @@
-.container, .container-mesas{
+.container, .container-mesas, .container-status-pedi, .container-historico{
     display: flex;
     width: 84%;
     height: 450px;
@@ -10,17 +10,14 @@
     overflow: auto;
 }
 
+.container-status-pedi, .container-historico{
+    height: 700px;
+}
+
 .container-mesas{
     flex-wrap: wrap;
     font-size: 12px;
 }
-
-/* .mesas{
-    display: flex;
-    flex-wrap: wrap;
-    font-size: 12px;
-} */
-
 
 .container-menu-pedidos{
     display: flex;
@@ -44,9 +41,9 @@
     justify-content: space-between;    
 }
 
-.container-itens-pedido {
-    /*overflow: auto;*/
-}
+/* .container-itens-pedido {
+    overflow: auto;
+} */
 
 .total{
     height: 8%;
