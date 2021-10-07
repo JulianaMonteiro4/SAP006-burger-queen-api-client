@@ -1,12 +1,13 @@
 import React, { useState, Fragment } from "react";
 import { Link, useHistory } from 'react-router-dom';
 
-import { validate } from './form-validate';
 import { Footer } from '../../components/footer/footer';
 import { Button } from '../../components/button/button'
 import { InputText } from '../../components/input/input'
+import Modal from '../../components/modal/modal'
 
 import { loginUser, loginConfirmed } from '../../utils/auth';
+import { validate } from './form-validate';
 
 import './login.css';
 
@@ -18,12 +19,15 @@ import jesusDesk from '../../img/jesus-desk.gif'
 
 const Login = () => {
 
+  const [messageErrorRegister, setMessageErrorRegister] = useState('')
   const [errors, setErrors] = useState({})
   function validateValues(values) {
     const errorsResult = validate(values)
     setErrors(errorsResult)
     return errorsResult;
   }
+
+  const [isModalVisible, setModalVisible] = useState(false)
 
   const [infoUser, setInfoUser] = useState({ email: '', password: '' });
 
@@ -47,22 +51,16 @@ const Login = () => {
         .then((responseLogin) => {
           responseLogin.json()
             .then((user) => {
-              console.log(user, user.token)
-              if (user.message !== 'email/senha inválido') {
+
+              if (user.code === 400) {
+                setMessageErrorRegister(user.message)
+                setModalVisible('error')
+              } else {
                 loginConfirmed(user.token)
-                //console.log(user, user.token)
                 history.push('/home')
               }
             })
-            // .catch((error) => {
-            //   console.log(error)
-            // })
         })
-        // .catch((error) => {
-        //   console.log(error.message)
-        // })
-    } else {
-      console.log(resultErrorsLogin, resultErrorsLogin.email, 'usuário não conectado')
     }
   };
 
@@ -117,6 +115,7 @@ const Login = () => {
         </form>
         <Footer className="footer" />
       </div>
+      {isModalVisible === "error" && <Modal onClose={() => setModalVisible(false)}>{messageErrorRegister}</Modal>}
     </Fragment>
   )
 };

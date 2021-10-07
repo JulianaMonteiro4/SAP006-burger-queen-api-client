@@ -5,6 +5,7 @@ import { getProducts } from '../../utils/services'
 import Header from '../../components/header/header';
 import Product from "../../components/product/product";
 import { Button } from '../../components/button/button'
+import Modal from '../../components/modal/modal'
 
 
 import './cardapio.css'
@@ -23,13 +24,19 @@ const Cardapio = () => {
       .then((listresponse) => {
         listresponse.json().then((list) => {
 
+          if (list.code === 401) {
+            setMessageErrorRegister(list.message)
+            setModalVisible('error')
+          }
+
           setAllProducts(list)
         })
       })
   }, [])
 
-  //useEffect(() => { console.log(menu) }, [menu])
-
+  
+  const [isModalVisible, setModalVisible] = useState(false)
+  const [messageErrorRegister, setMessageErrorRegister] = useState('')
 
   return (
     <div className="page pagina-atendimento">
@@ -52,59 +59,9 @@ const Cardapio = () => {
         })}
 
       </section>
+      {isModalVisible === "error" && <Modal onClose={() => setModalVisible(false)}>{messageErrorRegister}</Modal>}
     </div>
   )
 }
 
 export default Cardapio;
-
-// const [tab, setTab] = useState('breakfast')
-
-
-//     const [menu, setMenu] = useState([])
-
-//     function handleBreakFast() {
-//         setTab('breakfast')
-//         // console.log(tab)
-//         // getProducts()
-//         // .then((listresponse) => {
-//         //     listresponse.json().then((list) => console.log(list))
-//         // })
-//         //
-//     }
-
-//     function handleLunch() {
-//         setTab('lunch')
-//         // console.log(tab)
-
-//     }
-
-
-//     // const products = getProducts().then((list) => {
-//     //     setState
-//     // })
-//     // console.log(products)
-
-//     useEffect(() => {
-//         getProducts()
-//             .then((listresponse) => {
-//                 listresponse.json().then((list) => {
-
-//                     //console.log(list)
-
-//                     // const x = list.filter(product => product.flavor === 'carne' && product.complement === null && product.name.includes('simples'))
-//                     // console.log(x)
-//                     setMenu([
-//                         menu[0]=list.filter(product => product.type === 'breakfast'), 
-//                         menu[1]=list.filter(product => product.type === 'all-day'),
-//                         menu[2]=list.filter(product => product.sub_type === 'side'),
-//                         menu[3]=list.filter(product => product.sub_type === 'drinks'),
-//                     ])
-//                    console.log(menu)
-//                 })
-//             })
-
-//     }, [])
-
-
-

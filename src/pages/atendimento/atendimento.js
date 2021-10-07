@@ -4,6 +4,7 @@ import './atendi.css'
 
 import { getProducts, registerOrder } from "../../utils/services";
 import { validate } from './form-validate';
+import { addValue, addTotalQuantity } from './functions-atendimento'
 
 import Header from '../../components/header/header';
 import { Button } from '../../components/button/button';
@@ -17,13 +18,6 @@ import ContainerPedidos from '../../components/container/containerPedi';
 import ContainerResumo from '../../components/container/containerResumo';
 import Modal from '../../components/modal/modal'
 
-function addValue(array) {
-  return array.reduce((accum, item) => accum + (item.price * item.qtd), 0)
-}
-
-function addTotalQuantity(array) {
-  return array.reduce((accum, item) => accum + item.qtd, 0)
-}
 
 const Atendimento = () => {
 
@@ -130,6 +124,8 @@ const Atendimento = () => {
   useEffect(() => {
     console.log(itensOrder)
   }, [itensOrder])
+
+  
 
  // const [mesas, setMesas] = useState([])
 
