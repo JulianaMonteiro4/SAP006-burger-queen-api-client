@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from "react";
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { registerUser } from "../../utils/auth";
 import { validate } from './form-validate'
@@ -36,8 +36,7 @@ const Register = () => {
     console.log(e.target.value, infoUser)  
   }
 
-  let history = useHistory()
-
+  
   const handleRegister = (e) => {
     e.preventDefault();
 

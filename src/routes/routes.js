@@ -7,7 +7,7 @@ import Register  from '../pages/Register/register';
 import Home from '../pages/home/home';
 import Cardapio from '../pages/cardapio/cardapio'
 import Atendimento from '../pages/atendimento/atendimento'
-import Mesa from '../pages/atendimento/mesa'
+import Pedido from '../pages/atendimento/pedidos';
 
 import PrivateRoute from './privete-route';
 import PublicRoute from './public-route';
@@ -20,7 +20,7 @@ export const Routes = () => {
       <PrivateRoute exact path='/home' component={Home} />
       <PrivateRoute exact path='/cardapio' component={Cardapio} />
       <PrivateRoute exact path='/atendimento' component={Atendimento} />
-      <Route exact path='/pedidos' component={Mesa} />
+      <Route exact path='/pedidos' component={Pedido} />
       <Route component={() => <div>Page 404</div>} />
     </Switch>
   )
