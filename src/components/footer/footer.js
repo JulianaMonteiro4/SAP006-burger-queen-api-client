@@ -8,8 +8,8 @@ export const Footer = ({className}) => {
     <div>
       <footer className={className}>
         <p> Desenvolvido por
-          Jennifer Pessoa <a href="https://github.com/jenniferpessoa" target="_blank"> <i className="fab fa-github"></i></a> <a href="https://www.linkedin.com/in/jennifer-pessoa/" target="_blank" > <i className="fab fa-linkedin"></i></a> e
-          Juliana Monteiro <a href="https://github.com/JulianaMonteiro4" target="_blank"> <i className="fab fa-github"></i></a> <a href="https://www.linkedin.com/in/-juliana-monteiro/" target="_blank" > <i className="fab fa-linkedin"></i></a>
+          Jennifer Pessoa <a href="https://github.com/jenniferpessoa" > <i className="fab fa-github"></i></a> <a href="https://www.linkedin.com/in/jennifer-pessoa/" > <i className="fab fa-linkedin"></i></a> e
+          Juliana Monteiro <a href="https://github.com/JulianaMonteiro4" > <i className="fab fa-github"></i></a> <a href="https://www.linkedin.com/in/-juliana-monteiro/" > <i className="fab fa-linkedin"></i></a>
         </p>
       </footer>
     </div>

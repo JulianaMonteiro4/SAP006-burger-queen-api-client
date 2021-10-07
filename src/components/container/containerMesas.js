@@ -1,4 +1,4 @@
-import React, { useEffect, useState, View } from "react";
+import React, { useEffect, useState } from "react";
 
 import './container.css';
 
@@ -52,20 +52,21 @@ const ContainerMesas = () => {
     }
   ])
 
-  const [allOrders, setAllOrders] = useState([])
+  // const [allOrders, setAllOrders] = useState([])
 
   useEffect(() => {
     getAllOrders()
       .then((responseOrders) => {
         responseOrders.json().then((listOrders) => {
           console.log(listOrders)
-          setAllOrders(listOrders)
+          //setAllOrders(listOrders)
           //encontrar(listOrders)
          tables.map((table) => setTables([...tables, table.orders = listOrders.filter(orders => orders.table === table.table)]))
        
         })
       })
       setStatusMesa(true)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {   

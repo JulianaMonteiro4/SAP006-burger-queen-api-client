@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from "react";
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { registerUser } from "../../utils/auth";
 import { validate } from './form-validate'
@@ -37,7 +37,7 @@ const Register = () => {
     // }
   }
 
-  let history = useHistory()
+  
   const handleRegister = (e) => {
     e.preventDefault();
 
@@ -50,7 +50,7 @@ const Register = () => {
         .then((response) => {
           console.log('usuário foi criado', response);
           setModalVisible(true)
-         // history.push('/') //trocar pelo modal de aviso de cadastro com sucesso 
+        
         })
         // .catch((error) => {
         //   console.log(error)

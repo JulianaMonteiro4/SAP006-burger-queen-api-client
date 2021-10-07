@@ -26,6 +26,7 @@ const Header = () => {
   useEffect(() => {
     setPageMenuHeader(`${history.location.pathname}`)
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleChangePage = (e) => {
