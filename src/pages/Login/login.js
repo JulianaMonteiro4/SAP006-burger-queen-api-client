@@ -47,7 +47,8 @@ const Login = () => {
         .then((responseLogin) => {
           responseLogin.json()
             .then((user) => {
-              console.log(user, user.token)
+              console.log(user, user.code)
+
               if (user.message !== 'email/senha inválido') {
                 loginConfirmed(user.token)
                 //console.log(user, user.token)

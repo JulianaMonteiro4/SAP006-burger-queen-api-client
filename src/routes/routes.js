@@ -10,12 +10,13 @@ import Atendimento from '../pages/atendimento/atendimento'
 import Mesa from '../pages/atendimento/mesa'
 
 import PrivateRoute from './privete-route';
+import PublicRoute from './public-route';
 
 export const Routes = () => {
   return (
     <Switch>
-      <Route exact path='/' component={Login}  />
-      <Route exact path='/register' component={Register}  />
+      <PublicRoute exact path='/' component={Login}  />
+      <PublicRoute exact path='/register' component={Register}  />
       <PrivateRoute exact path='/home' component={Home} />
       <PrivateRoute exact path='/cardapio' component={Cardapio} />
       <PrivateRoute exact path='/atendimento' component={Atendimento} />
