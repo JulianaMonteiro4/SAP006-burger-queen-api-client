@@ -19,6 +19,7 @@ import jesusDesk from '../../img/jesus-desk.gif'
 
 const Register = () => {
 
+  const [messageErrorRegister, setMessageErrorRegister] = useState('')
   const [errors, setErrors] = useState({})
   function validateValues(values) {
     const errorsResult = validate(values)
@@ -32,12 +33,11 @@ const Register = () => {
   const handleChange = (e) => {
     const informationUser = e.target.id;
     setInfoUser({ ...infoUser, [informationUser]: e.target.value })
-    console.log(e.target.value, infoUser)
-    // if (informationUser === 'password') {      
-    // }
+    console.log(e.target.value, infoUser)  
   }
 
   let history = useHistory()
+
   const handleRegister = (e) => {
     e.preventDefault();
 
@@ -48,16 +48,18 @@ const Register = () => {
 
       registerUser(infoUser.name, infoUser.email, infoUser.password, infoUser.role)
         .then((response) => {
-          console.log('usuário foi criado', response);
-          setModalVisible(true)
-         // history.push('/') //trocar pelo modal de aviso de cadastro com sucesso 
+          console.log(response.status, response);
+
+          if (response.status === 400) {
+            setMessageErrorRegister('Atenção: não informou os dados necessários')
+            setModalVisible('error')
+          } else if (response.status === 403) {
+            setMessageErrorRegister('Atenção: já existe um cadastro com esse email')
+            setModalVisible('error')
+          } else {
+            setModalVisible('concluído')
+          }
         })
-        // .catch((error) => {
-        //   console.log(error)
-        // })
-    } else {
-      console.log(resultErrors, resultErrors.email, 'cadastro não concluído ')
-      //se quisermos colocar um modal avisando que nao foi concluído
     }
   }
 
@@ -78,7 +80,7 @@ const Register = () => {
           <img className='jesus-desk'
             src={jesusDesk} alt='jesus' />
         </figure>
-       
+
         <form className='form-login' >
 
           <fieldset className='form-inner'>
@@ -143,12 +145,13 @@ const Register = () => {
             {errors.role && <span className='form-error email'>{errors.role}</span>}
           </fieldset>
 
-          <Button className="btn" type='submit' onClick={handleRegister}>Cadaste-se</Button>
+          <Button className="btn" type='submit' onClick={handleRegister}>Cadastre-se</Button>
           <p className='link-register'>Clique <Link to='/'>aqui </Link>para logar-se.</p>
         </form>
         <Footer className="footer" />
       </div>
-      {isModalVisible && <Modal onClose={()=> setModalVisible(false)}>Seu cadastro foi realizado!</Modal>}
+      {isModalVisible === "concluído" && <Modal onClose={() => setModalVisible(false)}>Seu cadastro foi realizado!</Modal>}
+      {isModalVisible === "error" && <Modal onClose={() => setModalVisible(false)}>{messageErrorRegister}</Modal>}
     </Fragment>
   )
 };

@@ -76,9 +76,9 @@ const ContainerMesas = () => {
     setStatusMesa(true)
   }, [attStatusHall])
 
-  // useEffect(() => {
-  //   console.log(tables)
-  // }, [tables])
+  useEffect(() => {
+    console.log(tables)
+  }, [tables])
 
   useEffect(() => {
     console.log(attStatusHall)
