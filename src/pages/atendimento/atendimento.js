@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 
 import './atendi.css'
 
-import { getProducts, registerOrder, getAllOrders } from "../../utils/services";
+import { getProducts, registerOrder } from "../../utils/services";
 import { validate } from './form-validate';
 
 import Header from '../../components/header/header';
 import { Button } from '../../components/button/button';
 import Product from "../../components/product/product";
 import ItemOrder from "../../components/product/itemOrder";
-import SectionMesa from "../../components/section/sectionMesa";
+// import SectionMesa from "../../components/section/sectionMesa";
 import SectionPedidos from '../../components/section/sectionPedi';
 import SectionResumo from '../../components/section/sectionResumo';
 import ContainerMesas from "../../components/container/containerMesas";

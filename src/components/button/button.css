@@ -15,9 +15,9 @@
     background: #91541c;
 }
 
-.btn-mesas, .btn-pedi, .btn-resumo{
+.btn-mesas, .btn-pedi, .btn-resumo, .btn-status-pedi, .btn-historico, .btn-atualizar-pedi{
     display: flex;
-    width: 18%;
+    width: 19%;
     height: 35px;
     margin-top: 7%;
     margin-left: 12%;
@@ -29,7 +29,7 @@
     cursor: pointer;
 }
 
-.btn-mesas:hover, .btn-pedi:hover, .btn-resumo:hover, .btn-select:hover{
+.btn-mesas:hover, .btn-pedi:hover, .btn-resumo:hover, .btn-select:hover, .btn-status-pedi:hover, .btn-historico:hover{
     background: #38B6FF;
 }
 
@@ -56,8 +56,8 @@
     background: #60E26D;
     border-radius: 0px;
 }
-.btn-enviarStatus:hover{
-    background: #2ac43a;
+.btn-enviarStatus:hover, .btn-atualizar-pedi{
+    background: #3edf4e;
 }
 
 
