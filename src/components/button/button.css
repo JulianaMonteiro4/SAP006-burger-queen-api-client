@@ -50,7 +50,7 @@
     margin-left: 32%;
 }
 
-.btn-enviarStatus{
+.btn-enviarStatus {
     width: 100%;
     margin-left: -0%;
     background: #60E26D;
@@ -58,6 +58,13 @@
 }
 .btn-enviarStatus:hover, .btn-atualizar-pedi{
     background: #3edf4e;
+}
+
+.btn-changeStatus{
+    width: 100%;
+    height: 30px;
+    margin-left: -0%;
+    border-radius: 0px;
 }
 
 
