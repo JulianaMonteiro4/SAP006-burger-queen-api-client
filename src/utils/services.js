@@ -15,9 +15,9 @@ export const getProducts = () => {
 }
 
 
-export const registerOrder = /*async*/(name, table, itensOrder) => {
+export const registerOrder = (name, table, itensOrder) => {
     const url = 'https://lab-api-bq.herokuapp.com/orders';
-    const response = /*await*/ fetch(url, {
+    const response = fetch(url, {
         method: 'POST',
         headers: {
             'Content-type': 'application/json',
@@ -45,4 +45,17 @@ export const getAllOrders = () => {
     return response
 };
 
-
+export const updateOrderStatus = (orderId, orderStatus) => {
+    const url = `https://lab-api-bq.herokuapp.com/orders/${orderId}`;
+    const response = fetch(url, {
+        method: 'PUT',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': `${isUserActive}`,
+        },
+        body: JSON.stringify({
+            status: orderStatus
+        }),
+    });
+    return response;
+};
