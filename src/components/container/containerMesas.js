@@ -55,22 +55,7 @@ const ContainerMesas = () => {
 
   // const [allOrders, setAllOrders] = useState([])
 
-  useEffect(() => {
-    getAllOrders()
-      .then((responseOrders) => {
-        responseOrders.json().then((listOrders) => {
-          console.log(listOrders)
-          //setAllOrders(listOrders)
-          //encontrar(listOrders)
-         tables.map((table) => setTables([...tables, table.orders = listOrders.filter(orders => orders.table === table.table)]))
-       
-        })
-      })
-      setStatusMesa(true)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  useEffect(() => {
+  function getProducts() {
     getAllOrders()
       .then((responseOrders) => {
         responseOrders.json().then((listOrders) => {
@@ -79,15 +64,24 @@ const ContainerMesas = () => {
         })
       })
     setStatusMesa(true)
+  }
+
+
+  useEffect(() => {
+    getProducts() 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+
+  useEffect(() => {
+    getProducts()    
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [attStatusHall])
 
   useEffect(() => {
     console.log(tables)
   }, [tables])
 
-  useEffect(() => {
-    console.log(attStatusHall)
-  }, [attStatusHall])
 
   function handleTable() {
     attStatusHall.attHall++

@@ -10,7 +10,7 @@ import ContainerStatusPedidos from "../../components/container/containerStatusPe
 import ContainerHistorico from "../../components/container/containerHistorico";
 import ComandaPedi from "../../components/product/comandaPedi";
 import Modal from '../../components/modal/modal'
-import { Switch } from "react-router";
+
 
 function statusColors(statusOrder) {
   let cor = ''
@@ -47,19 +47,8 @@ const Pedido = () => {
   const [ordersReady, setOrdersReady] = useState([])
   const [ordersDelivered, setOrdersDelivered] = useState([])
 
-  useEffect(() => {
-    getAllOrders().then((responseCommand) => {
-      responseCommand.json().then((command) => {
-        setOrdersPending([...filterStatusOrders(command, 'pending')])
-        setOrdersInProgress([...filterStatusOrders(command, 'inprogress')])
-        setOrdersReady([...filterStatusOrders(command, 'ready')])
-        setOrdersDelivered([...filterStatusOrders(command, 'delivered')])
-      })
-    })
-  }, [])
-
-  function attContainerStatus() {
-    console.log("atualizou")
+  function getOrders() {
+    console.log('pegou')
     getAllOrders().then((responseCommand) => {
       responseCommand.json().then((command) => {
         setOrdersPending([...filterStatusOrders(command, 'pending')])
@@ -69,6 +58,11 @@ const Pedido = () => {
       })
     })
   }
+
+  useEffect(() => {
+    getOrders()
+  }, [])
+
 
   useEffect(() => {
     console.log(ordersPending)
@@ -86,7 +80,7 @@ const Pedido = () => {
         case 200:
           setMessageModal('Status do pedido alterado com sucesso')
           setModalVisible('error')
-          attContainerStatus()
+          getOrders()
           break
         case 400:
           setMessageModal('Atenção: dados obrigatórios ausentes ou nenhuma alteração aplicada')
@@ -117,7 +111,7 @@ const Pedido = () => {
       <div className="buttons">
         <Button className="btn-status-pedi" id="btn-status-pedi" type="submit" onClick={() => { handleStatusPedi("status") }}>Status Pedidos</Button>
         <Button className="btn-historico" id="btn-historico" type="submit" onClick={() => { handleStatusPedi("histórico") }}>Histórico</Button>
-        <Button className="btn-atualizar-pedi" id="btn-atualizar" type="submit" onClick={attContainerStatus}>Atualizar</Button>
+        <Button className="btn-atualizar-pedi" id="btn-atualizar" type="submit" onClick={getOrders}>Atualizar</Button>
       </div>
       <div className="container-pedidos">
         <div>
