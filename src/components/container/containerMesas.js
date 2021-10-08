@@ -7,7 +7,6 @@ import { getAllOrders } from "../../utils/services";
 import SectionMesa from '../section/sectionMesa'
 
 import mesa from '../../img/table.png'
-import { isLogged } from "../../utils/auth";
 
 
 const ContainerMesas = () => {

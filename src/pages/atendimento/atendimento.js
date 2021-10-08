@@ -93,7 +93,7 @@ const Atendimento = () => {
 
     if (itensOrder[indexOfProduct].qtd === 1) {
       itensOrder.splice(indexOfProduct, 1)
-
+      
     } else {
       itensOrder[indexOfProduct].qtd--
     }
