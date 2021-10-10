@@ -10,28 +10,31 @@ import ContainerStatusPedidos from "../../components/container/containerStatusPe
 import ContainerHistorico from "../../components/container/containerHistorico";
 import ComandaPedi from "../../components/product/comandaPedi";
 import Modal from '../../components/modal/modal'
-import { Switch } from "react-router";
 
-function statusColors(statusOrder) {
-  let cor = ''
-
-  switch (statusOrder) {
-    case 'pending':
-      cor = '#EB4A2D'
-      break
-    case 'ready':
-      cor = '#8CFA70'
-      break
-    case 'inprogress':
-      cor = '#F3E139'
-      break
-    default:
-      cor = '#38B6FF'
-  }
-  return cor
-}
 
 const Pedido = () => {
+  function statusColors(statusOrder) {
+    let cor = ''
+  
+    switch (statusOrder) {
+      case 'pending':
+        cor = '#EB4A2D'
+        break
+      case 'ready':
+        cor = '#8CFA70'
+        break
+      case 'inprogress':
+        cor = '#F3E139'
+        break
+      case 'delivered':
+        cor = '#38B6FF'
+        break
+      default:
+        cor = '#FFF'
+    }
+    return cor
+  }
+
   const [container, setContainer] = useState('')
 
   function handleStatusPedi(selectInfoPedi) {
@@ -157,14 +160,28 @@ const Pedido = () => {
                     item={order}
                     orderId={order.id}
                     cores={statusColors(order.status)}
-                    handleStatus={null}
+                    handleStatus={() => attOrderStatus(order.id, "delivered")}
                     children={"Pronto"}
                   />
                 )
               })
             }
           />}
-          {container === "histórico" && <ContainerHistorico />}
+          {container === "histórico" && <ContainerHistorico
+            children={
+              ordersDelivered !== [] && ordersDelivered.map(order => {
+                return (
+                  <ComandaPedi
+                    item={order}
+                    orderId={order.id}
+                    cores={statusColors(order.status)}
+                    handleStatus={() => attOrderStatus(order.id, "delivered")}
+                    children={"Entregue"}
+                  />
+                )
+              }
+              )}
+          />}
         </div>
       </div>
       {isModalVisible === "error" && <Modal onClose={() => setModalVisible(false)}>{messageErrorRegister}</Modal>}

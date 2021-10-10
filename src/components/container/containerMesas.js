@@ -108,8 +108,11 @@ const ContainerMesas = () => {
       case 'inprogress':
         cor = '#F3E139'
         break
-      default:
+      case 'delivered':
         cor = '#38B6FF'
+      break
+      default:
+        cor = '#FFF'
     }
     return cor
   }
@@ -142,7 +145,8 @@ const ContainerMesas = () => {
           const orderStatus = orderTableStatus?.find((element) =>
             element.status === 'ready' ||
             element.status === 'inprogress' ||
-            element.status === 'pending'
+            element.status === 'pending' ||
+            element.status === 'delivered'
           )
 
           //console.log(orderStatus)

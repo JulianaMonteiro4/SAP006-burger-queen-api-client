@@ -5,7 +5,7 @@ import './container.css';
 const ContainerHistorico = ({ children }) => {
   return (
     <section className="container-historico">
-      <div className="container-pedi-ready">
+      <div className="container-pedi-delivered">
         {children}
       </div>
     </section>

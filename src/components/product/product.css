@@ -1,6 +1,6 @@
 .item-products {
     width: 100px;
-    height: 150px;
+    max-height: 180px;
     margin: 2%;
     background-color: #F6F8A0;
     border-radius: 10px;
@@ -13,6 +13,7 @@
 
 .img-products {
   width: 100%;
+  max-height: 100px;
   border-radius: 10px;
   margin: 2%;
 }
