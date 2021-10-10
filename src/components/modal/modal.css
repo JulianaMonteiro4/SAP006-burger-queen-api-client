@@ -14,8 +14,8 @@
 
 .container-modal {
     background-color: #E2B46F;
-    width: 30%;
-    height: 40%;
+    width: 35%;
+    height: 30%;
     color: #000;    
     border-radius: 20px;   
     box-sizing: border-box;     
@@ -23,12 +23,12 @@
 
 .border-modal {
     width: 85%;
-    height: 80%;
-    margin: auto;    
-    border-left: 3px solid #784516;
-    border-right: 3px solid #784516;
-    border-bottom: 3px solid #784516;  
-    text-align: center;   
+    height: 65%;
+    margin: auto;
+    border: 3px solid #784516;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 6%;
 }
 
 .close-modal {

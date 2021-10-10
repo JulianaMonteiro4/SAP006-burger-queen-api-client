@@ -11,8 +11,10 @@
 }
 
 .container-status-pedi, .container-historico{
+    text-align: center;
     width: 87%;
     height: 700px;
+    display: flex;
 }
 
 .container-mesas{
@@ -31,30 +33,26 @@
 
 .container-pedi{
     width: 40%;
-    max-height: 450px;
     margin-right: 3%;
     margin-bottom: 3%;
     text-align: center;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    justify-content: space-between;    
+    justify-content: space-between;  
+    background-color: #F6F8A0;  
 }
 
-.container-itens-pedido {
-    background-color: #F6F8A0;
-}
 /*//////////////// PEDIDOS ////////////////////////////////*/
 
-.container-pedi-peding, .container-pedi-ready, .container-pedi-inprogress{
+.container-pedi-peding, .container-pedi-ready, .container-pedi-inprogress, .container-pedi-delivered{
     width: 30%;
-    margin: 2%;
+    margin: -2% 2%;
     overflow: auto;
 }
 
 .total{
     height:11%;
-    margin-bottom: -86px;
     background-color: #38B6FF;
     font-size: 13px;
 }
