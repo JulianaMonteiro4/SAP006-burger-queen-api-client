@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import './atendi.css'
 
-import { getProducts, registerOrder } from "../../utils/services";
+import { getProducts, registerOrder, getAllOrders } from "../../utils/services";
 import { validate } from './form-validate';
 import { addValue, addTotalQuantity } from './functions-atendimento'
 
@@ -99,7 +99,7 @@ const Atendimento = () => {
     setItensOrder([...itensOrder])
   }
 
-  //enviar o pedido para a cozinha
+  // enviar o pedido para a cozinha
   function sendOrder() {
     const resultErrorsLogin = validateValues(infoOrder);
 
@@ -125,6 +125,21 @@ const Atendimento = () => {
   }, [itensOrder])
 
   
+  /* const [ordersDelivered, setOrdersDelivered] = useState([])
+
+  function filterStatusOrders(listOrders, status) {
+    return listOrders.filter(item => item.status === status)
+  }
+
+  function attContainerStatus() {
+    console.log("atualizou")
+    getAllOrders().then((responseCommand) => {
+      responseCommand.json().then((command) => {
+        setOrdersDelivered([...filterStatusOrders(command, 'delivered')])
+      })
+    })
+  } */ 
+
 
  // const [mesas, setMesas] = useState([])
 
@@ -154,6 +169,7 @@ const Atendimento = () => {
       <div className="containerCardápio">
         {select === "mesas" && <ContainerMesas />}
         {select === "pedidos" && <ContainerPedidos
+          onClick={setItensOrder([])}
           listOfProducts={itensOrder}
           value={addValue(itensOrder)}
           totalQuantity={addTotalQuantity(itensOrder)}
@@ -182,7 +198,7 @@ const Atendimento = () => {
               )
             })}
         />}
-        {select === "resumo" && <ContainerResumo />}
+        {select === "resumo" && <ContainerResumo/>}
       </div>
       {isModalVisible === 'error' && <Modal onClose={() => setModalVisible(false)}>{errors.table || errors.name}</Modal>}
       {isModalVisible === 'pedido realizado' && <Modal onClose={() => setModalVisible(false)}>Redido Realizado:{orderRequest.id}</Modal>}
