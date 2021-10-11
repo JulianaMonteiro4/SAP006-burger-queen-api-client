@@ -4,7 +4,7 @@ import './atendi.css'
 
 import { getProducts, registerOrder } from "../../utils/services";
 import { validate } from './form-validate';
-import { addValue, addTotalQuantity } from './functions-atendimento'
+import { addValue, addTotalQuantity } from '../../utils/data'
 
 import Header from '../../components/header/header';
 import { Button } from '../../components/button/button';
@@ -93,7 +93,7 @@ const Atendimento = () => {
 
     if (itensOrder[indexOfProduct].qtd === 1) {
       itensOrder.splice(indexOfProduct, 1)
-      
+
     } else {
       itensOrder[indexOfProduct].qtd--
     }
@@ -120,14 +120,20 @@ const Atendimento = () => {
     }
   }
 
+  function cleanSectionOrder() {
+    setInfoOrder({ table: '', name: '' })
+    setItensOrder([])
+
+  }
+
 
   useEffect(() => {
     console.log(itensOrder)
   }, [itensOrder])
 
-  
 
- // const [mesas, setMesas] = useState([])
+
+  // const [mesas, setMesas] = useState([])
 
   // useEffect(() => {
   //   getAllOrders()
@@ -159,6 +165,7 @@ const Atendimento = () => {
           listOfProducts={itensOrder}
           value={addValue(itensOrder)}
           totalQuantity={addTotalQuantity(itensOrder)}
+          cleanOrder={cleanSectionOrder}
           handleValueOrder={sendOrder}
           children={
             menu && menu.map(item => {

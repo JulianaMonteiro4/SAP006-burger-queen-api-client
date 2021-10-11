@@ -3,7 +3,7 @@ import React from "react";
 import './container.css';
 import { Button } from "../button/button";
 
-const ContainerPedidos = ({ children, children2, value, totalQuantity, handleValueOrder }) => {
+const ContainerPedidos = ({ children, children2, value, totalQuantity, cleanOrder, handleValueOrder }) => {
 
   // const [enviar, setEnviar] = useState('enviar')
 
@@ -24,6 +24,7 @@ const ContainerPedidos = ({ children, children2, value, totalQuantity, handleVal
         <div className="total">
           <p>Quantidade de itens: {totalQuantity === '' ? '0' : totalQuantity}</p>
           <p>Total:{value === '' ? '0' : value}</p>
+          <Button className="btn-enviarStatus" id="enviarStatus" type="submit" onClick={cleanOrder}>Limpar</Button>
           <Button className="btn-enviarStatus" id="enviarStatus" type="submit" onClick={handleValueOrder}>Enviar</Button>
         </div>
       </div>

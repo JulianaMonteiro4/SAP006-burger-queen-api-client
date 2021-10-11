@@ -2,17 +2,20 @@ import React, { useEffect, useState } from "react";
 
 import './container.css';
 
-import { getAllOrders } from "../../utils/services";
+import { getAllOrders, updateOrderStatus } from "../../utils/services";
+import { statusColors } from '../../utils/data'
 
 import SectionMesa from '../section/sectionMesa'
+import Tables from '../tables/tables'
+import TablesOrders from "../tables/tablesOrders";
+import Modal from "../modal/modal";
 
-import mesa from '../../img/table.png'
 
 
 const ContainerMesas = () => {
 
   const [statusMesa, setStatusMesa] = useState(false)
-  const [attStatusHall, setAttStatusHall] = useState({attHall: 1})
+  const [attStatusHall, setAttStatusHall] = useState({ attHall: 1 })
 
   const [tables, setTables] = useState([
     {
@@ -53,7 +56,6 @@ const ContainerMesas = () => {
     }
   ])
 
-  // const [allOrders, setAllOrders] = useState([])
 
   function getProducts() {
     getAllOrders()
@@ -61,6 +63,8 @@ const ContainerMesas = () => {
         responseOrders.json().then((listOrders) => {
           //console.log(listOrders)
           tables.map((table) => setTables([...tables, table.orders = listOrders.filter(orders => orders.table === table.table)]))
+
+          //setTables([...tables, tables.splice(9, 1)])          
         })
       })
     setStatusMesa(true)
@@ -68,58 +72,69 @@ const ContainerMesas = () => {
 
 
   useEffect(() => {
-    getProducts() 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    getProducts()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
 
   useEffect(() => {
-    getProducts()    
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    getProducts()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [attStatusHall])
-
-  useEffect(() => {
-    console.log(tables)
-  }, [tables])
 
 
   function handleTable() {
     attStatusHall.attHall++
-    setAttStatusHall({...attStatusHall})
+    setAttStatusHall({ ...attStatusHall })
   }
 
-  function statusColors(statusOrder) {
-    let cor = ''
+  const [listOfOrdersTables, setListOfOrdersTables] = useState([])
+  const [messageModal, setMessageModal] = useState('')
+  const [isModalVisible, setModalVisible] = useState(false)
 
-    switch (statusOrder) {
-      case 'pending':
-        cor = '#EB4A2D'
-        break
-      case 'ready':
-        cor = '#8CFA70'
-        break
-      case 'inprogress':
-        cor = '#F3E139'
-        break
-      default:
-        cor = '#38B6FF'
-    }
-    return cor
+  const ordersTableActive = (table) => {
+    setModalVisible('listofOrdersTable')
+    setListOfOrdersTables(table)
   }
 
+  useEffect(() => {
+    console.log(listOfOrdersTables)
+  }, [listOfOrdersTables])
 
 
-  const Mesa = ({ key, cores, children }) => {
-    return (
-      <div key={key} style={{ backgroundColor: cores }} className="table-order">
-        <h1>MESA {children}</h1>
-        {<img className="mesa1" style={{ color: cores }}
-          src={mesa} onClick={null} alt="mesa" />}
-      </div>
-    )
+  function attOrderStatusToDelivered(orderId, orderStatus) {
+    console.log('oi')
+    updateOrderStatus(orderId, orderStatus).then((response) => {
+      console.log(response)
+
+      switch (response.status) {
+        case 200:
+          getProducts()
+          setMessageModal('Status do pedido alterado com sucesso')
+          setModalVisible('active')
+          break
+        case 400:
+          setMessageModal('Atenção: dados obrigatórios ausentes ou nenhuma alteração aplicada')
+          setModalVisible('active')
+          break
+        case 401:
+          setMessageModal('Atenção: usuário não autorizado')
+          setModalVisible('active')
+          break
+        case 403:
+          setMessageModal('Proibido. O pedido pertence a outro restaurante')
+          setModalVisible('active')
+          break
+        case 404:
+          setMessageModal('Atenção: pedido não encontrado')
+          setModalVisible('active')
+          break
+        default:
+          setMessageModal('Refaça a mudança')
+          setModalVisible('active')
+      }
+    })
   }
-
-
 
   return (
     <div>
@@ -140,11 +155,23 @@ const ContainerMesas = () => {
 
           //console.log(orderStatus)
           return (
-            <Mesa cores={statusColors(orderStatus?.status)} children={numberTable} key={orderStatus?.id} />
+            <div>
+              <Tables cores={statusColors(orderStatus?.status)}
+                children={numberTable} key={orderStatus?.id}
+                ordersTableActive={() => ordersTableActive(table.orders)}
+              />
+            </div>
           )
-        })
-        }
+        })}
       </section>
+      <section>
+        {isModalVisible === 'listofOrdersTable' && <TablesOrders
+          orders={listOfOrdersTables}
+          onClose={() => setModalVisible(false)}
+          attOrderStatusToDelivered={attOrderStatusToDelivered}
+        />}
+      </section>
+      {isModalVisible === "active" && <Modal onClose={() => setModalVisible(false)}>{messageModal}</Modal>}
     </div>
   )
 }

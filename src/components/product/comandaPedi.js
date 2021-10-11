@@ -10,7 +10,7 @@ const ComandaPedi = ({ item, cores, handleStatus, children }) => {
 
 
   return (
-    <div className="comanda">
+    <div className="comanda" key={item.id}>
       <p>Pedido:{item.id}</p>
       <ul className="item-order">
         {productsOfOrder?.map(product => {

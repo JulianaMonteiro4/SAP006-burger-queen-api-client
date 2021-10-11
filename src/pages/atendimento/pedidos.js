@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import './atendi.css'
 
 import { getAllOrders, updateOrderStatus } from "../../utils/services";
+import { statusColors, filterStatusOrders } from '../../utils/data'
 
 import Header from "../../components/header/header";
 import { Button } from "../../components/button/button";
@@ -12,34 +13,11 @@ import ComandaPedi from "../../components/product/comandaPedi";
 import Modal from '../../components/modal/modal'
 
 
-function statusColors(statusOrder) {
-  let cor = ''
-
-  switch (statusOrder) {
-    case 'pending':
-      cor = '#EB4A2D'
-      break
-    case 'ready':
-      cor = '#8CFA70'
-      break
-    case 'inprogress':
-      cor = '#F3E139'
-      break
-    default:
-      cor = '#38B6FF'
-  }
-  return cor
-}
-
 const Pedido = () => {
   const [container, setContainer] = useState('')
 
   function handleStatusPedi(selectInfoPedi) {
     setContainer(selectInfoPedi)
-  }
-
-  function filterStatusOrders(listOrders, status) {
-    return listOrders.filter(item => item.status === status)
   }
 
   const [ordersPending, setOrdersPending] = useState([])
@@ -51,10 +29,11 @@ const Pedido = () => {
     console.log('pegou')
     getAllOrders().then((responseCommand) => {
       responseCommand.json().then((command) => {
-        setOrdersPending([...filterStatusOrders(command, 'pending')])
-        setOrdersInProgress([...filterStatusOrders(command, 'inprogress')])
-        setOrdersReady([...filterStatusOrders(command, 'ready')])
-        setOrdersDelivered([...filterStatusOrders(command, 'delivered')])
+               
+        setOrdersPending([...filterStatusOrders(command, 'pending', 'createAt')])
+        setOrdersInProgress([...filterStatusOrders(command, 'inprogress', 'updatedAt')])
+        setOrdersReady([...filterStatusOrders(command, 'ready', 'updatedAt')])
+        setOrdersDelivered([...filterStatusOrders(command, 'delivered', 'updatedAt')])
       })
     })
   }
@@ -65,10 +44,10 @@ const Pedido = () => {
 
 
   useEffect(() => {
-    console.log(ordersPending)
-  }, [ordersPending])
+   console.log(ordersInProgress)
+  }, [ordersInProgress])
 
-  const [messageErrorRegister, setMessageModal] = useState('')
+  const [messageModal, setMessageModal] = useState('')
   const [isModalVisible, setModalVisible] = useState(false)
 
   function attOrderStatus(orderId, orderStatus) {
@@ -79,28 +58,28 @@ const Pedido = () => {
       switch (response.status) {
         case 200:
           setMessageModal('Status do pedido alterado com sucesso')
-          setModalVisible('error')
+          setModalVisible('active')
           getOrders()
           break
         case 400:
           setMessageModal('Atenção: dados obrigatórios ausentes ou nenhuma alteração aplicada')
-          setModalVisible('error')
+          setModalVisible('active')
           break
         case 401:
           setMessageModal('Atenção: usuário não autorizado')
-          setModalVisible('error')
+          setModalVisible('active')
           break
         case 403:
           setMessageModal('Proibido. O pedido pertence a outro restaurante')
-          setModalVisible('error')
+          setModalVisible('active')
           break
         case 404:
           setMessageModal('Atenção: pedido não encontrado')
-          setModalVisible('error')
+          setModalVisible('active')
           break
         default:
           setMessageModal('Refaça a mudança')
-          setModalVisible('error')
+          setModalVisible('active')
       }
     })
   }
@@ -118,6 +97,7 @@ const Pedido = () => {
           {container === "status" && <ContainerStatusPedidos
             children1={
               ordersPending !== [] && ordersPending.map(order => {
+                
                 return (
                   <ComandaPedi
                     item={order}
@@ -161,7 +141,7 @@ const Pedido = () => {
           {container === "histórico" && <ContainerHistorico />}
         </div>
       </div>
-      {isModalVisible === "error" && <Modal onClose={() => setModalVisible(false)}>{messageErrorRegister}</Modal>}
+      {isModalVisible === "error" && <Modal onClose={() => setModalVisible(false)}>{messageModal}</Modal>}
     </div>
   )
 }
