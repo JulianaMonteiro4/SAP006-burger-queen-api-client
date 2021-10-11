@@ -1,6 +1,7 @@
 
 import { isUserActive } from './auth'
 
+
 export const getProducts = () => {
     console.log(isUserActive)
     const url = 'https://lab-api-bq.herokuapp.com/products'
@@ -25,7 +26,7 @@ export const registerOrder = (name, table, itensOrder) => {
         },
         body: JSON.stringify({
             client: name,
-            table: table,
+            table: table,            
             products: itensOrder
         }),
     });

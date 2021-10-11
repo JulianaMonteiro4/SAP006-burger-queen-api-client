@@ -5,6 +5,7 @@ import './itemOrder.css'
 //import { Button } from "../button/button";
 import ItemComanda from "./itemComanda";
 
+
 const ComandaPedi = ({ item, className, cores, handleStatus, children }) => {
   const productsOfOrder = item.Products
   console.log(item)
@@ -28,7 +29,7 @@ const ComandaPedi = ({ item, className, cores, handleStatus, children }) => {
           )
         }
         )}
-      </ul>
+      </ul>     
       <button className="btn-changeStatus" id="changeStatus" style={{ backgroundColor: cores }} type="button" onClick={() => handleStatus()}>{children}</button>
     </article>
   )

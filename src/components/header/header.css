@@ -80,7 +80,7 @@
       background: #FCFF6A;
       height: 0;
       transition: .6s;
-      z-index: 1000;
+      z-index: 900;
       visibility: hidden;
       overflow-y: hidden;
       margin: 0;    

@@ -90,11 +90,11 @@ const Atendimento = () => {
 
     if (findItem) {
       const indexOfProduct = itensOrder.indexOf(findItem)
-      itensOrder[indexOfProduct].qtd++
+      itensOrder[indexOfProduct].qtd++     
       setItensOrder([...itensOrder])
 
     } else {
-      item.qtd = 1
+      item.qtd = 1      
       setItensOrder([...itensOrder, item])
     }
   }
@@ -113,6 +113,13 @@ const Atendimento = () => {
     setItensOrder([...itensOrder])
   }
 
+    // Apagar pedido
+    function cleanSectionOrder() {
+      setInfoOrder({ table: '', name: '' })
+      setItensOrder([])
+  
+    }
+
   //enviar o pedido para a cozinha
   function sendOrder() {
     const resultErrorsLogin = validateValues(infoOrder);
@@ -124,22 +131,13 @@ const Atendimento = () => {
             console.log(order)
             setOrderRequest(order)
             setModalVisible('pedido realizado')
-            setInfoOrder({ table: '', name: '' })
-            setItensOrder([])
+            cleanSectionOrder()
           })
         })
     } else {
       setModalVisible('error')
     }
   }
-
-  // Apagar pedido
-  function cleanSectionOrder() {
-    setInfoOrder({ table: '', name: '' })
-    setItensOrder([])
-
-  }
-
 
   useEffect(() => {
     console.log(itensOrder)
@@ -251,7 +249,10 @@ const Atendimento = () => {
                   className={"comanda"}
                   orderId={order.id}
                   cores={statusColors(order.status)}
-                  handleStatus={null}
+                  handleStatus={() => {
+                    setMessageModal('Usuário não tem autorização')
+                    setModalVisible('active')
+                  }}
                   children={"Entregue"}
                 />
               )
