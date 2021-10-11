@@ -6,7 +6,8 @@ import { statusColors } from '../../utils/data';
 
 const TablesOrders = ({ orders, onClose, attOrderStatusToDelivered }) => {
 
-  const ordersTable = orders
+  const ordersTable = orders.sort((a, b) => a.updatedAt < b.updatedAt ?  1 :  a.updatedAt > b.updatedAt ? -1 : 0)
+  
 
 
   function handleOutsideClick(e) {

@@ -144,7 +144,7 @@ const Pedido = () => {
           {container === "histórico" && <ContainerHistorico />}
         </div>
       </div>
-      {isModalVisible === "error" && <Modal onClose={() => setModalVisible(false)}>{messageModal}</Modal>}
+      {isModalVisible === "active" && <Modal onClose={() => setModalVisible(false)}>{messageModal}</Modal>}
     </div>
   )
 }
