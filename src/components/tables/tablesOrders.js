@@ -17,10 +17,12 @@ const TablesOrders = ({ orders, onClose, attOrderStatusToDelivered }) => {
   return (
     <div id="orders-table" className="modal-orders-table" onClick={handleOutsideClick}>
       <div className="container-orders-table">
+      <div className="section-orders-table">
         <button className="close-modal-orders-table" onClick={onClose}></button>
         {ordersTable?.map((order) => {
           return (<ComandaPedi
             item={order}
+            className={"comanda-mesas"}
             orderId={order.id}
             cores={() => statusColors(order.status)}
             handleStatus={() => {
@@ -40,7 +42,7 @@ const TablesOrders = ({ orders, onClose, attOrderStatusToDelivered }) => {
           />
           )
         })}
-
+      </div>
       </div>
     </div>
   )

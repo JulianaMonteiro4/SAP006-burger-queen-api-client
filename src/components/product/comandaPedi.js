@@ -5,13 +5,17 @@ import './itemOrder.css'
 import { Button } from "../button/button";
 import ItemComanda from "./itemComanda";
 
-const ComandaPedi = ({ item, cores, handleStatus, children }) => {
+const ComandaPedi = ({ item, className, cores, handleStatus, children }) => {
   const productsOfOrder = item.Products
 
 
   return (
-    <div className="comanda" key={item.id}>
+    <article className={className} key={item.id}>
+      <section>
       <p>Pedido:{item.id}</p>
+      <p>Mesa:{item.table}</p>
+      <p>Cliente:{item.client_name}</p>
+      </section>
       <ul className="item-order">
         {productsOfOrder?.map(product => {
           return (
@@ -20,12 +24,12 @@ const ComandaPedi = ({ item, cores, handleStatus, children }) => {
         }
         )}
       </ul>
-      <div className="total">
+      <section className="total">
         <p>Quantidade de itens: {productsOfOrder?.reduce((accum, item) => accum + item.qtd, 0)}</p>
         <p>Total:{null}</p>
-      </div>
+      </section>
       <Button className="btn-changeStatus" id="changeStatus" style={{ backgroundColor: cores }} type="button" onClick={() => handleStatus()}>{children}</Button>
-    </div>
+    </article>
   )
 }
 

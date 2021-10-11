@@ -101,6 +101,7 @@ const Pedido = () => {
                 return (
                   <ComandaPedi
                     item={order}
+                    className={"comanda"}
                     orderId={order.id}
                     cores={statusColors(order.status)}
                     handleStatus={() => attOrderStatus(order.id, "inprogress")}
@@ -115,6 +116,7 @@ const Pedido = () => {
                 return (
                   <ComandaPedi
                     item={order}
+                    className={"comanda"}
                     orderId={order.id}
                     cores={statusColors(order.status)}
                     handleStatus={() => attOrderStatus(order.id, "ready")}
@@ -129,6 +131,7 @@ const Pedido = () => {
                 return (
                   <ComandaPedi
                     item={order}
+                    className={"comanda"}
                     orderId={order.id}
                     cores={statusColors(order.status)}
                     handleStatus={null}

@@ -20,18 +20,31 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-sizing: border-box;    
-    overflow: auto;   
+    box-sizing: border-box;          
 }
 
 .container-orders-table {
     background-color: #E2B46F;
     width: 60%;
-    height: 100%;
-    overflow: auto;   
+    height: 100%;    
     color: #000;    
-    border-radius: 20px;   
-    box-sizing: border-box;    
+    border-radius: 20px; 
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;      
+}
+
+.section-orders-table {
+    width: 90%;
+    height: 90%;  
+    overflow: auto; 
+    box-sizing: border-box; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+
 }
 
 
@@ -46,4 +59,16 @@
     display: flex;
     position: relative;
     align-items: center;
+}
+
+.comanda-mesas{
+    width: 350px;
+    height: 500px;
+    margin-top: 10%;
+    background-color: #F6F8A0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;       
+    /* z-index: 1100;  */
 }

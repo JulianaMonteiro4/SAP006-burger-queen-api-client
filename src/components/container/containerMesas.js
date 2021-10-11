@@ -158,7 +158,7 @@ const ContainerMesas = () => {
             <div>
               <Tables cores={statusColors(orderStatus?.status)}
                 children={numberTable} key={orderStatus?.id}
-                ordersTableActive={() => ordersTableActive(table.orders)}
+                ordersTableActive={() => ordersTableActive(orderTableStatus)}
               />
             </div>
           )
