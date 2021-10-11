@@ -1,4 +1,4 @@
-.container, .container-mesas, .container-status-pedi, .container-historico{
+.container, .container-status-pedi, .container-historico{
     display: flex;
     width: 84%;
     height: 450px;
@@ -6,7 +6,6 @@
     padding: 3% 0%;
     justify-content: space-between;
     background-color: #fff;
-    display: flex;
     overflow: auto;
 }
 
@@ -18,6 +17,13 @@
 }
 
 .container-mesas{
+    display: flex;
+    width: 84%;
+    height: 450px;
+    margin: 5% 7%;
+    padding: 3% 0%;
+    background-color: #fff;
+    overflow: auto;
     flex-wrap: wrap;
     font-size: 12px;
 }

@@ -4,15 +4,17 @@ import mesa from '../../img/table.png'
 
 import './tables.css'
 
-const Tables = ({ key, cores, children, ordersTableActive }) => {
-  console.log(cores)
+const Tables = ({ key, cores, children, ready, ordersTableActive }) => {
     return (
-      <div key={key} style={{ backgroundColor: cores }} className="table-order">
+      <div key={key} style={{ backgroundColor: cores }} className="div-template-mesa">
+        <section className="info-template-mesa">
         <h1>MESA {children}</h1>
-        {<img className="mesa1" style={{ color: cores }}
-          src={mesa} onClick={ordersTableActive} alt="mesa" />}
+        {ready === 0 ? null : <><i className="fas fa-concierge-bell"><p>{ready}</p></i> </> }
+        </section>
+        <img className="mesa1" style={{ color: cores }}
+          src={mesa} onClick={ordersTableActive} alt="mesa" />
       </div>
     )
   }
 
-export default Tables; 
+export default Tables;

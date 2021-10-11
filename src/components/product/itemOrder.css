@@ -47,3 +47,7 @@
     z-index: 1100; 
 }
 
+.info-pedido{
+    display: flex;
+    flex-direction: column;
+}

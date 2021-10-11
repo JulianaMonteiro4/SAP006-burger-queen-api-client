@@ -7,7 +7,7 @@ import Register  from '../pages/Register/register';
 import Home from '../pages/home/home';
 import Cardapio from '../pages/cardapio/cardapio'
 import Atendimento from '../pages/atendimento/atendimento'
-import Pedido from '../pages/atendimento/pedidos';
+import Pedido from '../pages/pedidos/pedidos';
 
 import PrivateRoute from './privete-route';
 import PublicRoute from './public-route';

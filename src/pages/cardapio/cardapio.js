@@ -16,7 +16,7 @@ const Cardapio = () => {
   const [menu, setMenu] = useState([]);
 
   function handleMenu(menuSelected) {
-    setMenu(allProducts.filter((item) => item.type === menuSelected));
+    setMenu(allProducts?.filter((item) => item.type === menuSelected));
   }
 
   useEffect(() => {

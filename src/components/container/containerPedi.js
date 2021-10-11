@@ -12,13 +12,12 @@ const ContainerPedidos = ({ children, children2, value, totalQuantity, cleanOrde
       </div>
       <div className="container-pedi">
         <div className="container-itens-pedido">
-          <p>Status do Pedido <i class="fas fa-trash-alt"></i></p>
+          <p>Status do Pedido <i class="fas fa-trash-alt" onClick={cleanOrder}></i></p>
           {children2}
         </div>
         <div className="total">
           <p>Quantidade de itens: {totalQuantity === '' ? '0' : totalQuantity}</p>
           <p>Total:{value === '' ? '0' : value}</p>
-          <Button className="btn-enviarStatus" id="enviarStatus" type="submit" onClick={cleanOrder}>Limpar</Button>
           <Button className="btn-enviarStatus" id="enviarStatus" type="submit" onClick={handleValueOrder}>Enviar</Button>
         </div>
       </div>

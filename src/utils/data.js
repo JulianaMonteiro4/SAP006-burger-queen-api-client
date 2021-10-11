@@ -20,10 +20,14 @@ function addValue(array) {
       case 'inprogress':
         cor = '#F3E139'
         break
-      default:
+      case 'delivered':
         cor = '#38B6FF'
+      break
+      default:
+        cor = '#FFF'
     }
     return cor
+
   }
 
   function filterStatusOrders(listOrders, status, orderTime) {
