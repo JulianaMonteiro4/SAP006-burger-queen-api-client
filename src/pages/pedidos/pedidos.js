@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import './atendi.css'
+import './pedidos.css'
 
 import { getAllOrders, updateOrderStatus } from "../../utils/services";
 import { statusColors, filterStatusOrders } from '../../utils/data'
@@ -14,27 +14,6 @@ import Modal from '../../components/modal/modal'
 
 
 const Pedido = () => {
-  function statusColors(statusOrder) {
-    let cor = ''
-  
-    switch (statusOrder) {
-      case 'pending':
-        cor = '#EB4A2D'
-        break
-      case 'ready':
-        cor = '#8CFA70'
-        break
-      case 'inprogress':
-        cor = '#F3E139'
-        break
-      case 'delivered':
-        cor = '#38B6FF'
-        break
-      default:
-        cor = '#FFF'
-    }
-    return cor
-  }
 
   const [container, setContainer] = useState('')
 
@@ -51,7 +30,7 @@ const Pedido = () => {
     console.log('pegou')
     getAllOrders().then((responseCommand) => {
       responseCommand.json().then((command) => {
-               
+
         setOrdersPending([...filterStatusOrders(command, 'pending', 'createAt')])
         setOrdersInProgress([...filterStatusOrders(command, 'inprogress', 'updatedAt')])
         setOrdersReady([...filterStatusOrders(command, 'ready', 'updatedAt')])
@@ -66,7 +45,7 @@ const Pedido = () => {
 
 
   useEffect(() => {
-   console.log(ordersInProgress)
+    console.log(ordersInProgress)
   }, [ordersInProgress])
 
   const [messageModal, setMessageModal] = useState('')
@@ -119,7 +98,7 @@ const Pedido = () => {
           {container === "status" && <ContainerStatusPedidos
             children1={
               ordersPending !== [] && ordersPending.map(order => {
-                
+
                 return (
                   <ComandaPedi
                     item={order}
@@ -164,14 +143,30 @@ const Pedido = () => {
             }
           />}
           {container === "histórico" && <ContainerHistorico
+
             children={
+              ordersReady !== [] && ordersReady.map(order => {
+                return (
+                  <ComandaPedi
+                    item={order}
+                    className={"comanda"}
+                    orderId={order.id}
+                    cores={statusColors(order.status)}
+                    handleStatus={() => attOrderStatus(order.id, "delivered")}
+                    children={"Pronto"}
+                  />
+                )
+              })
+            }
+            children2={
               ordersDelivered !== [] && ordersDelivered.map(order => {
                 return (
                   <ComandaPedi
                     item={order}
+                    className={"comanda"}
                     orderId={order.id}
                     cores={statusColors(order.status)}
-                    handleStatus={() => attOrderStatus(order.id, "delivered")}
+                    handleStatus={null}
                     children={"Entregue"}
                   />
                 )

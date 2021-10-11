@@ -7,7 +7,7 @@ const ItemOrder = ({ item, name, price, quantity, onClick }) => {
     <li className="item-order">
       <div className="item-infos">
         <p className="info-item-order">{name}</p>
-        <p className="info-item-order">R${price}</p>
+        <p className="info-item-order">R${price},00</p>
         <p className="info-item-order">{quantity}</p>
         <i className="far fa-minus-square" onClick={onClick}></i>
       </div>

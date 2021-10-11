@@ -5,7 +5,7 @@ const STORAGE_KEY = 'HamburgueriaJesus';
 
 export const isLogged = () => !!localStorage.getItem(STORAGE_KEY);
 
-export const isUserActive = localStorage[STORAGE_KEY]; // localStorage.HamburgueriaJesus
+export const isUserActive = localStorage.getItem(STORAGE_KEY); //localStorage[STORAGE_KEY]; // localStorage.HamburgueriaJesus
 
 export const loginConfirmed = (token) => { //Aqui terei de chamar a função com os parametros infoUser    
     if(localStorage[STORAGE_KEY] === 'undefined'){

@@ -86,31 +86,9 @@ const ContainerMesas = () => {
   function handleTable() {
     attStatusHall.attHall++
 
-    setAttStatusHall({...attStatusHall})
+    setAttStatusHall({ ...attStatusHall })
   }
 
-  function statusColors(statusOrder) {
-    let cor = ''
-
-    switch (statusOrder) {
-      case 'pending':
-        cor = '#EB4A2D'
-        break
-      case 'ready':
-        cor = '#8CFA70'
-        break
-      case 'inprogress':
-        cor = '#F3E139'
-        break
-      case 'delivered':
-        cor = '#38B6FF'
-      break
-      default:
-        cor = '#FFF'
-    }
-    return cor
-
-  }
 
   const [listOfOrdersTables, setListOfOrdersTables] = useState([])
   const [messageModal, setMessageModal] = useState('')
@@ -127,9 +105,7 @@ const ContainerMesas = () => {
 
 
   function attOrderStatusToDelivered(orderId, orderStatus) {
-    console.log('oi')
     updateOrderStatus(orderId, orderStatus).then((response) => {
-      console.log(response)
 
       switch (response.status) {
         case 200:
@@ -168,8 +144,6 @@ const ContainerMesas = () => {
         {statusMesa && tables.map((table) => {
           const numberTable = table.table
           const orderTableStatus = table.orders
-          // const firstOrder = table.orders?.[0]
-          // const statusOrder = firstOrder?.status
 
           const orderStatus = orderTableStatus?.find((element) =>
             element.status === 'ready' ||
@@ -178,14 +152,16 @@ const ContainerMesas = () => {
             element.status === 'delivered'
           )
 
-          //console.log(orderStatus)
+          const ordersReady = orderTableStatus?.filter((element) => 
+            element.status === 'ready'
+          )
+          
           return (
-            <div>
-              <Tables cores={statusColors(orderStatus?.status)}
-                children={numberTable} key={orderStatus?.id}
-                ordersTableActive={() => ordersTableActive(orderTableStatus)}
-              />
-            </div>
+            <Tables cores={statusColors(orderStatus?.status)}
+              children={numberTable} key={orderStatus?.id}
+              ready={ordersReady?.length}
+              ordersTableActive={() => ordersTableActive(orderTableStatus)}
+            />
           )
         })}
       </section>

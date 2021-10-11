@@ -9,3 +9,8 @@
 .containerCardápio {
     margin-top: 5%;
 }
+
+.legend-status-table{
+    display: flex;
+    margin-left: 2%;
+}

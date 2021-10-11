@@ -2,21 +2,20 @@ import React, { useState, useEffect } from "react";
 
 import './atendi.css'
 
-import { getProducts, registerOrder } from "../../utils/services";
+import { getProducts, registerOrder, getAllOrders, updateOrderStatus } from "../../utils/services";
 import { validate } from './form-validate';
-import { addValue, addTotalQuantity } from '../../utils/data'
+import { addValue, addTotalQuantity, filterStatusOrders, statusColors } from '../../utils/data'
 
 import Header from '../../components/header/header';
 import { Button } from '../../components/button/button';
 import Product from "../../components/product/product";
 import ItemOrder from "../../components/product/itemOrder";
-// import SectionMesa from "../../components/section/sectionMesa";
 import SectionPedidos from '../../components/section/sectionPedi';
 import ContainerMesas from "../../components/container/containerMesas";
 import ContainerPedidos from '../../components/container/containerPedi';
-import ContainerResumo from '../../components/container/containerResumo';
+import ContainerHistorico from "../../components/container/containerHistorico";
 import Modal from '../../components/modal/modal'
-
+import ComandaPedi from "../../components/product/comandaPedi";
 
 const Atendimento = () => {
 
@@ -38,6 +37,19 @@ const Atendimento = () => {
   //para usar o modal
   const [isModalVisible, setModalVisible] = useState(false)
 
+  // Pega lista de pedidos entregues 
+  const [ordersReady, setOrdersReady] = useState([])
+  const [ordersDelivered, setOrdersDelivered] = useState([])
+
+  function getOrders() {
+    console.log('pegou')
+    getAllOrders().then((responseCommand) => {
+      responseCommand.json().then((command) => {
+        setOrdersReady([...filterStatusOrders(command, 'ready', 'updatedAt')])
+        setOrdersDelivered([...filterStatusOrders(command, 'delivered', 'updatedAt')])
+      })
+    })
+  }
 
   //inserir as informações do pedido, mesa e nome do cliente
   const [infoOrder, setInfoOrder] = useState({ table: '', name: '' })
@@ -49,7 +61,7 @@ const Atendimento = () => {
     console.log(infoOrder, errors)
   }
 
-  //pega alista de produtos
+  //pega a lista de produtos
   const [allProducts, setAllProducts] = useState([])
   const [menu, setMenu] = useState([])
 
@@ -61,6 +73,7 @@ const Atendimento = () => {
     }).catch((error) => {
       console.log(error)
     })
+    getOrders()
   }, [])
 
   //o usuario escolhe o menu pedido pelo cliente
@@ -86,6 +99,7 @@ const Atendimento = () => {
     }
   }
 
+  // retira um item do pedido
   function removeItem(item) {
     const findItem = itensOrder.find(element => element.id === item.id);
     const indexOfProduct = itensOrder.indexOf(findItem)
@@ -119,6 +133,7 @@ const Atendimento = () => {
     }
   }
 
+  // Apagar pedido
   function cleanSectionOrder() {
     setInfoOrder({ table: '', name: '' })
     setItensOrder([])
@@ -130,17 +145,41 @@ const Atendimento = () => {
     console.log(itensOrder)
   }, [itensOrder])
 
+  //Mudar o status de pronto para entregue
+  const [messageModal, setMessageModal] = useState('')
 
+  function attOrderStatus(orderId, orderStatus) {
+    updateOrderStatus(orderId, orderStatus).then((response) => {
+      console.log(response)
 
-  // const [mesas, setMesas] = useState([])
-
-  // useEffect(() => {
-  //   getAllOrders()
-  //   .then((responseOrders) => {
-  //     responseOrders.json().then((listOrders) => {
-  //      console.log(listOrders)
-  //     })
-  // }, [])
+      switch (response.status) {
+        case 200:
+          setMessageModal('Status do pedido alterado com sucesso')
+          setModalVisible('active')
+          getOrders()
+          break
+        case 400:
+          setMessageModal('Atenção: dados obrigatórios ausentes ou nenhuma alteração aplicada')
+          setModalVisible('active')
+          break
+        case 401:
+          setMessageModal('Atenção: usuário não autorizado')
+          setModalVisible('active')
+          break
+        case 403:
+          setMessageModal('Proibido. O pedido pertence a outro restaurante')
+          setModalVisible('active')
+          break
+        case 404:
+          setMessageModal('Atenção: pedido não encontrado')
+          setModalVisible('active')
+          break
+        default:
+          setMessageModal('Refaça a mudança')
+          setModalVisible('active')
+      }
+    })
+  }
 
 
   return (
@@ -149,7 +188,7 @@ const Atendimento = () => {
       <div className="buttons">
         <Button className="btn-mesas" id="btn-mesas" type="submit" onClick={() => { handlePedidos("mesas") }}>Status Mesas</Button>
         <Button className="btn-pedi" id="btn-pedi" type="submit" onClick={() => { handlePedidos("pedidos") }}>Anotar Pedidos</Button>
-        <Button className="btn-resumo" id="btn-resumo" type="submit" onClick={() => { handlePedidos("resumo") }}>Resumo</Button>
+        <Button className="btn-resumo" id="btn-resumo" type="submit" onClick={() => { handlePedidos("histórico") }}>Histórico</Button>
       </div>
       <div className="selection">
         {/*select === "mesas" && <SectionMesa onChange={null} infoOrder={infoOrder}/>*/}
@@ -189,8 +228,38 @@ const Atendimento = () => {
               )
             })}
         />}
-        {select === "resumo" && <ContainerResumo />}
+        {select === "histórico" && <ContainerHistorico
+          children={
+            ordersReady !== [] && ordersReady.map(order => {
+              return (
+                <ComandaPedi
+                  item={order}
+                  className={"comanda"}
+                  orderId={order.id}
+                  cores={statusColors(order.status)}
+                  handleStatus={() => attOrderStatus(order.id, "delivered")}
+                  children={"Pronto"}
+                />
+              )
+            })
+          }
+          children2={
+            ordersDelivered !== [] && ordersDelivered.map(order => {
+              return (
+                <ComandaPedi
+                  item={order}
+                  className={"comanda"}
+                  orderId={order.id}
+                  cores={statusColors(order.status)}
+                  handleStatus={null}
+                  children={"Entregue"}
+                />
+              )
+            })
+          }
+        />}
       </div>
+      {isModalVisible === "active" && <Modal onClose={() => setModalVisible(false)}>{messageModal}</Modal>}
       {isModalVisible === 'error' && <Modal onClose={() => setModalVisible(false)}>{errors.table || errors.name}</Modal>}
       {isModalVisible === 'pedido realizado' && <Modal onClose={() => setModalVisible(false)}>Redido Realizado:{orderRequest.id}</Modal>}
     </div>

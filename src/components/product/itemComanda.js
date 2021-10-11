@@ -2,8 +2,8 @@ import React from "react";
 
 const ItemComanda = ({ item }) => {
   return (
-    <li>
-      <div className="item-infos">
+    <li key={item.id}>
+      <div className="item-infos" >
         <p className="info-item-order">{item.qtd} x </p>
         <p className="info-item-order">{item.name}</p>
       </div>
