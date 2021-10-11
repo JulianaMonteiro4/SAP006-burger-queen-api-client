@@ -12,7 +12,6 @@ import Product from "../../components/product/product";
 import ItemOrder from "../../components/product/itemOrder";
 // import SectionMesa from "../../components/section/sectionMesa";
 import SectionPedidos from '../../components/section/sectionPedi';
-import SectionResumo from '../../components/section/sectionResumo';
 import ContainerMesas from "../../components/container/containerMesas";
 import ContainerPedidos from '../../components/container/containerPedi';
 import ContainerResumo from '../../components/container/containerResumo';
@@ -156,7 +155,6 @@ const Atendimento = () => {
         {/*select === "mesas" && <SectionMesa onChange={null} infoOrder={infoOrder}/>*/}
         {select === "pedidos" && <SectionPedidos onChange={addInfoOrder} handleMenu={handleMenu} infoOrder={infoOrder}>
         </SectionPedidos>}
-        {select === "resumo" && <SectionResumo />}
       </div>
 
       <div className="containerCardápio">

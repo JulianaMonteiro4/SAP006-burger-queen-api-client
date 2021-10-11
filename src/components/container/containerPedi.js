@@ -5,12 +5,6 @@ import { Button } from "../button/button";
 
 const ContainerPedidos = ({ children, children2, value, totalQuantity, cleanOrder, handleValueOrder }) => {
 
-  // const [enviar, setEnviar] = useState('enviar')
-
-  // function enviarPedido () {
-  //   setEnviar('enviar')
-  // }
-
   return (
     <section className="container">
       <div className="container-menu-pedidos">
@@ -18,7 +12,7 @@ const ContainerPedidos = ({ children, children2, value, totalQuantity, cleanOrde
       </div>
       <div className="container-pedi">
         <div className="container-itens-pedido">
-          <p>Status do Pedido</p>
+          <p>Status do Pedido <i class="fas fa-trash-alt" ></i></p>
           {children2}
         </div>
         <div className="total">

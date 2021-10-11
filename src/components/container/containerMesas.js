@@ -85,7 +85,31 @@ const ContainerMesas = () => {
 
   function handleTable() {
     attStatusHall.attHall++
-    setAttStatusHall({ ...attStatusHall })
+
+    setAttStatusHall({...attStatusHall})
+  }
+
+  function statusColors(statusOrder) {
+    let cor = ''
+
+    switch (statusOrder) {
+      case 'pending':
+        cor = '#EB4A2D'
+        break
+      case 'ready':
+        cor = '#8CFA70'
+        break
+      case 'inprogress':
+        cor = '#F3E139'
+        break
+      case 'delivered':
+        cor = '#38B6FF'
+      break
+      default:
+        cor = '#FFF'
+    }
+    return cor
+
   }
 
   const [listOfOrdersTables, setListOfOrdersTables] = useState([])
@@ -150,7 +174,8 @@ const ContainerMesas = () => {
           const orderStatus = orderTableStatus?.find((element) =>
             element.status === 'ready' ||
             element.status === 'inprogress' ||
-            element.status === 'pending'
+            element.status === 'pending' ||
+            element.status === 'delivered'
           )
 
           //console.log(orderStatus)
