@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import './atendi.css'
 
 import { getAllOrders, updateOrderStatus } from "../../utils/services";
+import { statusColors, filterStatusOrders } from '../../utils/data'
 
 import Header from "../../components/header/header";
 import { Button } from "../../components/button/button";
@@ -41,43 +42,34 @@ const Pedido = () => {
     setContainer(selectInfoPedi)
   }
 
-  function filterStatusOrders(listOrders, status) {
-    return listOrders.filter(item => item.status === status)
-  }
-
   const [ordersPending, setOrdersPending] = useState([])
   const [ordersInProgress, setOrdersInProgress] = useState([])
   const [ordersReady, setOrdersReady] = useState([])
   const [ordersDelivered, setOrdersDelivered] = useState([])
 
-  useEffect(() => {
+  function getOrders() {
+    console.log('pegou')
     getAllOrders().then((responseCommand) => {
       responseCommand.json().then((command) => {
-        setOrdersPending([...filterStatusOrders(command, 'pending')])
-        setOrdersInProgress([...filterStatusOrders(command, 'inprogress')])
-        setOrdersReady([...filterStatusOrders(command, 'ready')])
-        setOrdersDelivered([...filterStatusOrders(command, 'delivered')])
-      })
-    })
-  }, [])
-
-  function attContainerStatus() {
-    console.log("atualizou")
-    getAllOrders().then((responseCommand) => {
-      responseCommand.json().then((command) => {
-        setOrdersPending([...filterStatusOrders(command, 'pending')])
-        setOrdersInProgress([...filterStatusOrders(command, 'inprogress')])
-        setOrdersReady([...filterStatusOrders(command, 'ready')])
-        setOrdersDelivered([...filterStatusOrders(command, 'delivered')])
+               
+        setOrdersPending([...filterStatusOrders(command, 'pending', 'createAt')])
+        setOrdersInProgress([...filterStatusOrders(command, 'inprogress', 'updatedAt')])
+        setOrdersReady([...filterStatusOrders(command, 'ready', 'updatedAt')])
+        setOrdersDelivered([...filterStatusOrders(command, 'delivered', 'updatedAt')])
       })
     })
   }
 
   useEffect(() => {
-    console.log(ordersPending)
-  }, [ordersPending])
+    getOrders()
+  }, [])
 
-  const [messageErrorRegister, setMessageModal] = useState('')
+
+  useEffect(() => {
+   console.log(ordersInProgress)
+  }, [ordersInProgress])
+
+  const [messageModal, setMessageModal] = useState('')
   const [isModalVisible, setModalVisible] = useState(false)
 
   function attOrderStatus(orderId, orderStatus) {
@@ -88,28 +80,28 @@ const Pedido = () => {
       switch (response.status) {
         case 200:
           setMessageModal('Status do pedido alterado com sucesso')
-          setModalVisible('error')
-          attContainerStatus()
+          setModalVisible('active')
+          getOrders()
           break
         case 400:
           setMessageModal('Atenção: dados obrigatórios ausentes ou nenhuma alteração aplicada')
-          setModalVisible('error')
+          setModalVisible('active')
           break
         case 401:
           setMessageModal('Atenção: usuário não autorizado')
-          setModalVisible('error')
+          setModalVisible('active')
           break
         case 403:
           setMessageModal('Proibido. O pedido pertence a outro restaurante')
-          setModalVisible('error')
+          setModalVisible('active')
           break
         case 404:
           setMessageModal('Atenção: pedido não encontrado')
-          setModalVisible('error')
+          setModalVisible('active')
           break
         default:
           setMessageModal('Refaça a mudança')
-          setModalVisible('error')
+          setModalVisible('active')
       }
     })
   }
@@ -120,16 +112,18 @@ const Pedido = () => {
       <div className="buttons">
         <Button className="btn-status-pedi" id="btn-status-pedi" type="submit" onClick={() => { handleStatusPedi("status") }}>Status Pedidos</Button>
         <Button className="btn-historico" id="btn-historico" type="submit" onClick={() => { handleStatusPedi("histórico") }}>Histórico</Button>
-        <Button className="btn-atualizar-pedi" id="btn-atualizar" type="submit" onClick={attContainerStatus}>Atualizar</Button>
+        <Button className="btn-atualizar-pedi" id="btn-atualizar" type="submit" onClick={getOrders}>Atualizar</Button>
       </div>
       <div className="container-pedidos">
         <div>
           {container === "status" && <ContainerStatusPedidos
             children1={
               ordersPending !== [] && ordersPending.map(order => {
+                
                 return (
                   <ComandaPedi
                     item={order}
+                    className={"comanda"}
                     orderId={order.id}
                     cores={statusColors(order.status)}
                     handleStatus={() => attOrderStatus(order.id, "inprogress")}
@@ -144,6 +138,7 @@ const Pedido = () => {
                 return (
                   <ComandaPedi
                     item={order}
+                    className={"comanda"}
                     orderId={order.id}
                     cores={statusColors(order.status)}
                     handleStatus={() => attOrderStatus(order.id, "ready")}
@@ -158,6 +153,7 @@ const Pedido = () => {
                 return (
                   <ComandaPedi
                     item={order}
+                    className={"comanda"}
                     orderId={order.id}
                     cores={statusColors(order.status)}
                     handleStatus={() => attOrderStatus(order.id, "delivered")}
@@ -184,7 +180,7 @@ const Pedido = () => {
           />}
         </div>
       </div>
-      {isModalVisible === "error" && <Modal onClose={() => setModalVisible(false)}>{messageErrorRegister}</Modal>}
+      {isModalVisible === "active" && <Modal onClose={() => setModalVisible(false)}>{messageModal}</Modal>}
     </div>
   )
 }
