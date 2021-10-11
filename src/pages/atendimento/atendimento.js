@@ -4,7 +4,7 @@ import './atendi.css'
 
 import { getProducts, registerOrder, getAllOrders } from "../../utils/services";
 import { validate } from './form-validate';
-import { addValue, addTotalQuantity } from './functions-atendimento'
+import { addValue, addTotalQuantity } from '../../utils/data'
 
 import Header from '../../components/header/header';
 import { Button } from '../../components/button/button';
@@ -119,29 +119,20 @@ const Atendimento = () => {
     }
   }
 
+  function cleanSectionOrder() {
+    setInfoOrder({ table: '', name: '' })
+    setItensOrder([])
+
+  }
+
 
   useEffect(() => {
     console.log(itensOrder)
   }, [itensOrder])
 
-  
-  /* const [ordersDelivered, setOrdersDelivered] = useState([])
-
-  function filterStatusOrders(listOrders, status) {
-    return listOrders.filter(item => item.status === status)
-  }
-
-  function attContainerStatus() {
-    console.log("atualizou")
-    getAllOrders().then((responseCommand) => {
-      responseCommand.json().then((command) => {
-        setOrdersDelivered([...filterStatusOrders(command, 'delivered')])
-      })
-    })
-  } */ 
 
 
- // const [mesas, setMesas] = useState([])
+  // const [mesas, setMesas] = useState([])
 
   // useEffect(() => {
   //   getAllOrders()
@@ -173,6 +164,7 @@ const Atendimento = () => {
           listOfProducts={itensOrder}
           value={addValue(itensOrder)}
           totalQuantity={addTotalQuantity(itensOrder)}
+          cleanOrder={cleanSectionOrder}
           handleValueOrder={sendOrder}
           children={
             menu && menu.map(item => {
