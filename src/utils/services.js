@@ -1,7 +1,7 @@
 import { isUserActive, roleUser } from './auth'
 
 
-export const getProducts = async (isUserActive) => {
+export const getProducts = async () => {
     console.log(isUserActive)
     const url = 'https://lab-api-bq.herokuapp.com/products'
     const response = await fetch(url, {

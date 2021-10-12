@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 import { getProducts } from '../../utils/services'
-import { isUserActive } from './../../utils/auth'
 
 import Header from '../../components/header/header';
 import Product from "../../components/product/product";
@@ -21,7 +20,7 @@ const Cardapio = () => {
   }
 
   useEffect(() => {
-    getProducts(isUserActive)
+    getProducts()
       .then((listresponse) => {
         listresponse.json().then((list) => {
 
