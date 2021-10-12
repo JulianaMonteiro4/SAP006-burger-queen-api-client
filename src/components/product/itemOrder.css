@@ -33,9 +33,9 @@
     font-size: 18px;
 }
 
-.comanda, .comanda-modal-pedidos{
+.comanda {
     height: 40%;
-    max-height: 55%;
+    max-height: 80%;
     margin-left: 5%;
     margin-top: 10%;
     background-color: #F6F8A0;
@@ -49,8 +49,20 @@
 
 .comanda-modal-pedidos{
     width: 50%;
-    height: 50%;
+    max-height: 100%;    
     margin: 5%;
+    background-color: #F6F8A0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: space-between;   
+    z-index: 1100; 
+}
+
+.info-order-kitchen {
+    display: flex;
+    justify-content: space-between;
 }
 
 .info-pedido{
@@ -59,7 +71,7 @@
 }
 
 
-.fa-receipt, .fa-calendar-check, .fa-clock, .fa-table, .fa-user{
+.fa-receipt, .fa-calendar-check, .fa-clock, .fa-table, .fa-user, .fa-hourglass{
     display: flex;
     margin: 2%;
     font-size: 15px;

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import './pedidos.css'
 
 import { getAllOrders, updateOrderStatus } from "../../utils/services";
-import { statusColors, filterStatusOrders } from '../../utils/data'
+import { statusColors, filterStatusOrders, filterOrdersTimeCresc} from '../../utils/data'
 
 import Header from "../../components/header/header";
 import { Button } from "../../components/button/button";
@@ -32,9 +32,9 @@ const Pedido = () => {
       responseCommand.json().then((command) => {
 
         setOrdersPending([...filterStatusOrders(command, 'pending', 'createAt')])
-        setOrdersInProgress([...filterStatusOrders(command, 'inprogress', 'updatedAt')])
-        setOrdersReady([...filterStatusOrders(command, 'ready', 'updatedAt')])
-        setOrdersDelivered([...filterStatusOrders(command, 'delivered', 'updatedAt')])
+        setOrdersInProgress([...filterStatusOrders(command, 'inprogress', 'createAt')])
+        setOrdersReady([...filterStatusOrders(command, 'ready', 'createAt')])
+        setOrdersDelivered([...filterOrdersTimeCresc(command, 'delivered', 'createAt')])
       })
     })
   }

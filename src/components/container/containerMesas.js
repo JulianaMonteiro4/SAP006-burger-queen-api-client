@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import './container.css';
 
 import { getAllOrders, updateOrderStatus } from "../../utils/services";
-import { addValue, statusColors, colorStatusTable, orderOrdersTime } from '../../utils/data'
+import { statusColors, colorStatusTable, orderOrdersTime, filterOrdersTable } from '../../utils/data'
 
 import SectionMesa from '../section/sectionMesa'
 import Tables from '../tables/tables'
@@ -99,8 +99,8 @@ const ContainerMesas = () => {
   const [isModalVisible, setModalVisible] = useState(false)
 
   const ordersTableActive = (table) => {
-    setModalVisible('listofOrdersTable')
-    setListOfOrdersTables(table)
+    setModalVisible('listofOrdersTable') //filterOrdersTable
+    setListOfOrdersTables([...filterOrdersTable(table)])    
   }
 
   useEffect(() => {

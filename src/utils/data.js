@@ -56,8 +56,13 @@ function addValue(array) {
 
   //atendimentoMesas: para ordenar os pedidos do popup
   function orderOrdersTime(listOrders, orderTime) {
-    return listOrders?.sort((a, b) => a[orderTime] < b[orderTime] ?  1 :  a[orderTime] > b[orderTime] ? -1 : 0
+    return listOrders?.sort((a, b) => a[orderTime] < b[orderTime] ?  -1 :  a[orderTime] > b[orderTime] ? 1 : 0
     ) 
+  }
+
+  //filtragem para o popup das mesas 
+  function filterOrdersTable(listOrders) {
+    return listOrders?.filter(item => item.status !== 'delivered')    
   }
 
   //pedidos - para filtrar os pedidos e confome o status e ordená-los conforme o tempo 
@@ -69,10 +74,24 @@ function addValue(array) {
     })   
   }
 
+  function filterOrdersTimeCresc(listOrders, status, orderTime) {
+    const ordersStatus = listOrders?.filter(item => item.status === status)  
+    return ordersStatus?.sort((a, b) => { 
+      return a[orderTime] < b[orderTime] ?  -1 :  a[orderTime] > b[orderTime] ? 1 : 0
+    })   
+  }
 
-
+function preparationTime(item) {
+  const timeready = Date.parse(item.updatedAt) - Date.parse(item.createdAt)
+  const minute = Math.round((timeready/1000*60) % 60) //quantos minutos sobram
+  const hour = Math.floor(timeready/(1000*60*60)) //quantas horas inteiras
+ 
+  const time = `${hour}:${minute}`
+  return time
+}
  
 
 
 
-  export { addValue, addTotalQuantity, statusColors, colorStatusTable, filterStatusOrders, orderOrdersTime}
+  export { addValue, addTotalQuantity, statusColors, colorStatusTable, filterStatusOrders, filterOrdersTimeCresc, 
+    filterOrdersTable, orderOrdersTime, preparationTime}
