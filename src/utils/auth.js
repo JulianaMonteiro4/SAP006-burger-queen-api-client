@@ -6,9 +6,10 @@ export const isUserActive = localStorage.getItem(STORAGE_KEY); //localStorage[ST
 
 export const roleUser = localStorage.getItem(isUserActive);
 
-export const loginConfirmed = (token, role) => { //Aqui terei de chamar a função com os parametros infoUser    
+export const loginConfirmed = (token, role) => {   
+
     if(localStorage[STORAGE_KEY] === 'undefined'){
-        localStorage.clear()        
+        localStorage.clear()       
     } 
 
     localStorage.setItem(STORAGE_KEY, token)
@@ -47,5 +48,3 @@ export const loginUser = async (emailUser, passwordUser) => {
     });
     return responseLogin;
 };
-
-

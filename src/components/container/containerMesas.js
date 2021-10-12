@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import './container.css';
 
 import { getAllOrders, updateOrderStatus } from "../../utils/services";
-import { addValue, statusColors, colorStatusTable, orderOrdersTime } from '../../utils/data'
+import { statusColors, colorStatusTable, orderOrdersTime, filterOrdersTable } from '../../utils/data'
 
 import SectionMesa from '../section/sectionMesa'
 import Tables from '../tables/tables'
@@ -58,20 +58,16 @@ const ContainerMesas = () => {
 
   function handleTable() {
     attStatusHall.attHall++
-
     setAttStatusHall({ ...attStatusHall })
   }
 
-  function getProducts(data) {
+  function getProducts() {
     getAllOrders()
       .then((responseOrders) => {
-        responseOrders.json().then((listOrders) => {
-          //console.log(listOrders)         
+        responseOrders.json().then((listOrders) => {                
 
           tables.map((table) => setTables([...tables, table.orders = listOrders.filter(orders => orders.table === table.table)]))
-          
-
-            
+                      
         })
       })
     setStatusMesa(true)
@@ -88,10 +84,7 @@ const ContainerMesas = () => {
   useEffect(() => {
     getProducts()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [attStatusHall])
-
-
- 
+  }, [attStatusHall]) 
 
 
   const [listOfOrdersTables, setListOfOrdersTables] = useState([])
@@ -99,13 +92,9 @@ const ContainerMesas = () => {
   const [isModalVisible, setModalVisible] = useState(false)
 
   const ordersTableActive = (table) => {
-    setModalVisible('listofOrdersTable')
-    setListOfOrdersTables(table)
+    setModalVisible('listofOrdersTable') 
+    setListOfOrdersTables([...filterOrdersTable(table)])    
   }
-
-  useEffect(() => {
-    console.log(listOfOrdersTables)
-  }, [listOfOrdersTables])
 
 
   function attOrderStatusToDelivered(orderId, orderStatus) {
@@ -153,9 +142,9 @@ const ContainerMesas = () => {
 
           const orderStatus = colorStatusTable(orderTableTime)
 
-          const ordersReady = orderTableTime?.filter((element) => element.status === 'ready')                    
+          const ordersReady = orderTableTime?.filter((element) => element.status === 'ready')                 
              
-          console.log(orderStatus) 
+          
           return (
             <Tables cores={statusColors(orderStatus?.status)}
               children={numberTable} key={orderStatus?.id}

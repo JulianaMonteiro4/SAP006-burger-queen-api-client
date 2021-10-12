@@ -4,9 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 import { Routes } from '../src/routes/routes'
 
-ReactDOM.render( //o render precisa receber apenas uma saída 
-  //poderíamos colocar os dois dentro de um array [<Login />, <Home />]
-  //Além disso, poderia ser feito sem refresh com historyAPI, mas é treta 
+ReactDOM.render( 
   <React.StrictMode>
     <BrowserRouter>
       <Routes />      

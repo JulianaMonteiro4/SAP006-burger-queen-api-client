@@ -12,7 +12,7 @@ const ContainerPedidos = ({ children, children2, value, totalQuantity, cleanOrde
       </div>
       <div className="container-pedi">
         <div className="container-itens-pedido">
-          <p>Status do Pedido <i class="fas fa-trash-alt" onClick={cleanOrder}></i></p>
+          <p>Status do Pedido <i className="fas fa-trash-alt" onClick={cleanOrder}></i></p>
           {children2}
         </div>
         <div className="total">

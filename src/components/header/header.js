@@ -25,7 +25,6 @@ const Header = () => {
 
   useEffect(() => {
     setPageMenuHeader(`${history.location.pathname}`)
-
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -36,8 +35,7 @@ const Header = () => {
 
     switch (informationPage) {
       case (history.location.pathname):
-        //history.push('/home')
-        console.log('igual')
+        history.push('/home')        
         break;
 
       case '/logout':
