@@ -2,7 +2,7 @@ import { isUserActive, roleUser } from './auth'
 
 
 export const getProducts = async () => {
-    console.log(isUserActive)
+    
     const url = 'https://lab-api-bq.herokuapp.com/products'
     const response = await fetch(url, {
         method: 'GET',
@@ -33,7 +33,7 @@ export const registerOrder = async (name, table, itensOrder) => {
 };
 
 export const getAllOrders = () => {
-    console.log(isUserActive)
+    
     const url = 'https://lab-api-bq.herokuapp.com/orders'
     const response = fetch(url, {
         method: 'GET',
@@ -61,14 +61,11 @@ export const updateOrderStatus = async (orderId, orderStatus) => {
 };
 
 export const getRoleUser = (role) => {
-    let userRole = false
-    console.log(role)
+    let userRole = false   
 
     if (roleUser === role || roleUser === 'gerente') {
          userRole = true
     }
-    console.log(userRole)
-    console.log(roleUser)
-
+    
     return userRole
 };
