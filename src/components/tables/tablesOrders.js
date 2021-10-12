@@ -24,7 +24,7 @@ const TablesOrders = ({ orders, onClose, attOrderStatusToDelivered }) => {
             item={order}
             className={"comanda-modal-pedidos"}
             orderId={order.id}
-            cores={() => statusColors(order.status)}
+            cores={statusColors(order.status)}
             handleStatus={() => {
              if (order.status === 'ready') {
                 attOrderStatusToDelivered(order.id, "delivered")
