@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import './container.css';
 
 import { getAllOrders, updateOrderStatus } from "../../utils/services";
-import { statusColors } from '../../utils/data'
+import { addValue, statusColors, colorStatusTable, orderOrdersTime } from '../../utils/data'
 
 import SectionMesa from '../section/sectionMesa'
 import Tables from '../tables/tables'
@@ -56,18 +56,26 @@ const ContainerMesas = () => {
     }
   ])
 
+  function handleTable() {
+    attStatusHall.attHall++
 
-  function getProducts() {
+    setAttStatusHall({ ...attStatusHall })
+  }
+
+  function getProducts(data) {
     getAllOrders()
       .then((responseOrders) => {
         responseOrders.json().then((listOrders) => {
-          //console.log(listOrders)
-          tables.map((table) => setTables([...tables, table.orders = listOrders.filter(orders => orders.table === table.table)]))
+          //console.log(listOrders)         
 
-          //setTables([...tables, tables.splice(9, 1)])          
+          tables.map((table) => setTables([...tables, table.orders = listOrders.filter(orders => orders.table === table.table)]))
+          
+
+            
         })
       })
     setStatusMesa(true)
+    setTables([...tables, tables.splice(9, 1)])    
   }
 
 
@@ -83,11 +91,7 @@ const ContainerMesas = () => {
   }, [attStatusHall])
 
 
-  function handleTable() {
-    attStatusHall.attHall++
-
-    setAttStatusHall({ ...attStatusHall })
-  }
+ 
 
 
   const [listOfOrdersTables, setListOfOrdersTables] = useState([])
@@ -141,33 +145,29 @@ const ContainerMesas = () => {
       <SectionMesa onClick={handleTable} />
 
       <section className="container-mesas">
-        {statusMesa && tables.map((table) => {
+        {statusMesa && tables.map((table) => {          
           const numberTable = table.table
-          const orderTableStatus = table.orders
+          const listOfOrdersTable = table.orders
 
-          const orderStatus = orderTableStatus?.find((element) =>
-            element.status === 'ready' ||
-            element.status === 'inprogress' ||
-            element.status === 'pending' ||
-            element.status === 'delivered'
-          )
+          const orderTableTime = orderOrdersTime(listOfOrdersTable, 'createAt')
 
-          const ordersReady = orderTableStatus?.filter((element) => 
-            element.status === 'ready'
-          )
-          
+          const orderStatus = colorStatusTable(orderTableTime)
+
+          const ordersReady = orderTableTime?.filter((element) => element.status === 'ready')                    
+             
+          console.log(orderStatus) 
           return (
             <Tables cores={statusColors(orderStatus?.status)}
               children={numberTable} key={orderStatus?.id}
               ready={ordersReady?.length}
-              ordersTableActive={() => ordersTableActive(orderTableStatus)}
+              ordersTableActive={() => ordersTableActive(orderTableTime)}
             />
           )
         })}
       </section>
       <section>
         {isModalVisible === 'listofOrdersTable' && <TablesOrders
-          orders={listOfOrdersTables}
+          orders={listOfOrdersTables}          
           onClose={() => setModalVisible(false)}
           attOrderStatusToDelivered={attOrderStatusToDelivered}
         />}

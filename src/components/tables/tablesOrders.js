@@ -1,13 +1,12 @@
 import React from 'react';
 
 import ComandaPedi from '../product/comandaPedi';
-import { statusColors } from '../../utils/data';
+import { statusColors, orderOrdersTime } from '../../utils/data';
 
 
 const TablesOrders = ({ orders, onClose, attOrderStatusToDelivered }) => {
 
-  const ordersTable = orders.sort((a, b) => a.updatedAt < b.updatedAt ?  1 :  a.updatedAt > b.updatedAt ? -1 : 0)
-  
+  const ordersTable = orderOrdersTime(orders, 'updatedAt')
 
 
   function handleOutsideClick(e) {
@@ -27,18 +26,15 @@ const TablesOrders = ({ orders, onClose, attOrderStatusToDelivered }) => {
             orderId={order.id}
             cores={() => statusColors(order.status)}
             handleStatus={() => {
-              if (order.status === 'ready') {
+             if (order.status === 'ready') {
                 attOrderStatusToDelivered(order.id, "delivered")
-              } else {
-                console.log('botão funcionando')
-              }
-
+             } 
             }}
 
             children={order.status === 'pending' ? 'Pendente' :
               order.status === 'inprogress' ? 'Em preparo' :
                 order.status === 'ready' ? 'Pronto' :
-                  order.status === 'delivered' ? 'Entregue' : 'Não há pedido'
+                  order.status === 'delivered' ? 'Entregue' : 'Antigo'
             }
           />
           )

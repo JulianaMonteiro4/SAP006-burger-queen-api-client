@@ -135,7 +135,10 @@ const Pedido = () => {
                     className={"comanda"}
                     orderId={order.id}
                     cores={statusColors(order.status)}
-                    handleStatus={() => attOrderStatus(order.id, "delivered")}
+                    handleStatus={() => {
+                      setMessageModal('Usuário não tem autorização')
+                      setModalVisible('active')
+                    }}
                     children={"Pronto"}
                   />
                 )
@@ -152,7 +155,10 @@ const Pedido = () => {
                     className={"comanda"}
                     orderId={order.id}
                     cores={statusColors(order.status)}
-                    handleStatus={() => attOrderStatus(order.id, "delivered")}
+                    handleStatus={() => {
+                      setMessageModal('Usuário não tem autorização')
+                      setModalVisible('active')
+                    }}
                     children={"Pronto"}
                   />
                 )
@@ -166,7 +172,10 @@ const Pedido = () => {
                     className={"comanda"}
                     orderId={order.id}
                     cores={statusColors(order.status)}
-                    handleStatus={null}
+                    handleStatus={() => {
+                      setMessageModal('Usuário não tem autorização')
+                      setModalVisible('active')
+                    }}
                     children={"Entregue"}
                   />
                 )

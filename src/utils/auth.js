@@ -1,18 +1,18 @@
-//import React from "react";
-//import { history } from '../routes/history'
-
 const STORAGE_KEY = 'HamburgueriaJesus';
 
 export const isLogged = () => !!localStorage.getItem(STORAGE_KEY);
 
 export const isUserActive = localStorage.getItem(STORAGE_KEY); //localStorage[STORAGE_KEY]; // localStorage.HamburgueriaJesus
 
-export const loginConfirmed = (token) => { //Aqui terei de chamar a função com os parametros infoUser    
+export const roleUser = localStorage.getItem(isUserActive);
+
+export const loginConfirmed = (token, role) => { //Aqui terei de chamar a função com os parametros infoUser    
     if(localStorage[STORAGE_KEY] === 'undefined'){
         localStorage.clear()        
     } 
 
-    localStorage.setItem(STORAGE_KEY, token)    
+    localStorage.setItem(STORAGE_KEY, token)
+    localStorage.setItem(token, role)     
 };
 
 export const logout = () => {
@@ -47,3 +47,5 @@ export const loginUser = async (emailUser, passwordUser) => {
     });
     return responseLogin;
 };
+
+
