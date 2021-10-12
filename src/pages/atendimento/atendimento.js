@@ -42,7 +42,7 @@ const Atendimento = () => {
   const [ordersDelivered, setOrdersDelivered] = useState([])
 
   function getOrders() {
-    console.log('pegou')
+    
     getAllOrders().then((responseCommand) => {
       responseCommand.json().then((command) => {
         setOrdersReady([...filterStatusOrders(command, 'ready', 'updatedAt')])
@@ -56,9 +56,7 @@ const Atendimento = () => {
 
   function addInfoOrder(e) {
     const { name, value } = e.target;
-    setInfoOrder({ ...infoOrder, [name]: value })
-
-    console.log(infoOrder, errors)
+    setInfoOrder({ ...infoOrder, [name]: value })    
   }
 
   //pega a lista de produtos
@@ -70,8 +68,6 @@ const Atendimento = () => {
       listresponse.json().then((list) => {
         setAllProducts(list)
       })
-    }).catch((error) => {
-      console.log(error)
     })
     getOrders()
   }, [])
@@ -90,11 +86,11 @@ const Atendimento = () => {
 
     if (findItem) {
       const indexOfProduct = itensOrder.indexOf(findItem)
-      itensOrder[indexOfProduct].qtd++     
+      itensOrder[indexOfProduct].qtd++
       setItensOrder([...itensOrder])
 
     } else {
-      item.qtd = 1      
+      item.qtd = 1
       setItensOrder([...itensOrder, item])
     }
   }
@@ -113,12 +109,11 @@ const Atendimento = () => {
     setItensOrder([...itensOrder])
   }
 
-    // Apagar pedido
-    function cleanSectionOrder() {
-      setInfoOrder({ table: '', name: '' })
-      setItensOrder([])
-  
-    }
+  // Apagar pedido
+  function cleanSectionOrder() {
+    setInfoOrder({ table: '', name: '' })
+    setItensOrder([])
+  }
 
   //enviar o pedido para a cozinha
   function sendOrder() {
@@ -128,7 +123,7 @@ const Atendimento = () => {
       registerOrder(infoOrder.name, infoOrder.table, itensOrder)
         .then((responseOrder) => {
           responseOrder.json().then((order) => {
-            console.log(order)
+
             setOrderRequest(order)
             setModalVisible('pedido realizado')
             cleanSectionOrder()
@@ -139,17 +134,14 @@ const Atendimento = () => {
     }
   }
 
-  useEffect(() => {
-    console.log(itensOrder)
-  }, [itensOrder])
+
 
   //Mudar o status de pronto para entregue
   const [messageModal, setMessageModal] = useState('')
 
   function attOrderStatus(orderId, orderStatus) {
     updateOrderStatus(orderId, orderStatus).then((response) => {
-      console.log(response)
-
+      
       switch (response.status) {
         case 200:
           setMessageModal('Status do pedido alterado com sucesso')

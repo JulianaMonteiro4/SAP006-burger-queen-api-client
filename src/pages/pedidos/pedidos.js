@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import './pedidos.css'
 
 import { getAllOrders, updateOrderStatus } from "../../utils/services";
-import { statusColors, filterStatusOrders, filterOrdersTimeCresc} from '../../utils/data'
+import { statusColors, filterStatusOrders, filterOrdersTimeCresc } from '../../utils/data'
 
 import Header from "../../components/header/header";
 import { Button } from "../../components/button/button";
@@ -27,7 +27,6 @@ const Pedido = () => {
   const [ordersDelivered, setOrdersDelivered] = useState([])
 
   function getOrders() {
-    console.log('pegou')
     getAllOrders().then((responseCommand) => {
       responseCommand.json().then((command) => {
 
@@ -43,18 +42,12 @@ const Pedido = () => {
     getOrders()
   }, [])
 
-
-  useEffect(() => {
-    console.log(ordersInProgress)
-  }, [ordersInProgress])
-
   const [messageModal, setMessageModal] = useState('')
   const [isModalVisible, setModalVisible] = useState(false)
 
   function attOrderStatus(orderId, orderStatus) {
-    console.log('oi')
+
     updateOrderStatus(orderId, orderStatus).then((response) => {
-      console.log(response)
 
       switch (response.status) {
         case 200:
@@ -145,6 +138,7 @@ const Pedido = () => {
               })
             }
           />}
+          
           {container === "histórico" && <ContainerHistorico
 
             children={

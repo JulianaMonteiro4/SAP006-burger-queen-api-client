@@ -7,12 +7,11 @@ import ItemComanda from './itemComanda';
 
 
 const ComandaPedi = ({ item, className, cores, handleStatus, children }) => {
+  
   const productsOfOrder = item.Products  
 
   const timeready = preparationTime(item)
-  console.log(timeready)
-
-
+  
   return (
     <article className={className} key={item.id}>
       <section className="info-pedido">

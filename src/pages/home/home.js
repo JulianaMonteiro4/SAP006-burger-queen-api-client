@@ -25,8 +25,7 @@ const Home = () => {
   const handlePage = (path) => {
     
     if (roleUser === 'cozinheira' && path === '/atendimento' ||
-    roleUser === 'atendente' && path === '/pedidos' 
-    ){
+    roleUser === 'atendente' && path === '/pedidos' ){
       setModalVisible(true)
     } else {
     history.push(path)

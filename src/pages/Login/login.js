@@ -19,30 +19,26 @@ import jesusDesk from '../../img/jesus-desk.gif'
 
 const Login = () => {
 
+  const [isModalVisible, setModalVisible] = useState(false)
   const [messageErrorRegister, setMessageErrorRegister] = useState('')
   const [errors, setErrors] = useState({})
   function validateValues(values) {
     const errorsResult = validate(values)
     setErrors(errorsResult)
     return errorsResult;
-  }
-
-  const [isModalVisible, setModalVisible] = useState(false)
+  }  
 
   const [infoUser, setInfoUser] = useState({ email: '', password: '' });
 
   const handleChange = (e) => {
     const informationUser = e.target.id;
-    setInfoUser({ ...infoUser, [informationUser]: e.target.value })
-    console.log(e.target.value, infoUser)
-    // if (informationUser === 'password') {      
-    // }
+    setInfoUser({ ...infoUser, [informationUser]: e.target.value })   
   }
 
   let history = useHistory()
+
   const handleLogin = (e) => {
     e.preventDefault();
-
     const resultErrorsLogin = validateValues(infoUser);
 
     if (!resultErrorsLogin.email && !resultErrorsLogin.password) {
@@ -58,7 +54,7 @@ const Login = () => {
               } else {
                 loginConfirmed(user.token, user.role)
                 history.push('/home')
-                document.location.reload(true) //para as funcões funcionarem
+                document.location.reload(true) 
               }
             })
         })

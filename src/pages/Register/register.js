@@ -19,6 +19,7 @@ import jesusDesk from '../../img/jesus-desk.gif'
 
 const Register = () => {
 
+  const [isModalVisible, setModalVisible] = useState(false)
   const [messageErrorRegister, setMessageErrorRegister] = useState('')
   const [errors, setErrors] = useState({})
   function validateValues(values) {
@@ -26,28 +27,25 @@ const Register = () => {
     setErrors(errorsResult)
     return errorsResult
   }
-  const [isModalVisible, setModalVisible] = useState(false)
+
 
   const [infoUser, setInfoUser] = useState({ name: '', email: '', password: '', role: '' });
 
   const handleChange = (e) => {
     const informationUser = e.target.id;
     setInfoUser({ ...infoUser, [informationUser]: e.target.value })
-    console.log(e.target.value, infoUser)  
+    
   }
 
-  
+
   const handleRegister = (e) => {
     e.preventDefault();
 
     const resultErrors = validateValues(infoUser);
-
     if (!resultErrors.email && !resultErrors.password && !resultErrors.name && !resultErrors.role) {
-      console.log(resultErrors.email, 'não tem erros')
-
+      
       registerUser(infoUser.name, infoUser.email, infoUser.password, infoUser.role)
-        .then((response) => {
-          console.log(response.status, response);
+        .then((response) => {          
 
           if (response.status === 400) {
             setMessageErrorRegister('Atenção: não informou os dados necessários')
