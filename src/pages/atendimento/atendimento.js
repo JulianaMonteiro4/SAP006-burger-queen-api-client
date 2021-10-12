@@ -1,22 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 import './atendi.css'
 
-
-import { getProducts, registerOrder, getAllOrders, updateOrderStatus } from "../../utils/services";
+import { getProducts, registerOrder, getAllOrders, updateOrderStatus } from '../../utils/services';
 import { validate } from './form-validate';
 import { addValue, addTotalQuantity, filterStatusOrders, statusColors } from '../../utils/data'
 
 import Header from '../../components/header/header';
 import { Button } from '../../components/button/button';
-import Product from "../../components/product/product";
-import ItemOrder from "../../components/product/itemOrder";
+import Product from '../../components/product/product';
+import ItemOrder from '../../components/product/itemOrder';
 import SectionPedidos from '../../components/section/sectionPedi';
-import ContainerMesas from "../../components/container/containerMesas";
+import ContainerMesas from '../../components/container/containerMesas';
 import ContainerPedidos from '../../components/container/containerPedi';
-import ContainerHistorico from "../../components/container/containerHistorico";
+import ContainerHistorico from '../../components/container/containerHistorico';
 import Modal from '../../components/modal/modal'
-import ComandaPedi from "../../components/product/comandaPedi";
+import ComandaPedi from '../../components/product/comandaPedi';
 
 const Atendimento = () => {
 
@@ -262,8 +261,8 @@ const Atendimento = () => {
         />}
       </div>
       {isModalVisible === "active" && <Modal onClose={() => setModalVisible(false)}>{messageModal}</Modal>}
-      {isModalVisible === 'error' && <Modal onClose={() => setModalVisible(false)}>{errors.table || errors.name}</Modal>}
-      {isModalVisible === 'pedido realizado' && <Modal onClose={() => setModalVisible(false)}>Redido Realizado:{orderRequest.id}</Modal>}
+      {isModalVisible === "error" && <Modal onClose={() => setModalVisible(false)}>{errors.table || errors.name}</Modal>}
+      {isModalVisible === "pedido realizado" && <Modal onClose={() => setModalVisible(false)}>Redido Realizado:{orderRequest.id}</Modal>}
     </div>
   )
 }
