@@ -24,7 +24,7 @@
 
 .info-item-order-flavor{
     font-size: 12px;
-    margin-left: 4%;
+    margin-left: -2%;
     padding-left: 25%;
 }
 
@@ -33,7 +33,7 @@
     font-size: 18px;
 }
 
-.comanda{
+.comanda, .comanda-modal-pedidos{
     height: 40%;
     max-height: 55%;
     margin-left: 5%;
@@ -47,7 +47,27 @@
     z-index: 1100; 
 }
 
+.comanda-modal-pedidos{
+    width: 50%;
+    height: 50%;
+    margin: 5%;
+}
+
 .info-pedido{
     display: flex;
     flex-direction: column;
+}
+
+
+.fa-receipt, .fa-calendar-check, .fa-clock, .fa-table, .fa-user{
+    display: flex;
+    margin: 2%;
+    font-size: 15px;
+    justify-content: center;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1800px) {
+    .comanda-modal-pedidos{
+        width: 40%;
+    }
 }
