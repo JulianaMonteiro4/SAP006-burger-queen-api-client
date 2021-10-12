@@ -1,11 +1,10 @@
+import { isUserActive, roleUser } from './auth'
 
-import { isUserActive } from './auth'
 
-
-export const getProducts = () => {
+export const getProducts = async (isUserActive) => {
     console.log(isUserActive)
     const url = 'https://lab-api-bq.herokuapp.com/products'
-    const response = fetch(url, {
+    const response = await fetch(url, {
         method: 'GET',
         headers: {
             'Content-type': 'application/json',
@@ -16,9 +15,9 @@ export const getProducts = () => {
 }
 
 
-export const registerOrder = (name, table, itensOrder) => {
+export const registerOrder = async (name, table, itensOrder) => {
     const url = 'https://lab-api-bq.herokuapp.com/orders';
-    const response = fetch(url, {
+    const response = await fetch(url, {
         method: 'POST',
         headers: {
             'Content-type': 'application/json',
@@ -26,7 +25,7 @@ export const registerOrder = (name, table, itensOrder) => {
         },
         body: JSON.stringify({
             client: name,
-            table: table,            
+            table: table,
             products: itensOrder
         }),
     });
@@ -46,9 +45,9 @@ export const getAllOrders = () => {
     return response
 };
 
-export const updateOrderStatus = (orderId, orderStatus) => {
+export const updateOrderStatus = async (orderId, orderStatus) => {
     const url = `https://lab-api-bq.herokuapp.com/orders/${orderId}`;
-    const response = fetch(url, {
+    const response = await fetch(url, {
         method: 'PUT',
         headers: {
             'Content-type': 'application/json',
@@ -59,4 +58,17 @@ export const updateOrderStatus = (orderId, orderStatus) => {
         }),
     });
     return response;
+};
+
+export const getRoleUser = (role) => {
+    let userRole = false
+    console.log(role)
+
+    if (roleUser === role || roleUser === 'gerente') {
+         userRole = true
+    }
+    console.log(userRole)
+    console.log(roleUser)
+
+    return userRole
 };

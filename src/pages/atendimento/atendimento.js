@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import './atendi.css'
 
+import { isUserActive } from './../../utils/auth'
 import { getProducts, registerOrder, getAllOrders, updateOrderStatus } from "../../utils/services";
 import { validate } from './form-validate';
 import { addValue, addTotalQuantity, filterStatusOrders, statusColors } from '../../utils/data'
@@ -66,7 +67,7 @@ const Atendimento = () => {
   const [menu, setMenu] = useState([])
 
   useEffect(() => {
-    getProducts().then((listresponse) => {
+    getProducts(isUserActive).then((listresponse) => {
       listresponse.json().then((list) => {
         setAllProducts(list)
       })

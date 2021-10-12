@@ -9,7 +9,9 @@ import Cardapio from '../pages/cardapio/cardapio'
 import Atendimento from '../pages/atendimento/atendimento'
 import Pedido from '../pages/pedidos/pedidos';
 
-import PrivateRoute from './privete-route';
+import PrivateRoute from './private-route';
+import PrivateRouteHall from './private-route-hall'
+import PrivateRouteKitchen from './private-route-kitchen'
 import PublicRoute from './public-route';
 
 export const Routes = () => {
@@ -19,8 +21,8 @@ export const Routes = () => {
       <PublicRoute exact path='/register' component={Register}  />
       <PrivateRoute exact path='/home' component={Home} />
       <PrivateRoute exact path='/cardapio' component={Cardapio} />
-      <PrivateRoute exact path='/atendimento' component={Atendimento} />
-      <Route exact path='/pedidos' component={Pedido} />
+      <PrivateRouteHall exact path='/atendimento' component={Atendimento} />
+      <PrivateRouteKitchen exact path='/pedidos' component={Pedido} />
       <Route component={() => <div>Page 404</div>} />
     </Switch>
   )

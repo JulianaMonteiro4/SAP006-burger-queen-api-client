@@ -1,9 +1,12 @@
-import React from 'react';
-//import { Link } from 'react-router-dom';
+/* eslint-disable no-mixed-operators */
+import React, { useState } from 'react';
+
 import { useHistory } from "react-router-dom"
 
-import { logout } from '../../utils/auth';
+import { logout, roleUser } from '../../utils/auth';
+
 import { Footer } from '../../components/footer/footer';
+import Modal from '../../components/modal/modal'
 
 import './home.css';
 
@@ -15,11 +18,19 @@ import menu5 from '../../img/menu5.png'
 
 
 const Home = () => {
-  
+  const [isModalVisible, setModalVisible] = useState(false)
+
   let history = useHistory()
-  
+
   const handlePage = (path) => {
+    
+    if (roleUser === 'cozinheira' && path === '/atendimento' ||
+    roleUser === 'atendente' && path === '/pedidos' 
+    ){
+      setModalVisible(true)
+    } else {
     history.push(path)
+    }
   }
 
   const handleLogout = () => {
@@ -33,19 +44,22 @@ const Home = () => {
         <img className='menu1 fatia'
           src={menu1} alt='menu1' />
         <img className='menu2 fatia'
-          src={menu2} alt='menu2' 
-          onClick={() => {handlePage('/cardapio')}} />
+          src={menu2} alt='menu2'
+          onClick={() => { handlePage('/cardapio') }} />
         <img className='menu3 fatia'
           src={menu3} alt='menu3'
-          onClick={() => {handlePage('/atendimento')}} />
+          onClick={() => { handlePage('/atendimento') }} />
         <img className='menu4 fatia'
           src={menu4} alt='menu4'
-          onClick={() => {handlePage('/cardapio')}} />
+          onClick={() => { handlePage('/pedidos') }} />
         <img className='menu5 fatia'
           src={menu5} alt='menu5'
           onClick={handleLogout} />
+          <div>
+          {isModalVisible && <Modal onClose={() => setModalVisible(false)}>Usuário não tem permissão</Modal>}
+          </div>
       </figure>
-      <Footer className="footer-home"/>
+      <Footer className="footer-home" />
     </div>
   )
 }

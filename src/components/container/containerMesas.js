@@ -149,18 +149,18 @@ const ContainerMesas = () => {
           const numberTable = table.table
           const listOfOrdersTable = table.orders
 
-          const orderTableStatus = orderOrdersTime(listOfOrdersTable, 'createAt')
+          const orderTableTime = orderOrdersTime(listOfOrdersTable, 'createAt')
 
-          const orderStatus = colorStatusTable(orderTableStatus)
+          const orderStatus = colorStatusTable(orderTableTime)
 
-          const ordersReady = orderTableStatus?.filter((element) => element.status === 'ready')                    
+          const ordersReady = orderTableTime?.filter((element) => element.status === 'ready')                    
              
           console.log(orderStatus) 
           return (
             <Tables cores={statusColors(orderStatus?.status)}
               children={numberTable} key={orderStatus?.id}
               ready={ordersReady?.length}
-              ordersTableActive={() => ordersTableActive(orderTableStatus)}
+              ordersTableActive={() => ordersTableActive(orderTableTime)}
             />
           )
         })}

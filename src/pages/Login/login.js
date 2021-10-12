@@ -56,8 +56,9 @@ const Login = () => {
                 setMessageErrorRegister(user.message)
                 setModalVisible('error')
               } else {
-                loginConfirmed(user.token)
+                loginConfirmed(user.token, user.role)
                 history.push('/home')
+                document.location.reload(true) //para as funcões funcionarem
               }
             })
         })

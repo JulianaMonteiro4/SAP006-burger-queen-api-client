@@ -56,16 +56,15 @@ function addValue(array) {
 
   //atendimentoMesas: para ordenar os pedidos do popup
   function orderOrdersTime(listOrders, orderTime) {
-    return listOrders?.sort((a, b) => { 
-      return a[orderTime] < b[orderTime] ?  1 :  a[orderTime] > b[orderTime] ? -1 : 0
-    }) 
+    return listOrders?.sort((a, b) => a[orderTime] < b[orderTime] ?  1 :  a[orderTime] > b[orderTime] ? -1 : 0
+    ) 
   }
 
   //pedidos - para filtrar os pedidos e confome o status e ordená-los conforme o tempo 
 
   function filterStatusOrders(listOrders, status, orderTime) {
-    const ordersStatus = listOrders.filter(item => item.status === status)  
-    return ordersStatus.sort((a, b) => { 
+    const ordersStatus = listOrders?.filter(item => item.status === status)  
+    return ordersStatus?.sort((a, b) => { 
       return a[orderTime] < b[orderTime] ?  1 :  a[orderTime] > b[orderTime] ? -1 : 0
     })   
   }

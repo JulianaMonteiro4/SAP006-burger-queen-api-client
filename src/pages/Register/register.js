@@ -42,7 +42,7 @@ const Register = () => {
 
     const resultErrors = validateValues(infoUser);
 
-    if (!resultErrors.email && !resultErrors.password && !resultErrors.name) {
+    if (!resultErrors.email && !resultErrors.password && !resultErrors.name && !resultErrors.role) {
       console.log(resultErrors.email, 'não tem erros')
 
       registerUser(infoUser.name, infoUser.email, infoUser.password, infoUser.role)
