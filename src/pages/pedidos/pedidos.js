@@ -93,10 +93,9 @@ const Pedido = () => {
               ordersPending !== [] && ordersPending.map(order => {
 
                 return (
-                  <ComandaPedi
+                  <ComandaPedi                    
                     item={order}
-                    className={"comanda"}
-                    orderId={order.id}
+                    className={"comanda"}                    
                     cores={statusColors(order.status)}
                     handleStatus={() => attOrderStatus(order.id, "inprogress")}
                     children={"Pendente"}
@@ -108,10 +107,9 @@ const Pedido = () => {
             children2={
               ordersInProgress !== [] && ordersInProgress.map(order => {
                 return (
-                  <ComandaPedi
+                  <ComandaPedi                    
                     item={order}
-                    className={"comanda"}
-                    orderId={order.id}
+                    className={"comanda"}                    
                     cores={statusColors(order.status)}
                     handleStatus={() => attOrderStatus(order.id, "ready")}
                     children={"Em Preparo"}
@@ -123,10 +121,9 @@ const Pedido = () => {
             children3={
               ordersReady !== [] && ordersReady.map(order => {
                 return (
-                  <ComandaPedi
+                  <ComandaPedi                    
                     item={order}
-                    className={"comanda"}
-                    orderId={order.id}
+                    className={"comanda"}                    
                     cores={statusColors(order.status)}
                     handleStatus={() => {
                       setMessageModal('Usuário não tem autorização')
@@ -144,10 +141,9 @@ const Pedido = () => {
             children={
               ordersReady !== [] && ordersReady.map(order => {
                 return (
-                  <ComandaPedi
+                  <ComandaPedi                    
                     item={order}
-                    className={"comanda"}
-                    orderId={order.id}
+                    className={"comanda"}                    
                     cores={statusColors(order.status)}
                     handleStatus={() => {
                       setMessageModal('Usuário não tem autorização')
@@ -161,10 +157,9 @@ const Pedido = () => {
             children2={
               ordersDelivered !== [] && ordersDelivered.map(order => {
                 return (
-                  <ComandaPedi
+                  <ComandaPedi                    
                     item={order}
-                    className={"comanda"}
-                    orderId={order.id}
+                    className={"comanda"}                    
                     cores={statusColors(order.status)}
                     handleStatus={() => {
                       setMessageModal('Usuário não tem autorização')

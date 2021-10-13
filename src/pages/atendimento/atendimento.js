@@ -224,8 +224,7 @@ const Atendimento = () => {
               return (
                 <ComandaPedi
                   item={order}
-                  className={"comanda"}
-                  orderId={order.id}
+                  className={"comanda"}                  
                   cores={statusColors(order.status)}
                   handleStatus={() => attOrderStatus(order.id, "delivered")}
                   children={"Pronto"}
@@ -239,7 +238,6 @@ const Atendimento = () => {
                 <ComandaPedi
                   item={order}
                   className={"comanda"}
-                  orderId={order.id}
                   cores={statusColors(order.status)}
                   handleStatus={() => {
                     setMessageModal('Usuário não tem autorização')

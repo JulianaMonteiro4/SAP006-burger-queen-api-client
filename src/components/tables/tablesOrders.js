@@ -20,8 +20,7 @@ const TablesOrders = ({ orders, onClose, attOrderStatusToDelivered }) => {
           {ordersTable?.map((order) => {
             return (<ComandaPedi
               item={order}
-              className={"comanda-modal-pedidos"}
-              orderId={order.id}
+              className={"comanda-modal-pedidos"}              
               cores={statusColors(order.status)}
               handleStatus={() => {
                 if (order.status === 'ready') {
