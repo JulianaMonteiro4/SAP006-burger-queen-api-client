@@ -2,7 +2,8 @@ import React from "react";
 
 const ItemComanda = ({ item }) => {
   return (
-    <li key={item.id}>
+    <>
+    <li key={item.id+1159}>
       <div className="item-infos" >
         <p className="info-item-order">{item.qtd} x </p>
         <p className="info-item-order">{item.name}</p>
@@ -12,6 +13,7 @@ const ItemComanda = ({ item }) => {
         <p className="info-item-order-flavor">{item.complement}</p>
       </div>
     </li>
+    </>
   )
 }
 

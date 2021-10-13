@@ -4,9 +4,9 @@ import mesa from '../../img/table.png'
 
 import './tables.css'
 
-const Tables = ({ key, cores, children, ready, ordersTableActive }) => {
+const Tables = ({ orders, cores, children, ready, ordersTableActive }) => {
     return (
-      <div key={key} style={{ backgroundColor: cores }} className="div-template-mesa">
+      <div key={orders?.id+1159} style={{ backgroundColor: cores }} className="div-template-mesa">
         <section className="info-template-mesa">
         <h1>MESA {children}</h1>
         {ready === 0 ? null : <><i className="fas fa-concierge-bell"><p>{ready}</p></i> </> }

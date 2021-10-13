@@ -147,7 +147,7 @@ const ContainerMesas = () => {
           
           return (
             <Tables cores={statusColors(orderStatus?.status)}
-              children={numberTable} key={orderStatus?.id}
+              children={numberTable} orders={orderStatus}
               ready={ordersReady?.length}
               ordersTableActive={() => ordersTableActive(orderTableTime)}
             />
