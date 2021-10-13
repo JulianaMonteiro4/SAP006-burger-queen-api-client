@@ -1,29 +1,47 @@
 ## 📑 Índice
 - [1. Sobre o Projeto](#1-sobre)
-- [2. Funionalidades da Aplicação](#2-funcionalidades)
-- [3. Experiência dos Usuários](#3-usuarios)
-- [4. Layout](#4-layout)
-- [5. Objetivos de Aprendizagem](#5-conteúdo)
-- [6. Autoras](#8-autoras)
+- [2. Pesquisa de Mercado](#2-mercado)
+- [3. Planejamento](3#-planejamento)
+- [4. Funionalidades da Aplicação](#4-funcionalidades)
+- [5. Layout](#5-layout)
+- [6. Objetivos da Histótia de Usuário](#6-objetivos)
+- [7. Teste de usabilidade](7#-teste)
+- [8. Autoras](#8-autoras)
 
 ## 🌍 1. SOBRE O PROJETO
 O projeto **BURGUER QUEEN**, foi criado dentro do bootcamp da **Laboratória**, com o intuito de estudarmos e colocarmos em prática o conteúdo do objetivos de aprendizagem. O projeto é sobre uma aplicação desenvolvida para funcionários de uma hamburgueria.
 
-## 💡 2. Funionalidades da Aplicação
+A aplicação foi denominada "Hamburgueria Jesus" e atende às necessidades dos funcionários que trabalham no atendimento dos clientes e no controle do preparo dos pedidos.
+
+## 💡 2. PESQUISA DE MERCADO
+O squad visitou uma unidade de uma rede de fastfood, onde foi possível indentificar as necessidades comuns dos funcionários, como, por exemplo, visualizar comandas diferentes em uma única página e apagar a anotação de pedido após um erro. Essa experiência foi útil pois influenciou as escolhas das páginas e funcionalidades implementadas.
+
+## 📚 3. PLANEJAMENTO
+Para o planejamento, respeitamos o método "FDP" (fatiar, descasrtar e priorizar) e utilizamos a ferramenta GitHub Projects.
+A implementação das funcionalidades foi segmentada conforme as histórias de usuários de diferentes sprints.
+(foto do planning)
+
+## 💡 2. Funcionalidades da Aplicação
 Na aplicação tem funcionalidades específicas para 3 tipos de funcionários. Sendo eles o garçom/garçonete, cozinheiro(a) e o(a) gerente.
 
-O garçom/garçonete tem acesso ao "Cardápio", onde consegue visualizar os menus. E ao "Atendimento", onde consegue ver os status das mesas, anotar pedido e o histórico de pedidos prontos e entregues.
+O garçom/garçonete tem acesso ao "Cardápio", onde consegue visualizar os menus, e ao "Atendimento", onde consegue ver os status das mesas, anotar pedido e o histórico de pedidos prontos e entregues.
 
-O cozinheiro(a) tem acesso a "Pedidos", onde consegue ver o status dos pedidos e o histórico de pedidos prontos e entregues.
+O cozinheiro(a) tem acesso a "Pedidos", onde consegue ver e manipular o status dos pedidos e o histórico de pedidos prontos e entregues.
 
-O(a) gerente, que tem acesso a todas as funcionalidades.
+O(a) gerente tem acesso a todas as funcionalidades.
 
-## 💺 3. EXPERIÊNCIA DOS USUÁRIOS
+## 💺 3. EXPERIÊNCIA DOS USUÁRIOS - teste de usabilidade
 Utilizamos o **FORMS** para criar um formulário onde questionamos quais foram suas experiências detalhadas sobre cada funcionalidade, e como foi o desempenho da aplicação.
+
+https://forms.gle/qbwDEFsvP2wtyAft7
+
+Após a coleta das respostas, filtramos as sugestões de melhoria, e uma delas já foi implementada.
+Um usuário sugeriu que alterássemos o formato do botão para que o "click" ficasse mais intuitivo, e isso foi implementado.
+(fotos dos botões antes/depois)
 
 ### 🎨 4. LAYOUT
 As cores do layout foram pensadas de acordo com as cores de um hamburguer.
-### Paleta de Cores:
+### :
 
 Fizemos um fluxograma para verificar quais seriam os passos do usuários de acordo com cada histórias de usuário.
 ### Fluxograma:
@@ -38,7 +56,7 @@ Os protótipos foram pensandos na experiência dos usuários e para visualizar a
   <img src="" height="400">
 </h1>
 
-## 📚 5. OBJETIVOS DE APRENDIZAGEM
+## 📚 5. OBJETIVOS DA HISTÓRIA DE USUÁRIO
 
 HTML
 - [x] Uso de HTML semântico
@@ -93,7 +111,7 @@ UX (User eXperience)
 - [x] Aplicar os princípios de desenho visual (contraste, alinhamento, hierarquia)
 - [x] Planejar e executar testes de usabilidade
 
-## 👩‍💻 8. AUTORAS:
+## 👩‍💻 6. AUTORAS:
 Projeto realizado para o Bootcamp da **LABORATÓRIA.**
 <h2 >
 <a style="color:aqua" href="https://github.com/jenniferpessoa" target="_blank">Jennifer Pessoa</a> e 
