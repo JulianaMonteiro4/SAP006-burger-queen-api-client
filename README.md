@@ -28,14 +28,14 @@ As cores do layout foram pensadas de acordo com as cores de um hamburguer.
 Fizemos um fluxograma para verificar quais seriam os passos do usuários de acordo com cada histórias de usuário.
 ### Fluxograma:
 <h1>
-  <img src="https://file:///C:/Users/julia/Downloads/Orange%20Real%20Estate%20Flowchart/1.png" height="300">
+  <img src="" height="300">
 </h1>
 
 ## 🎯 Protótipos:
 Os protótipos foram pensandos na experiência dos usuários e para visualizar a melhor forma de montar a aplicação.
 ### Protótipos em alta fidelidade para Tablet:
 <h1>
-  <img src="https://ik.imagekit.io/llneva6qvex/Social_Network/README/protoripos_K9s-7WsxF0b.jpeg?updatedAt=1631052078444" height="400">
+  <img src="" height="400">
 </h1>
 
 ## 📚 5. OBJETIVOS DE APRENDIZAGEM
