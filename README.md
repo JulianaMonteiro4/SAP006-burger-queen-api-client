@@ -28,7 +28,7 @@ As cores do layout foram pensadas de acordo com as cores de um hamburguer.
 Fizemos um fluxograma para verificar quais seriam os passos do usuários de acordo com cada histórias de usuário.
 ### Fluxograma:
 <h1>
-  <img src="https://ik.imagekit.io/llneva6qvex/Social_Network/Untitled_Diagram_SkUzIEc6Bha0T.jpg?updatedAt=1628020496911" height="300">
+  <img src="https://file:///C:/Users/julia/Downloads/Orange%20Real%20Estate%20Flowchart/1.png" height="300">
 </h1>
 
 ## 🎯 Protótipos:
