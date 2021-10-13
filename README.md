@@ -1,70 +1,100 @@
-# Getting Started with Create React App
+## 📑 Índice
+- [1. Sobre o Projeto](#1-sobre)
+- [2. Funionalidades da Aplicação](#2-funcionalidades)
+- [3. Experiência dos Usuários](#3-usuarios)
+- [4. Layout](#4-layout)
+- [5. Objetivos de Aprendizagem](#5-conteúdo)
+- [6. Autoras](#8-autoras)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🌍 1. SOBRE O PROJETO
+O projeto **BURGUER QUEEN**, foi criado dentro do bootcamp da **Laboratória**, com o intuito de estudarmos e colocarmos em prática o conteúdo do objetivos de aprendizagem. O projeto é sobre uma aplicação desenvolvida para funcionários de uma hamburgueria.
 
-## Available Scripts
+## 💡 2. Funionalidades da Aplicação
+Na aplicação tem funcionalidades específicas para 3 tipos de funcionários. Sendo eles o garçom/garçonete, cozinheiro(a) e o(a) gerente.
 
-In the project directory, you can run:
+O garçom/garçonete tem acesso ao "Cardápio", onde consegue visualizar os menus. E ao "Atendimento", onde consegue ver os status das mesas, anotar pedido e o histórico de pedidos prontos e entregues.
 
-### `npm start`
+O cozinheiro(a) tem acesso a "Pedidos", onde consegue ver o status dos pedidos e o histórico de pedidos prontos e entregues.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+O(a) gerente, que tem acesso a todas as funcionalidades.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 💺 3. EXPERIÊNCIA DOS USUÁRIOS
+Utilizamos o **FORMS** para criar um formulário onde questionamos quais foram suas experiências detalhadas sobre cada funcionalidade, e como foi o desempenho da aplicação.
 
-### `npm test`
+### 🎨 4. LAYOUT
+As cores do layout foram pensadas de acordo com as cores de um hamburguer.
+### Paleta de Cores:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Fizemos um fluxograma para verificar quais seriam os passos do usuários de acordo com cada histórias de usuário.
+### Fluxograma:
+<h1>
+  <img src="https://ik.imagekit.io/llneva6qvex/Social_Network/Untitled_Diagram_SkUzIEc6Bha0T.jpg?updatedAt=1628020496911" height="300">
+</h1>
 
-### `npm run build`
+## 🎯 Protótipos:
+Os protótipos foram pensandos na experiência dos usuários e para visualizar a melhor forma de montar a aplicação.
+### Protótipos em alta fidelidade para Tablet:
+<h1>
+  <img src="https://ik.imagekit.io/llneva6qvex/Social_Network/README/protoripos_K9s-7WsxF0b.jpeg?updatedAt=1631052078444" height="400">
+</h1>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📚 5. OBJETIVOS DE APRENDIZAGEM
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+HTML
+- [x] Uso de HTML semântico
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+CSS
+- [x] Uso de seletores de CSS
+- [x] Empregar o modelo de caixa (box model): borda, margem, preenchimento
+- [x] Uso de flexbox en CSS
+- [x] Uso de CSS Grid Layout
+- [x] Uso de media queries
 
-### `npm run eject`
+JavaScript
+- [x] Testes unitários
+- [x] Testes assíncronos
+- [x] Mocking
+- [x] Uso ES modules
+- [x] Uso de linter (ESLINT)
+- [x] Uso de identificadores descritivos (Nomenclatura | Semântica)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Git e GitHub
+- [x] Git: Instalação e configuração
+- [x] Git: Controle de versão com git (init, clone, add, commit, status, push, pull, remote)
+- [x] Git: Integração de mudanças entre ramos (branch, checkout, fetch, merge, reset, rebase, tag)
+- [x] GitHub: Criação de contas e repositórios, configuração de chave SSH
+- [x] GitHub: Implantação com GitHub Pages
+- [x] GitHub: Colaboração pelo Github (branches | forks | pull requests | code review | tags)
+- [x] GitHub: Organização pelo Github (projects | issues | labels | milestones | releases)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+HTTP
+- [x] Solicitações o requisições (request) e respostas (response).
+- [x] Cabeçalhos (headers)
+- [x] Corpo (body)
+- [x] Verbos HTTP
+- [x] Codigos de status de HTTP
+- [x] Encodings e JSON
+- [x] CORS (Cross-Origin Resource Sharing)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+react
+- [x] jsx
+- [x] components
+- [x] events
+- [x] lists-and-keys
+- [x] conditional-rendering
+- [x] lifting-up-state
+- [x] hooks
+- [x] css-modules
+- [x] routing
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+UX (User eXperience)
+- [x] Desenhar a aplicação pensando e entendendo o usuário
+- [x] Criar protótipos para obter feedback e iterar
+- [x] Aplicar os princípios de desenho visual (contraste, alinhamento, hierarquia)
+- [x] Planejar e executar testes de usabilidade
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 👩‍💻 8. AUTORAS:
+Projeto realizado para o Bootcamp da **LABORATÓRIA.**
+<h2 >
+<a style="color:aqua" href="https://github.com/jenniferpessoa" target="_blank">Jennifer Pessoa</a> e 
+<a style="color:aqua" href="https://github.com/JulianaMonteiro4">Juliana Monteiro</a></h2>
