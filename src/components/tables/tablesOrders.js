@@ -19,6 +19,7 @@ const TablesOrders = ({ orders, onClose, attOrderStatusToDelivered }) => {
         <div className="section-orders-table">
           {ordersTable?.map((order) => {
             return (<ComandaPedi
+              key={orders.id+9059}
               item={order}
               className={"comanda-modal-pedidos"}              
               cores={statusColors(order.status)}

@@ -42,7 +42,7 @@ const Atendimento = () => {
   const [ordersDelivered, setOrdersDelivered] = useState([])
 
   function getOrders() {
-    
+
     getAllOrders().then((responseCommand) => {
       responseCommand.json().then((command) => {
         setOrdersReady([...filterStatusOrders(command, 'ready', 'updatedAt')])
@@ -56,7 +56,7 @@ const Atendimento = () => {
 
   function addInfoOrder(e) {
     const { name, value } = e.target;
-    setInfoOrder({ ...infoOrder, [name]: value })    
+    setInfoOrder({ ...infoOrder, [name]: value })
   }
 
   //pega a lista de produtos
@@ -141,7 +141,7 @@ const Atendimento = () => {
 
   function attOrderStatus(orderId, orderStatus) {
     updateOrderStatus(orderId, orderStatus).then((response) => {
-      
+
       switch (response.status) {
         case 200:
           setMessageModal('Status do pedido alterado com sucesso')
@@ -210,7 +210,9 @@ const Atendimento = () => {
           children2={
             itensOrder && itensOrder.map(item => {
               return (
-                <ItemOrder item={item}
+                <ItemOrder
+                  key={item.id}
+                  item={item}
                   name={item.name}
                   price={item.price}
                   quantity={item.qtd}
@@ -222,9 +224,9 @@ const Atendimento = () => {
           children={
             ordersReady !== [] && ordersReady.map(order => {
               return (
-                <ComandaPedi
+                <ComandaPedi key={order.id+15487}
                   item={order}
-                  className={"comanda"}                  
+                  className={"comanda"}
                   cores={statusColors(order.status)}
                   handleStatus={() => attOrderStatus(order.id, "delivered")}
                   children={"Pronto"}
@@ -235,7 +237,7 @@ const Atendimento = () => {
           children2={
             ordersDelivered !== [] && ordersDelivered.map(order => {
               return (
-                <ComandaPedi
+                <ComandaPedi key={order.id+15487}
                   item={order}
                   className={"comanda"}
                   cores={statusColors(order.status)}

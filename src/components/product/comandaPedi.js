@@ -13,7 +13,7 @@ const ComandaPedi = ({ item, className, cores, handleStatus, children }) => {
   const timeready = preparationTime(item)  
   
   return (
-    <article className={className} key={item.id+1159}>
+    <article className={className} >
       <section className="info-pedido">
         <div className="info-order-kitchen">
         <i className="fas fa-receipt"><p>: {item.id}</p></i>
@@ -28,7 +28,7 @@ const ComandaPedi = ({ item, className, cores, handleStatus, children }) => {
       <ul className="item-order">
         {productsOfOrder?.map(product => {
           return (
-            <ItemComanda item={product} />
+            <ItemComanda item={product} key={product.id+187}/>
           )
         }
         )}

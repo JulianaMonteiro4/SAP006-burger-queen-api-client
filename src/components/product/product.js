@@ -2,10 +2,10 @@ import React from "react";
 
 import './product.css'
 
-const Product = ({ key, image, name, flavor, complement, price, onClick }) => {
+const Product = ({ image, name, flavor, complement, price, onClick }) => {
 
     return (
-        <article className='item-products' key={key}>
+        <article className='item-products' >
             <p className='name-products'>{name}</p>
             <img src={image} className='img-products' alt=""></img>
             <div className='info-products'>
