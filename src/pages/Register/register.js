@@ -8,7 +8,7 @@ import { Button } from '../../components/button/button'
 import { InputText } from '../../components/input/input'
 import Modal from '../../components/modal/modal'
 
-import '../banana/login.css';
+import '../login/login.css';
 
 import fundo from '../../img/fundo.png'
 import fundoDesk from '../../img/fundo-desk.png'
