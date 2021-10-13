@@ -45,8 +45,8 @@ const Atendimento = () => {
 
     getAllOrders().then((responseCommand) => {
       responseCommand.json().then((command) => {
-        setOrdersReady([...filterStatusOrders(command, 'ready', 'updatedAt')])
-        setOrdersDelivered([...filterStatusOrders(command, 'delivered', 'updatedAt')])
+        setOrdersReady([...filterStatusOrders(command, 'ready', 'id')])
+        setOrdersDelivered([...filterStatusOrders(command, 'delivered', 'id')])
       })
     })
   }

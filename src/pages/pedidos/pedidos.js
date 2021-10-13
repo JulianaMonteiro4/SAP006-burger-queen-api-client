@@ -33,7 +33,7 @@ const Pedido = () => {
         setOrdersPending([...filterStatusOrders(command, 'pending', 'createAt')])
         setOrdersInProgress([...filterStatusOrders(command, 'inprogress', 'createAt')])
         setOrdersReady([...filterStatusOrders(command, 'ready', 'createAt')])
-        setOrdersDelivered([...filterOrdersTimeCresc(command, 'delivered', 'createAt')])
+        setOrdersDelivered([...filterOrdersTimeCresc(command, 'delivered', 'updateAt')])
       })
     })
   }
