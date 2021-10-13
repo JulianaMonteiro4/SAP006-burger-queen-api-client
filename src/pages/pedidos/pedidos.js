@@ -93,7 +93,7 @@ const Pedido = () => {
               ordersPending !== [] && ordersPending.map(order => {
 
                 return (
-                  <ComandaPedi                    
+                  <ComandaPedi key={order.id+6487}                 
                     item={order}
                     className={"comanda"}                    
                     cores={statusColors(order.status)}
@@ -107,7 +107,7 @@ const Pedido = () => {
             children2={
               ordersInProgress !== [] && ordersInProgress.map(order => {
                 return (
-                  <ComandaPedi                    
+                  <ComandaPedi key={order.id+6487}                   
                     item={order}
                     className={"comanda"}                    
                     cores={statusColors(order.status)}
@@ -121,7 +121,7 @@ const Pedido = () => {
             children3={
               ordersReady !== [] && ordersReady.map(order => {
                 return (
-                  <ComandaPedi                    
+                  <ComandaPedi key={order.id+6487}                   
                     item={order}
                     className={"comanda"}                    
                     cores={statusColors(order.status)}
@@ -141,7 +141,7 @@ const Pedido = () => {
             children={
               ordersReady !== [] && ordersReady.map(order => {
                 return (
-                  <ComandaPedi                    
+                  <ComandaPedi  key={order.id+8087}                
                     item={order}
                     className={"comanda"}                    
                     cores={statusColors(order.status)}
@@ -157,7 +157,7 @@ const Pedido = () => {
             children2={
               ordersDelivered !== [] && ordersDelivered.map(order => {
                 return (
-                  <ComandaPedi                    
+                  <ComandaPedi  key={order.id+6487}                  
                     item={order}
                     className={"comanda"}                    
                     cores={statusColors(order.status)}
