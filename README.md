@@ -1,3 +1,7 @@
+<p align='center'>
+  <img src='src/img/' widht='20%'>
+</p>
+
 ## 📑 Índice
 - [1. Sobre o Projeto](#1-sobre)
 - [2. Pesquisa de Mercado](#2-mercado)
@@ -77,7 +81,7 @@ A atendente deve:
 As cores do layout foram pensadas de acordo com as cores de um hamburguer.
 ### Telas:
 <p align='center'>
-  <img src='src/img/readme/prototipo-alta-fidelidade.png' widht='20%'>
+  <img src='src/img/readme/prototipo-alta-fidelidade.PNG' widht='20%'>
 </p>
 
 Fizemos um fluxograma para verificar quais seriam os passos do usuários de acordo com cada histórias de usuário.
@@ -91,33 +95,33 @@ Os protótipos foram pensandos na experiência dos usuários e para visualizar a
 ### Protótipos em alta fidelidade para Tablet:
 Tela de Login e Cadastro:
 <p align='center'>
-  <img src='src/img/readme/login.png' widht='20%'>
-  <img src='src/img/readme/cadastro.png' widht='20%'>
+  <img src='src/img/readme/login.PNG' widht='20%'>
+  <img src='src/img/readme/cadastro.PNG' widht='20%'>
 </p>
 
 Home:
 <p align='center'>
-  <img src='src/img/readme/home.png' widht='20%'>
+  <img src='src/img/readme/home.PMG' widht='20%'>
 </p>
 
 Tela de Cardápio:
 <p align='center'>
-  <img src='src/img/readme/cardapio.png' widht='20%'>
+  <img src='src/img/readme/cardapio.PNG' widht='20%'>
 </p>
 
 Tela de Atendimento:
 <p align='center'>
-  <img src='src/img/readme/atendimento-mesas.png' widht='20%'>
-  <img src='src/img/readme/atendimento-pedidos-mesas.png' widht='20%'>
-  <img src='src/img/readme/atendimento-anotar-pedido.png' widht='20%'>
-  <img src='src/img/readme/atendimento-historico.png' widht='20%'>
+  <img src='src/img/readme/atendimento-mesas.PNG' widht='20%'>
+  <img src='src/img/readme/atendimento-pedidos-mesas.PNG' widht='20%'>
+  <img src='src/img/readme/atendimento-anotar-pedido.PNG' widht='20%'>
+  <img src='src/img/readme/atendimento-historico.PNG' widht='20%'>
 </p>
 
 Tela de Pedidos:
 Tela de Atendimento:
 <p align='center'>
-  <img src='src/img/readme/pedido-status-comanda.png' widht='20%'>
-  <img src='src/img/readme/reader-menu.png' widht='20%'>
+  <img src='src/img/readme/pedido-status-comanda.' widht='20%'>
+  <img src='src/img/readme/reader-menu.PNG' widht='20%'>
 </p>
 
 ## 💺 7. TESTE DE USABILIDADE - experiência do usuário 
