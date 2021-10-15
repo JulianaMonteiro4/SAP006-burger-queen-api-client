@@ -2,11 +2,11 @@
 - [1. Sobre o Projeto](#1-sobre)
 - [2. Pesquisa de Mercado](#2-mercado)
 - [3. Planejamento](3#-planejamento)
-- [4. As Histórias de Usuário](#6-objetivos)
-- [5. Funcionalidades da Aplicação](#4-funcionalidades)
-- [6. Layout](#5-layout)
+- [4. Funcionalidades da Aplicação](#4-funcionalidades)
+- [5. As Histórias de Usuário](#5-historias)
+- [6. Layout](#6-layout)
 - [7. Teste de usabilidade](7#-teste)
-- [8. Teste de usabilidade](7#-teste)
+- [8. Objetivos de Aprendizagem](7#-aprendizagem)
 - [9. Autoras](#8-autoras)
 
 ## 🌍 1. SOBRE O PROJETO
@@ -26,9 +26,7 @@ Para o planejamento, respeitamos o método "FDP" (Fatiar, Descartar e Priorizar)
 A implementação das funcionalidades foi segmentada conforme as histórias de usuários de diferentes sprints.
 (foto do planning)
 
-## 📚 4. AS HISTÓRIAS DE USUÁRIOS
-
-## 💡 5. FUNCIONALIDADES DA APLICAÇÃO 
+## 💡 4. FUNCIONALIDADES DA APLICAÇÃO 
 Na aplicação tem funcionalidades específicas para 3 tipos de funcionários. Sendo eles o garçom/garçonete, cozinheiro(a) e o(a) gerente.
 
 O garçom/garçonete tem acesso ao "Cardápio", onde consegue visualizar os menus, e ao "Atendimento", onde consegue ver os status das mesas, anotar pedido e o histórico de pedidos prontos e entregues.
@@ -36,6 +34,43 @@ O garçom/garçonete tem acesso ao "Cardápio", onde consegue visualizar os menu
 O cozinheiro(a) tem acesso a "Pedidos", onde consegue ver e manipular o status dos pedidos e o histórico de pedidos prontos e entregues.
 
 O(a) gerente tem acesso a todas as funcionalidades.
+
+
+## 📚 5. AS HISTÓRIAS DE USUÁRIO
+As funcionalidades foram implementadas conforme cada história do usuário
+
+**[Historia de usuário 1]** 
+"Eu, como funcionária quero entrar no sistema de pedidos".
+A funcionária deve:
+- [x] Acessar uma tela de login.
+- [x] Inserir email e senha.
+- [x] Receber mensagens de erros compreensíveis, conforme o erro e as informações inseridas.
+- [x] Entrar no sistema de pedidos caso as credenciais forem corretas.
+
+**[Historia de usuário 2]** 
+"Eu como garçom/garçonete quero poder anotar o pedido de um cliente para não depender da minha memória, saber quanto cobrar e poder enviar os pedidos para a cozinha para serem preparados em ordem".
+A atendente deve:
+- [x] Acessar uma página específica para anotar pedidos.
+- [x] Anotar o nome do cliente.
+- [x] Adicionar produtos aos pedidos.
+- [x] Excluir produtos.
+- [x] Ver resumo e o total da compra.
+- [x] Enviar o pedido para a cozinha (guardar em algum banco de dados).
+- [x] Funcionar bem em um tablet.
+
+**[Historia de usuário 3]** 
+"Eu como chefe de cozinha quero ver os pedidos dos clientes em ordem, poder marcar que estão prontos e poder notificar os garçons/garçonetes que o pedido está pronto para ser entregue ao cliente".
+A cozinheira deve:
+- [x] Ver os pedidos ordenados à medida em que são feitos.
+- [x] Marcar os pedidos que foram preparados e estão prontos para serem servidos..
+- [x] Ver o tempo que levou para preparar o pedido desde que chegou, até ser marcado como concluído.
+
+
+**[Historia de usuário 4]** 
+"Eu como garçom/garçonete quero ver os pedidos que estão prontos para entregá-los rapidamente aos clientes".
+A atendente deve:
+- [x] Ver a lista de pedidos prontos para servir.
+- [x] Marcar os pedidos que foram entregues.
 
 
 ### 🎨 6. LAYOUT
@@ -57,9 +92,7 @@ Os protótipos foram pensandos na experiência dos usuários e para visualizar a
 
 
 ## 💺 7. TESTE DE USABILIDADE - experiência do usuário 
-Utilizamos o **FORMS** para criar um formulário onde questionamos quais foram suas experiências detalhadas sobre cada funcionalidade, e como foi o desempenho da aplicação.
-
-https://forms.gle/qbwDEFsvP2wtyAft7
+Utilizamos o **FORMS** para criar um formulário [formulário](https://forms.gle/qbwDEFsvP2wtyAft7), em que questionamos quais foram as experiências dos usuários, ao usar cada funcionalidade, e como foi o desempenho da aplicação.
 
 Após a coleta das respostas, filtramos sugestões de melhoria, e uma delas já foi implementada.
 Um usuário sugeriu que alterássemos o formato do botão para que o "click" ficasse mais intuitivo, e isso foi implementado.
@@ -84,13 +117,9 @@ CSS
 - [x] Uso de seletores de CSS
 - [x] Empregar o modelo de caixa (box model): borda, margem, preenchimento
 - [x] Uso de flexbox en CSS
-- [x] Uso de CSS Grid Layout
 - [x] Uso de media queries
 
 JavaScript
-- [x] Testes unitários
-- [x] Testes assíncronos
-- [x] Mocking
 - [x] Uso ES modules
 - [x] Uso de linter (ESLINT)
 - [x] Uso de identificadores descritivos (Nomenclatura | Semântica)
@@ -99,8 +128,7 @@ Git e GitHub
 - [x] Git: Instalação e configuração
 - [x] Git: Controle de versão com git (init, clone, add, commit, status, push, pull, remote)
 - [x] Git: Integração de mudanças entre ramos (branch, checkout, fetch, merge, reset, rebase, tag)
-- [x] GitHub: Criação de contas e repositórios, configuração de chave SSH
-- [x] GitHub: Implantação com GitHub Pages
+- [x] GitHub: Criação de contas e repositórios
 - [x] GitHub: Colaboração pelo Github (branches | forks | pull requests | code review | tags)
 - [x] GitHub: Organização pelo Github (projects | issues | labels | milestones | releases)
 
@@ -121,7 +149,6 @@ react
 - [x] conditional-rendering
 - [x] lifting-up-state
 - [x] hooks
-- [x] css-modules
 - [x] routing
 
 UX (User eXperience)
