@@ -66,12 +66,12 @@ Um usuário sugeriu que alterássemos o formato do botão para que o "click" fic
 
 Botão inicial: 
 <p align='center'>
-  <img src='src/img/readme/melhoria-botao-1.jpeg' widht='40%'>
+  <img src='src/img/readme/melhoria-botao-1.jpeg' widht='30%'>
 </p>
 
 Botão após teste de usabilidade: 
 <p align='center'>
-  <img src='src/img/readme/melhoria-botao-2.jpeg' widht='40%'>
+  <img src='src/img/readme/melhoria-botao-2.jpeg' widht='30%'>
 </p>
 
 
