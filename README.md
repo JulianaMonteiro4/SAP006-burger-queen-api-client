@@ -81,7 +81,7 @@ A atendente deve:
 As cores do layout foram pensadas de acordo com as cores de um hamburguer.
 ### Telas:
 <p align='center'>
-  <img src='src/img/readme/prototipoS-alta-fidelidade.PNG' widht='20%'>
+  <img src='src/img/readme/prototipos-alta-fidelidade.PNG' widht='20%'>
 </p>
 
 Fizemos um fluxograma para verificar quais seriam os passos do usuários de acordo com cada histórias de usuário.
