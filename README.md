@@ -81,14 +81,12 @@ A atendente deve:
 As cores do layout foram pensadas de acordo com as cores de um hamburguer.
 ### Telas:
 <p align='center'>
-  <img src='src/img/readme/prototipo-alta-fidelidade.PNG' widht='20%'>
+  <img src='src/img/readme/prototipoS-alta-fidelidade.PNG' widht='20%'>
 </p>
 
 Fizemos um fluxograma para verificar quais seriam os passos do usuários de acordo com cada histórias de usuário.
 ### Fluxograma:
-<h1>
-  <img src="" height="300">
-</h1>
+
 
 ## 🎯 Protótipos:
 Os protótipos foram pensandos na experiência dos usuários e para visualizar a melhor forma de montar a aplicação.
@@ -101,12 +99,12 @@ Tela de Login e Cadastro:
 
 Home:
 <p align='center'>
-  <img src='src/img/readme/home.PMG' widht='20%'>
+  <img src='src/img/readme/home.PNG' widht='20%'>
 </p>
 
 Tela de Cardápio:
 <p align='center'>
-  <img src='src/img/readme/cardapio.PNG' widht='20%'>
+  <img src='src/img/readme/Cardapio.PNG' widht='20%'>
 </p>
 
 Tela de Atendimento:
@@ -120,8 +118,8 @@ Tela de Atendimento:
 Tela de Pedidos:
 Tela de Atendimento:
 <p align='center'>
-  <img src='src/img/readme/pedido-status-comanda.' widht='20%'>
-  <img src='src/img/readme/reader-menu.PNG' widht='20%'>
+  <img src='src/img/readme/pedido-status-comanda.PNG' widht='20%'>
+  <img src='src/img/readme/header-menu.PNG' widht='20%'>
 </p>
 
 ## 💺 7. TESTE DE USABILIDADE - experiência do usuário 
