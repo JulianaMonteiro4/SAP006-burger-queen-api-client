@@ -75,7 +75,10 @@ A atendente deve:
 
 ### 🎨 6. LAYOUT
 As cores do layout foram pensadas de acordo com as cores de um hamburguer.
-### :
+### Telas:
+<p align='center'>
+  <img src='src/img/readme/prototipo-alta-fidelidade.png' widht='20%'>
+</p>
 
 Fizemos um fluxograma para verificar quais seriam os passos do usuários de acordo com cada histórias de usuário.
 ### Fluxograma:
@@ -86,10 +89,36 @@ Fizemos um fluxograma para verificar quais seriam os passos do usuários de acor
 ## 🎯 Protótipos:
 Os protótipos foram pensandos na experiência dos usuários e para visualizar a melhor forma de montar a aplicação.
 ### Protótipos em alta fidelidade para Tablet:
-<h1>
-  <img src="" height="400">
-</h1>
+Tela de Login e Cadastro:
+<p align='center'>
+  <img src='src/img/readme/login.png' widht='20%'>
+  <img src='src/img/readme/cadastro.png' widht='20%'>
+</p>
 
+Home:
+<p align='center'>
+  <img src='src/img/readme/home.png' widht='20%'>
+</p>
+
+Tela de Cardápio:
+<p align='center'>
+  <img src='src/img/readme/cardapio.png' widht='20%'>
+</p>
+
+Tela de Atendimento:
+<p align='center'>
+  <img src='src/img/readme/atendimento-mesas.png' widht='20%'>
+  <img src='src/img/readme/atendimento-pedidos-mesas.png' widht='20%'>
+  <img src='src/img/readme/atendimento-anotar-pedido.png' widht='20%'>
+  <img src='src/img/readme/atendimento-historico.png' widht='20%'>
+</p>
+
+Tela de Pedidos:
+Tela de Atendimento:
+<p align='center'>
+  <img src='src/img/readme/pedido-status-comanda.png' widht='20%'>
+  <img src='src/img/readme/reader-menu.png' widht='20%'>
+</p>
 
 ## 💺 7. TESTE DE USABILIDADE - experiência do usuário 
 Utilizamos o **FORMS** para criar um formulário [formulário](https://forms.gle/qbwDEFsvP2wtyAft7), em que questionamos quais foram as experiências dos usuários, ao usar cada funcionalidade, e como foi o desempenho da aplicação.
@@ -99,12 +128,12 @@ Um usuário sugeriu que alterássemos o formato do botão para que o "click" fic
 
 Botão inicial: 
 <p align='center'>
-  <img src='src/img/readme/melhoria-botao-1.jpeg' widht='30%'>
+  <img src='src/img/readme/melhoria-botao-1.jpeg' widht='20%'>
 </p>
 
 Botão após teste de usabilidade: 
 <p align='center'>
-  <img src='src/img/readme/melhoria-botao-2.jpeg' widht='30%'>
+  <img src='src/img/readme/melhoria-botao-2.jpeg' widht='20%'>
 </p>
 
 
