@@ -99,27 +99,27 @@ Tela de Login e Cadastro:
 
 Home:
 <p align='center'>
-  <img src='src/img/readme/home.PNG' widht='20%'>
+  <img src='src/img/readme/home.PNG' widht='18%'>
 </p>
 
 Tela de Cardápio:
 <p align='center'>
-  <img src='src/img/readme/Cardapio.PNG' widht='20%'>
+  <img src='src/img/readme/Cardapio.PNG' widht='18%'>
 </p>
 
 Tela de Atendimento:
 <p align='center'>
-  <img src='src/img/readme/atendimento-mesas.PNG' widht='20%'>
-  <img src='src/img/readme/atendimento-pedidos-mesas.PNG' widht='20%'>
-  <img src='src/img/readme/atendimento-anotar-pedido.PNG' widht='20%'>
-  <img src='src/img/readme/atendimento-historico.PNG' widht='20%'>
+  <img src='src/img/readme/atendimento-mesas.PNG' widht='18%'>
+  <img src='src/img/readme/atendimento-pedidos-mesas.PNG' widht='18%'>
+  <img src='src/img/readme/atendimento-anotar-pedido.PNG' widht='18%'>
+  <img src='src/img/readme/atendimento-historico.PNG' widht='18%'>
 </p>
 
 Tela de Pedidos:
 Tela de Atendimento:
 <p align='center'>
-  <img src='src/img/readme/pedido-status-comanda.PNG' widht='20%'>
-  <img src='src/img/readme/header-menu.PNG' widht='20%'>
+  <img src='src/img/readme/pedido-status-comanda.PNG' widht='18%'>
+  <img src='src/img/readme/header-menu.PNG' widht='18%'>
 </p>
 
 ## 💺 7. TESTE DE USABILIDADE - experiência do usuário 
@@ -130,12 +130,12 @@ Um usuário sugeriu que alterássemos o formato do botão para que o "click" fic
 
 Botão inicial: 
 <p align='center'>
-  <img src='src/img/readme/melhoria-botao-1.jpeg' widht='20%'>
+  <img src='src/img/readme/melhoria-botao-1.jpeg' widht='18%'>
 </p>
 
 Botão após teste de usabilidade: 
 <p align='center'>
-  <img src='src/img/readme/melhoria-botao-2.jpeg' widht='20%'>
+  <img src='src/img/readme/melhoria-botao-2.jpeg' widht='18%'>
 </p>
 
 
